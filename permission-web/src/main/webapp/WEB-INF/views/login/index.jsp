@@ -13,6 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
   <meta charset="UTF-8">
     <title>系统登录</title>
+    <link rel="shortcut icon" type="image/x-icon" href="<%=path%>/favicon.ico" media="screen" /> 
     <script src="<%=path%>/static/BJUI/js/jquery-1.11.3.min.js"></script>
     <script src="<%=path%>/static/BJUI/js/jquery.cookie.js"></script>
     <script src="<%=path%>/static/BJUI/js/sha256.js"></script>

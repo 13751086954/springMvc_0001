@@ -87,6 +87,11 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
          <url-pattern>*.js</url-pattern> 
      </servlet-mapping> 
      
+     <servlet-mapping>
+       <servlet-name>default</servlet-name>
+       <url-pattern>*.ico</url-pattern>
+    </servlet-mapping>
+     
     <context-param>  
         <param-name>log4jConfigLocation</param-name>  
         <param-value>classpath:log4j.properties</param-value>  
@@ -107,6 +112,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 	<welcome-file-list>
 		<welcome-file>/WEB-INF/views/login/index.jsp</welcome-file>
 	</welcome-file-list>
+	
 	
 	<!-- 配置SESSION超时，单位是分钟 -->
 	<session-config>
