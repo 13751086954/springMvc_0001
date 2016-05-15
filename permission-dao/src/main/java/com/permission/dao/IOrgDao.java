@@ -11,5 +11,8 @@ public interface IOrgDao {
      List<Org> LoadByUser(Integer userId);
 
      List<Org> GetSubOrgs(Integer orgId) throws Exception;
+     
+     List<Org> Find( List<Integer> orgIds) ;
 
+     List<Org> FindAll() ;
 }

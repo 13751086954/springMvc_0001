@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.permission.dao.ResourceMapper" >
+<mapper namespace="com.permission.mapping.ResourceMapper" >
   <resultMap id="BaseResultMap" type="com.permission.pojo.Resource" >
     <id column="Id" property="id" jdbcType="INTEGER" />
     <result column="CascadeId" property="cascadeid" jdbcType="VARCHAR" />
@@ -15,11 +15,12 @@
     <result column="Description" property="description" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    Id, CascadeId, Key, Name, ParentId, Status, SortNo, CategoryId
+    Id, CascadeId, `Key`, Name, ParentId, Status, SortNo, CategoryId
   </sql>
   <sql id="Blob_Column_List" >
     Description
   </sql>
+  
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -28,12 +29,63 @@
     from resource
     where Id = #{id,jdbcType=INTEGER}
   </select>
+  
+ 
+  <select id="LoadResourceListPage" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from resource
+    order by Id
+  </select>
+  
+   
+  <select id="LoadInOrgListPage" resultMap="ResultMapWithBLOBs"  >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from resource
+    where
+     CategoryId in
+    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+       #{item}
+   </foreach>
+     order by Id
+  </select>
+  
+   <select id="Find" resultMap="ResultMapWithBLOBs"  >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from resource
+    where
+     Id in
+    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+       #{item}
+   </foreach>
+     order by Id
+  </select>
+  
+  
+   <select id="FindAll" resultMap="ResultMapWithBLOBs"  >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from resource
+     order by SortNo
+  </select>
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from resource
     where Id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.permission.pojo.Resource" >
-    insert into resource (Id, CascadeId, Key, 
+    insert into resource (Id, CascadeId, `Key`, 
       Name, ParentId, Status, 
       SortNo, CategoryId, Description
       )
@@ -110,7 +162,7 @@
         CascadeId = #{cascadeid,jdbcType=VARCHAR},
       </if>
       <if test="key != null" >
-        Key = #{key,jdbcType=VARCHAR},
+        `Key` = #{key,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         Name = #{name,jdbcType=VARCHAR},
@@ -136,7 +188,7 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.permission.pojo.Resource" >
     update resource
     set CascadeId = #{cascadeid,jdbcType=VARCHAR},
-      Key = #{key,jdbcType=VARCHAR},
+      `Key` = #{key,jdbcType=VARCHAR},
       Name = #{name,jdbcType=VARCHAR},
       ParentId = #{parentid,jdbcType=INTEGER},
       Status = #{status,jdbcType=INTEGER},
@@ -148,7 +200,7 @@
   <update id="updateByPrimaryKey" parameterType="com.permission.pojo.Resource" >
     update resource
     set CascadeId = #{cascadeid,jdbcType=VARCHAR},
-      Key = #{key,jdbcType=VARCHAR},
+      `Key` = #{key,jdbcType=VARCHAR},
       Name = #{name,jdbcType=VARCHAR},
       ParentId = #{parentid,jdbcType=INTEGER},
       Status = #{status,jdbcType=INTEGER},

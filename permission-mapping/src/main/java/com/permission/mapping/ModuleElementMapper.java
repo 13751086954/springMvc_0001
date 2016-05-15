@@ -1,5 +1,8 @@
 package com.permission.mapping;
 
+import java.util.List;
+import java.util.Map;
+
 import com.permission.pojo.ModuleElement;
 import com.permission.pojo.ModuleElementWithBLOBs;
 
@@ -17,4 +20,8 @@ public interface ModuleElementMapper {
     int updateByPrimaryKeyWithBLOBs(ModuleElementWithBLOBs record);
 
     int updateByPrimaryKey(ModuleElement record);
+    
+    List<ModuleElement> Find(Map<String, Object> paramMap);
+    
+    List<ModuleElement> FindByModuleId(Integer moduleId);
 }

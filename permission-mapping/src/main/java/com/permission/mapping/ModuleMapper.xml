@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.permission.dao.ModuleMapper" >
+<mapper namespace="com.permission.mapping.ModuleMapper" >
   <resultMap id="BaseResultMap" type="com.permission.pojo.Module" >
     <id column="Id" property="id" jdbcType="INTEGER" />
     <result column="CascadeId" property="cascadeid" jdbcType="VARCHAR" />
@@ -27,24 +27,43 @@
     where Id = #{id,jdbcType=INTEGER}
   </select>
   
+  <select id="Find" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from module
+    where 
+    Id in
+    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+      ${item}
+   </foreach>
+    order by SortNo
+  </select>
+  
     
-   <select id="LoadModules" resultMap="BaseResultMap" >
+   <select id="LoadModuleListPage" resultMap="BaseResultMap" >
     select 
     <include refid="Base_Column_List" />
     from module 
     order by Id
   </select>
   
-  <select id="LoadInOrgs" resultMap="BaseResultMap">
+  <select id="LoadInOrgListPage" resultMap="BaseResultMap">
     SELECT 
     <include refid="Base_Column_List" />
     FROM module
     WHERE 
     ParentId IN 
-   <foreach collection="array" index="index" item="item" open="(" separator="," close=")">
+   <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
        #{item}
    </foreach>
     order by Id
+  </select>
+  
+   <select id="FindAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from module
+    order by SortNo
   </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

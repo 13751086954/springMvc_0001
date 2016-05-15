@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Repository;
 
 import com.permission.common.orm.PageInfo;
@@ -30,7 +29,7 @@ public class ModuleDaoImpl implements IModuleDao {
 	    PageInfo page = new PageInfo();
 	    page.setShowCount(pageSize);
 	    page.setCurrentResult(currentResult);
-	    List<Module> users= _moduleMapper.LoadModules(page);
+	    List<Module> users= _moduleMapper.LoadModuleListPage(page);
 	    Map<String, Object> map=new HashMap<String, Object>();
 	    map.put("rows", users);
 	    map.put("total ",page.getTotalResult());
@@ -38,7 +37,7 @@ public class ModuleDaoImpl implements IModuleDao {
 	}
 
 	public Map<String, Object> LoadInOrgs(int pageindex, int pagesize,
-			Integer... orgIds) {
+        List<Integer> orgIds) {
 		// TODO Auto-generated method stub
 		int currentPage = pageindex;
 	    int pageSize = 3;
@@ -49,7 +48,7 @@ public class ModuleDaoImpl implements IModuleDao {
 	    PageInfo page = new PageInfo();
 	    page.setShowCount(pageSize);
 	    page.setCurrentResult(currentResult);
-	    List<Module> users= _moduleMapper.LoadInOrgs(page,orgIds);
+	    List<Module> users= _moduleMapper.LoadInOrgListPage(page,orgIds);
 	    Map<String, Object> map=new HashMap<String, Object>();
 	    map.put("rows", users);
 	    map.put("total ",page.getTotalResult());
@@ -59,6 +58,19 @@ public class ModuleDaoImpl implements IModuleDao {
 	public void Delete(int id) {
 		// TODO Auto-generated method stub
 		_moduleMapper.deleteByPrimaryKey(id);
+	}
+
+	public List<Module> Find(List<Integer> moduleIds) {
+		// TODO Auto-generated method stub
+		if (moduleIds.size()==0) {
+			return null;
+		}
+		return _moduleMapper.Find(moduleIds);
+	}
+
+	public List<Module> FindAll() {
+		// TODO Auto-generated method stub
+		return _moduleMapper.FindAll();
 	}
 
 }

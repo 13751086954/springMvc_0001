@@ -19,6 +19,10 @@ public interface OrgMapper {
     List<Org> LoadByUser(Integer userId);
     
     List<Org> GetSubOrgs(Map<String,Object> map);
+    
+    List<Org> Find(List<Integer> orgIds);
+    
+    List<Org> FindAll();
 
     int updateByPrimaryKeySelective(Org record);
 

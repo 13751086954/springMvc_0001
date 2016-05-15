@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -8,20 +9,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
+    <base href="<%=path%>">
     
   <meta charset="UTF-8">
     <title>系统登录</title>
-    <script src="<%=basePath%>/static/BJUI/js/jquery-1.11.3.min.js"></script>
-    <script src="<%=basePath%>/static/BJUI/js/jquery.cookie.js"></script>
-    <script src="<%=basePath%>/static/BJUI/js/sha256.js"></script>
-    <link href="<%=basePath%>/static/BJUI/themes/css/bootstrap.min.css" rel="stylesheet">
+    <script src="<%=path%>/static/BJUI/js/jquery-1.11.3.min.js"></script>
+    <script src="<%=path%>/static/BJUI/js/jquery.cookie.js"></script>
+    <script src="<%=path%>/static/BJUI/js/sha256.js"></script>
+    <link href="<%=path%>/static/BJUI/themes/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         * {
             font-family: "Verdana", "Tahoma", "Lucida Grande", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
         }
 
         body {
-            background: url(<%=basePath%>/static/BJUI/images/loginbg_01.jpg) no-repeat center center fixed;
+            background: url(<%=path%>/static/BJUI/images/loginbg_01.jpg) no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -182,7 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
         function choose_bg() {
             var bg = Math.floor(Math.random() * 4 + 1);
-            $('body').css('background-image', 'url(<%=basePath%>/static/BJUI/images/loginbg_0' + bg + '.jpg)');
+            $('body').css('background-image', 'url<%=path%>/static/BJUI/images/loginbg_0' + bg + '.jpg)');
         }
     </script>
 </head>
@@ -204,19 +206,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="login_box">
             <div class="login_logo">
-                <img src="<%=basePath%>/static/BJUI/images/logo.png">
+                <img src="<%=path%>/static/BJUI/images/logo.png">
             </div>
-            @if (Model != null && Model.statusCode == "300")
-            {
-                <div class="login_msg">
-                    <font color="red">@Model.message</font>
-                </div>
-            }
 
+		<c:choose>
+		   <c:when test="${response!=null && response.statusCode== '300'}">  
+		       <div class="login_msg">
+                   <font color="red">${response.message}</font>
+                </div>      
+		   </c:when>
+		</c:choose>
 
             <div class="login_form">
                 <input type="hidden" value="${randomKey }" id="j_randomKey" />
-                <form action="/Login/Index" id="login_form" method="post">
+                <form action="<%=path%>/login/login.do" id="login_form" method="post">
                     <input type="hidden" name="jfinal_token" value="${jfinal_token }" />
                     <div class="form-group">
                         <label for="j_username" class="t">用户名：</label>
@@ -239,7 +242,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </form>
             </div>
         </div>
-        <div class="bottom">Copyright &copy; 2015 <a href="/Login/LoginByDev">基于精典DDD的权限管理 - 点击以开发者账号登录</a></div>
+        <div class="bottom">Copyright &copy; 2015 <a href="login/loginByDev.do">权限管理系统 - 点击以开发者账号登录</a></div>
     </div>
 </body>
 </html>

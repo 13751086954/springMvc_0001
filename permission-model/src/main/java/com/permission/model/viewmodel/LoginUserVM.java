@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.permission.pojo.Org;
 import com.permission.pojo.Resource;
+import com.permission.pojo.User;
 
 /**
  * 登陆用户视图模型
@@ -12,6 +13,8 @@ import com.permission.pojo.Resource;
  */
 public class LoginUserVM {
 
+	private User user ;
+	
 	/**
 	 * 用户可以访问到的模块（包括所属角色与自己的所有模块）
 	 */
@@ -31,8 +34,17 @@ public class LoginUserVM {
      * 用户可访问的机构
      */
 	private List<Org> accessedorgs ;
-    
-    
+	
+	
+	public  User getUser() {
+	    return user;
+	}
+
+	public void setUser(User user) {
+	    	
+	    this.user = user;
+    }
+	   
     public  List<ModuleView> getModules() {
         return modules;
     }

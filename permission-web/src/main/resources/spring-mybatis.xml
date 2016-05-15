@@ -40,12 +40,25 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动扫描mapping.xml文件 -->
-		<property name="mapperLocations" value="classpath:com/permission/dao/*.xml"></property>
+		<property name="mapperLocations" value="classpath:com/permission/mapping/*.xml"></property>
+		<property name="typeAliasesPackage" value="com.permission.pojo" />  
+		<property name="plugins">
+	        <array>
+	            <bean class="com.permission.common.orm.PagePlugin">
+	               <property name="properties">
+	                    <value>
+	                        dialect=mysql
+	                        pageSqlId=.*ListPage.*
+	                    </value>	                 	                 
+                   </property>
+	            </bean>
+	        </array>
+       </property>  
 	</bean>
 
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.permission.dao" />
+		<property name="basePackage" value="com.permission.mapping" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
 
@@ -55,11 +68,4 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
-	<plugins>
-        <plugin interceptor="com.yihaomen.util.PagePlugin">
-            <property name="dialect" value="mysql" />
-            <property name="pageSqlId" value=".*ListPage.*" />
-        </plugin>
-    </plugins>
-
 </beans>

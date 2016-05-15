@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.permission.dao.RelevanceMapper" >
+<mapper namespace="com.permission.mapping.RelevanceMapper" >
   <resultMap id="BaseResultMap" type="com.permission.pojo.Relevance" >
     <id column="Id" property="id" jdbcType="INTEGER" />
     <result column="FirstId" property="firstid" jdbcType="INTEGER" />
@@ -12,13 +12,105 @@
     <result column="OperatorId" property="operatorid" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    Id, FirstId, SecondId, Description, Key, Status, OperateTime, OperatorId
+    Id, FirstId, SecondId, Description, `Key`, Status, OperateTime, OperatorId
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from relevance
     where Id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="FindUserRoleIds"  resultType="java.lang.Integer">
+    select 
+    SecondId
+    from relevance
+    where 
+    FirstId = #{firstId,jdbcType=INTEGER} and `Key` = 'UserRole'
+  </select>
+  
+  
+  <select id="FindModuleIds" resultType="java.lang.Integer"  >
+    select 
+    SecondId
+    from relevance
+    where 
+    (FirstId = #{firstId,jdbcType=INTEGER} and `Key` = 'UserModule') 
+    <choose>
+         <when test="ids.size()>0">
+                  or 
+			    (
+			    FirstId in
+			    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+			       #{item}
+			   </foreach>
+			    and `Key` = 'RoleModule'
+			    )
+         </when>
+     </choose> 
+  </select>
+  
+  
+  <select id="FindElementIds" resultType="java.lang.Integer" >
+    select 
+    SecondId
+    from relevance
+    where
+     (FirstId = #{firstId,jdbcType=INTEGER} and `Key` = 'UserElement') 
+      <choose>
+         <when test="ids.size()>0">
+			    or 
+			    (
+			    FirstId in
+			    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+			       #{item}
+			   </foreach>
+			    and `Key` = 'RoleElement'
+			    )
+        </when>
+     </choose> 
+  </select>
+  
+  
+   <select id="FindResourceIds" resultType="java.lang.Integer" >
+    select 
+    SecondId
+    from relevance
+    where
+     (FirstId = #{firstId,jdbcType=INTEGER} and `Key` = 'UserResource') 
+      <choose>
+         <when test="ids.size()>0">
+		    or 
+		    (
+		    FirstId in
+		    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+		       #{item}
+		   </foreach>
+		    and `Key` = 'UserResource'
+		    )
+        </when>
+     </choose> 
+  </select>
+  
+  
+   <select id="FindOrgIds" resultType="java.lang.Integer" >
+    select 
+    SecondId
+    from relevance
+    where
+     (FirstId = #{firstId,jdbcType=INTEGER} and `Key` = 'UserAccessedOrg') 
+      <choose>
+         <when test="ids.size()>0">
+			    or 
+			    (
+			    FirstId in
+			    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+			       #{item}
+			   </foreach>
+			    and `Key` = 'UserAccessedOrg'
+			    )
+       </when>
+     </choose> 
   </select>
   
   <select id="deleteByKeyAndFirstIds" resultMap="BaseResultMap" >

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.permission.dao.RoleMapper" >
+<mapper namespace="com.permission.mapping.RoleMapper" >
   <resultMap id="BaseResultMap" type="com.permission.pojo.Role" >
     <id column="Id" property="id" jdbcType="INTEGER" />
     <result column="Name" property="name" jdbcType="VARCHAR" />
@@ -21,6 +21,25 @@
     from role
     where Id = #{id,jdbcType=INTEGER}
   </select>
+   
+  <select id="LoadRoleListPage" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    order by Id
+  </select>
+  
+   <select id="LoadInOrgListPage" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    CategoryId IN 
+    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+       #{item}
+    </foreach>
+    order by Id
+  </select>
+   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from role
     where Id = #{id,jdbcType=INTEGER}

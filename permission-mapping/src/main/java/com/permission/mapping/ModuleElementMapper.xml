@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.permission.dao.ModuleElementMapper" >
+<mapper namespace="com.permission.mapping.ModuleElementMapper" >
   <resultMap id="BaseResultMap" type="com.permission.pojo.ModuleElement" >
     <id column="Id" property="id" jdbcType="INTEGER" />
     <result column="DomId" property="domid" jdbcType="VARCHAR" />
@@ -8,7 +8,7 @@
     <result column="Type" property="type" jdbcType="VARCHAR" />
     <result column="ModuleId" property="moduleid" jdbcType="INTEGER" />
     <result column="Icon" property="icon" jdbcType="VARCHAR" />
-    <result column="Class" property="class" jdbcType="VARCHAR" />
+    <result column="Classify" property="classify" jdbcType="VARCHAR" />
     <result column="Remark" property="remark" jdbcType="VARCHAR" />
     <result column="Sort" property="sort" jdbcType="INTEGER" />
   </resultMap>
@@ -17,7 +17,7 @@
     <result column="Script" property="script" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    Id, DomId, Name, Type, ModuleId, Icon, Class, Remark, Sort
+    Id, DomId, Name, Type, ModuleId, Icon, Classify, Remark, Sort
   </sql>
   <sql id="Blob_Column_List" >
     Attr, Script
@@ -30,6 +30,31 @@
     from moduleelement
     where Id = #{id,jdbcType=INTEGER}
   </select>
+  
+  <select id="Find" resultMap="ResultMapWithBLOBs" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from moduleelement
+    where ModuleId = #{moduleId,jdbcType=INTEGER}
+    and Id in
+     <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+   </foreach>  
+    order by Sort
+  </select>
+  
+   <select id="FindByModuleId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer"  >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from moduleelement
+    where ModuleId = #{moduleId,jdbcType=INTEGER} 
+    order by Sort
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from moduleelement
     where Id = #{id,jdbcType=INTEGER}
@@ -37,11 +62,11 @@
   <insert id="insert" parameterType="com.permission.pojo.ModuleElementWithBLOBs" >
     insert into moduleelement (Id, DomId, Name, 
       Type, ModuleId, Icon, 
-      Class, Remark, Sort, 
+      Classify, Remark, Sort, 
       Attr, Script)
     values (#{id,jdbcType=INTEGER}, #{domid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{type,jdbcType=VARCHAR}, #{moduleid,jdbcType=INTEGER}, #{icon,jdbcType=VARCHAR}, 
-      #{class,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
+      #{Classify,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
       #{attr,jdbcType=LONGVARCHAR}, #{script,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.permission.pojo.ModuleElementWithBLOBs" >
@@ -65,8 +90,8 @@
       <if test="icon != null" >
         Icon,
       </if>
-      <if test="class != null" >
-        Class,
+      <if test="Classify != null" >
+        Classify,
       </if>
       <if test="remark != null" >
         Remark,
@@ -100,8 +125,8 @@
       <if test="icon != null" >
         #{icon,jdbcType=VARCHAR},
       </if>
-      <if test="class != null" >
-        #{class,jdbcType=VARCHAR},
+      <if test="Classify != null" >
+        #{Classify,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -135,8 +160,8 @@
       <if test="icon != null" >
         Icon = #{icon,jdbcType=VARCHAR},
       </if>
-      <if test="class != null" >
-        Class = #{class,jdbcType=VARCHAR},
+      <if test="Classify != null" >
+        Classify = #{Classify,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         Remark = #{remark,jdbcType=VARCHAR},
@@ -160,7 +185,7 @@
       Type = #{type,jdbcType=VARCHAR},
       ModuleId = #{moduleid,jdbcType=INTEGER},
       Icon = #{icon,jdbcType=VARCHAR},
-      Class = #{class,jdbcType=VARCHAR},
+      Classify = #{Classify,jdbcType=VARCHAR},
       Remark = #{remark,jdbcType=VARCHAR},
       Sort = #{sort,jdbcType=INTEGER},
       Attr = #{attr,jdbcType=LONGVARCHAR},
@@ -174,7 +199,7 @@
       Type = #{type,jdbcType=VARCHAR},
       ModuleId = #{moduleid,jdbcType=INTEGER},
       Icon = #{icon,jdbcType=VARCHAR},
-      Class = #{class,jdbcType=VARCHAR},
+      Classify = #{Classify,jdbcType=VARCHAR},
       Remark = #{remark,jdbcType=VARCHAR},
       Sort = #{sort,jdbcType=INTEGER}
     where Id = #{id,jdbcType=INTEGER}

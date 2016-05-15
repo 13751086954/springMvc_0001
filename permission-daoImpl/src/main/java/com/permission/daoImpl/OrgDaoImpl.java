@@ -45,4 +45,17 @@ public class OrgDaoImpl implements IOrgDao {
 		return _orgMapper.GetSubOrgs(map);    
 	}
 
+	public List<Org> Find(List<Integer> orgIds) {
+		if (orgIds.size()==0) {
+			return null;
+		}
+		// TODO Auto-generated method stub
+		return _orgMapper.Find(orgIds);
+	}
+
+	public List<Org> FindAll() {
+		// TODO Auto-generated method stub
+		return _orgMapper.FindAll();
+	}
+
 }

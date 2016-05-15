@@ -27,6 +27,7 @@ public class User {
     private Date createtime;
 
     private Integer createid;
+    
 
     public Integer getId() {
         return id;

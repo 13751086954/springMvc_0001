@@ -1,5 +1,10 @@
 package com.permission.mapping;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.permission.common.orm.PageInfo;
 import com.permission.pojo.Stock;
 
 public interface StockMapper {
@@ -10,6 +15,10 @@ public interface StockMapper {
     int insertSelective(Stock record);
 
     Stock selectByPrimaryKey(Integer id);
+    
+    List<Stock>  LoadStocks(@Param("page")PageInfo page);
+    
+    List<Stock>  LoadInOrgs(@Param("page")PageInfo page,@Param("orgIds")List<Integer> orgIds) ;
 
     int updateByPrimaryKeySelective(Stock record);
 

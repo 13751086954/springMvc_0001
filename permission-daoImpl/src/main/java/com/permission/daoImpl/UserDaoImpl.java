@@ -30,7 +30,7 @@ public class UserDaoImpl implements IUserDao {
 	    PageInfo page = new PageInfo();
 	    page.setShowCount(pageSize);
 	    page.setCurrentResult(currentResult);
-	    List<User> users= _userMapper.LoadUsers(page);
+	    List<User> users= _userMapper.LoadUserListPage(page);
 	    Map<String, Object> map=new HashMap<String, Object>();
 	    map.put("rows", users);
 	    map.put("total ",page.getTotalResult());
@@ -38,7 +38,7 @@ public class UserDaoImpl implements IUserDao {
 	}
 	
 	
-	public Map<String, Object> LoadInOrgs(int pageindex, int pagesize, Integer... orgIds) {
+	public Map<String, Object> LoadInOrgs(Integer pageindex, Integer pagesize, List<Integer> orgIds) {
 		// TODO Auto-generated method stub
 		 int currentPage = pageindex;
 	     int pageSize = 3;
@@ -49,11 +49,17 @@ public class UserDaoImpl implements IUserDao {
 	    PageInfo page = new PageInfo();
 	    page.setShowCount(pageSize);
 	    page.setCurrentResult(currentResult);	    
-	    List<User> users= _userMapper.LoadInOrgs(page,orgIds);
+	    List<User> users= _userMapper.LoadInOrgListPage(page,orgIds);
 	    Map<String, Object> map=new HashMap<String, Object>();
 	    map.put("rows", users);
 	    map.put("total ",page.getTotalResult());
 		return map;
+	}
+
+
+	public User FindSingle(String account) {
+		// TODO Auto-generated method stub
+		return _userMapper.FindSingle(account);
 	}
 
 }

@@ -20,8 +20,12 @@ public interface ModuleMapper {
 
     int updateByPrimaryKey(Module record);
     
-    List<Module> LoadModules(@Param("page")PageInfo page) ;
+    List<Module> LoadModuleListPage(@Param("page")PageInfo page) ;
 
- 	List<Module> LoadInOrgs(@Param("page")PageInfo page,@Param("orgId")Integer... orgId) ;
+ 	List<Module> LoadInOrgListPage(@Param("page")PageInfo page,@Param("ids")List<Integer> ids) ;
+ 	
+ 	List<Module> Find(@Param("ids")List<Integer> ids);
+ 	
+ 	List<Module> FindAll();
 
 }

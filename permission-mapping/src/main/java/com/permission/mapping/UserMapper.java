@@ -22,8 +22,10 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
     
-    List<User> LoadUsers(@Param("page")PageInfo page) ;
+    List<User> LoadUserListPage(@Param("page")PageInfo page) ;
 
-	List<User> LoadInOrgs(@Param("page")PageInfo page,@Param("orgId")Integer... orgId) ;
+	List<User> LoadInOrgListPage(@Param("page")PageInfo page,@Param("orgId")List<Integer> orgId) ;
+	
+	User FindSingle(String account) ;
 
 }

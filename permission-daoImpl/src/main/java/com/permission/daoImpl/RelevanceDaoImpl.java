@@ -2,6 +2,7 @@ package com.permission.daoImpl;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -38,6 +39,45 @@ public class RelevanceDaoImpl implements IRelevanceDao {
 		     relevance.setOperatetime(new Date());
 		     _relevanceMapper.insert(relevance);
 		}   
+	}
+
+	public List<Integer> FindUserRoleIds(Integer firstId) {
+		// TODO Auto-generated method stub
+		return _relevanceMapper.FindUserRoleIds(firstId);
+	}
+
+
+	public List<Integer> FindModuleIds(Integer firstId, List<Integer> ids) {
+		// TODO Auto-generated method stub
+		Map<String, Object> params = new HashMap<String, Object>(2);
+        params.put("firstId", firstId);
+        params.put("ids", ids);
+		return _relevanceMapper.FindModuleIds(params);
+		
+	}
+
+	public List<Integer> FindElementIds(Integer firstId, List<Integer> ids) {
+		// TODO Auto-generated method stub
+		Map<String, Object> params = new HashMap<String, Object>(2);
+        params.put("firstId", firstId);
+        params.put("ids", ids);
+		return _relevanceMapper.FindElementIds(params);
+	}
+
+	public List<Integer> FindResourceIds(Integer firstId, List<Integer> ids) {
+		// TODO Auto-generated method stub
+		Map<String, Object> params = new HashMap<String, Object>(2);
+        params.put("firstId", firstId);
+        params.put("ids", ids);
+		return _relevanceMapper.FindResourceIds(params);
+	}
+
+	public List<Integer> FindOrgids(Integer firstId, List<Integer> ids) {
+		// TODO Auto-generated method stub
+		Map<String, Object> params = new HashMap<String, Object>(2);
+        params.put("firstId", firstId);
+        params.put("ids", ids);
+		return _relevanceMapper.FindOrgIds(params);
 	}
 
 }

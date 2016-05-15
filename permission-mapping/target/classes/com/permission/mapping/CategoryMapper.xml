@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.permission.dao.CategoryMapper" >
+<mapper namespace="com.permission.mapping.CategoryMapper" >
   <resultMap id="BaseResultMap" type="com.permission.pojo.Category" >
     <id column="Id" property="id" jdbcType="INTEGER" />
     <result column="CascadeId" property="cascadeid" jdbcType="VARCHAR" />
@@ -20,6 +20,25 @@
     from category
     where Id = #{id,jdbcType=INTEGER}
   </select>
+  
+   <select id="LoadCategoryListPage" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from category
+    order by Id
+  </select>
+  
+   <select id="LoadInOrgListPage" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from category
+    Id in
+    <foreach collection="array" index="index" item="item" open="(" separator="," close=")">
+       #{item}
+   </foreach>
+    order by Id
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from category
     where Id = #{id,jdbcType=INTEGER}

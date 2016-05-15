@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.permission.dao.UserMapper" >
+<mapper namespace="com.permission.mapping.UserMapper" >
   <resultMap id="BaseResultMap" type="com.permission.pojo.User" >
     <id column="Id" property="id" jdbcType="INTEGER" />
     <result column="Account" property="account" jdbcType="VARCHAR" />
@@ -16,6 +16,7 @@
   <sql id="Base_Column_List" >
     Id, Account, Password, Name, Sex, Status, Type, BizCode, CreateTime, CreateId
   </sql>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -23,14 +24,21 @@
     where Id = #{id,jdbcType=INTEGER}
   </select>
   
-   <select id="LoadUsers" resultMap="BaseResultMap" >
+   <select id="FindSingle" resultMap="BaseResultMap" parameterType="java.lang.String" >
+     select 
+     <include refid="Base_Column_List" />
+    from user
+    where  Account = #{account,jdbcType=VARCHAR}
+  </select>
+  
+   <select id="LoadUserListPage" resultMap="BaseResultMap" >
     select 
     <include refid="Base_Column_List" />
     from user 
     order by Id
   </select>
   
-  <select id="LoadInOrgs" resultMap="BaseResultMap">
+  <select id="LoadInOrgListPage" resultMap="BaseResultMap">
    SELECT 
    <include refid="Base_Column_List" />
    FROM user
@@ -38,8 +46,10 @@
 	    SELECT NULL AS EMPTY
 	    FROM (
 	        SELECT DISTINCT FirstId
-	        FROM relevance WHERE `Key`='UserOrg' and SecondId IN 
-	        <foreach collection="array" index="index" item="item" open="(" separator="," close=")">
+	        FROM relevance 
+	        WHERE `Key`='UserOrg' 
+	        and SecondId IN 
+	        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
              #{item}
             </foreach>
 	        ) AS t2
