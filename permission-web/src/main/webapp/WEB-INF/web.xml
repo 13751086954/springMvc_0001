@@ -11,7 +11,8 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
    	<!-- Spring和mybatis的配置文件 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring-mybatis.xml</param-value>
+			<!--<param-value>classpath:spring/applicationContext-mybatis.xml</param-value> -->
+			<param-value>classpath:spring/applicationContext-*.xml</param-value>
 	</context-param>
 	
 	<!-- 编码过滤器 -->
@@ -50,7 +51,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:spring-mvc.xml</param-value>
+			<param-value>classpath:spring/spring-mvc.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		<async-supported>true</async-supported>
