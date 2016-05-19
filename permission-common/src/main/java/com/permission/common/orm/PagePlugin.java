@@ -13,6 +13,8 @@ import javax.xml.bind.PropertyException;
 
 
 
+
+
 //import org.apache.ibatis.builder.xml.dynamic.ForEachSqlNode;
 import org.apache.ibatis.executor.ErrorContext;
 import org.apache.ibatis.executor.ExecutorException;
@@ -112,6 +114,7 @@ public class PagePlugin implements Interceptor {
         return ivk.proceed();
     }
 
+	@SuppressWarnings("unchecked")
 	private void setParameters(PreparedStatement ps,
             MappedStatement mappedStatement, BoundSql boundSql,
             Object parameterObject) throws SQLException {
@@ -152,7 +155,8 @@ public class PagePlugin implements Interceptor {
                         value = metaObject == null ? null : metaObject
                                 .getValue(propertyName);
                     }
-                    TypeHandler typeHandler = parameterMapping.getTypeHandler();
+                    @SuppressWarnings("rawtypes")
+					TypeHandler typeHandler = parameterMapping.getTypeHandler();
                     if (typeHandler == null) {
                         throw new ExecutorException(
                                 "There was no TypeHandler found for parameter "
