@@ -185,7 +185,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
         function choose_bg() {
             var bg = Math.floor(Math.random() * 4 + 1);
-            $('body').css('background-image', 'url<%=path%>/static/BJUI/images/loginbg_0' + bg + '.jpg)');
+            $('body').css('background-image', 'url(<%=path%>/static/BJUI/images/loginbg_0' + bg + '.jpg)');
         }
     </script>
 </head>
