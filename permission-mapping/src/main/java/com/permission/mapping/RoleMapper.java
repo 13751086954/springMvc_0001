@@ -25,4 +25,6 @@ public interface RoleMapper {
     int updateByPrimaryKey(Role record);
     
     List<Role> FindUserRoles(@Param("ids")List<Integer> userRoleIds);
+
+	List<Role> FindAll();
 }

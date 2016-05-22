@@ -22,6 +22,12 @@
     where Id = #{id,jdbcType=INTEGER}
   </select>
   
+  <select id="FindAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    order by Id
+  </select>
   
   <select id="FindUserRoles" resultMap="BaseResultMap" >
     select 

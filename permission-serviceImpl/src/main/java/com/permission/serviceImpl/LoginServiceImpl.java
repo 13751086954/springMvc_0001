@@ -48,9 +48,9 @@ public class LoginServiceImpl implements ILoginService  {
 		_mapper=new DozerBeanMapper();	
 	}
 	
-	public LoginUserVM Login(String userName, String password) throws Exception {
+	public LoginUserVM Login(String username, String password) throws Exception {
 		// TODO Auto-generated method stub
-		User user = _userDao.FindSingle(userName);
+		User user = _userDao.FindSingle(username);
 		if (user == null){
             throw new Exception("用户帐号不存在");
         }
@@ -122,6 +122,10 @@ public class LoginServiceImpl implements ILoginService  {
 		user.setAccount("System");
 		user.setName("开发者账号");
 		loginUser.setUser(user);
+		
+		List<Role> roles= _roleDao.FindAll();
+        
+		loginUser.setRoles(roles);
 		
 		List<Module> modules = _moduleDao.FindAll();
 	        

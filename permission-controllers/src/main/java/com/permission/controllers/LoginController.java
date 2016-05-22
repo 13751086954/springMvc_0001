@@ -8,14 +8,14 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.permission.common.helper.ISessionHelper;
+
 import com.permission.model.BjuiResponse;
-import com.permission.model.viewmodel.LoginUserVM;
 import com.permission.service.ILoginService;
 
 
@@ -25,12 +25,8 @@ import com.permission.service.ILoginService;
 public class LoginController {
   
 	 @Resource
-	 ILoginService _loginService;
-	
-	 @Resource
-	 ISessionHelper _sessionHelper;
-  
-	
+	 ILoginService loginService;
+		
 	 @RequestMapping(value = "/index.do",method = RequestMethod.GET)
 	 public String index(){		 
 		return "login/index";
@@ -71,8 +67,9 @@ public class LoginController {
 	    			return "login/index";
 	            }
 	        }
-	        
-	        return "redirect:/index/home";
+	        Session  session= currentUser.getSession();
+	        session.setAttribute("currentUser", loginService.Login(username, password));
+	        return "redirect:/home/index.do";
 	 }
 	 
 	 /*
@@ -82,7 +79,7 @@ public class LoginController {
 		 try {
 			 LoginUserVM  loginUser=_loginService.Login(username,password);
 			 _sessionHelper.AddSessionUser(loginUser);			
-			return "redirect:/index/home";
+			return "redirect:/home/index.do";
 			
 		} catch (Exception e) { 			
 			BjuiResponse response=new BjuiResponse();
@@ -98,13 +95,27 @@ public class LoginController {
 	   * 开发者登陆
 	   * @return
 	   */
+		 @RequestMapping(value = "/loginByDev.do")
+	     public String loginByDev(boolean rememberMe,ModelMap model){	    	 
+			    Subject currentUser = SecurityUtils.getSubject();
+		        if (!currentUser.isAuthenticated()) {
+		            UsernamePasswordToken token = new UsernamePasswordToken("System", "");
+		            token.setRememberMe(rememberMe);
+		            currentUser.login(token);
+		        }		        
+		        Session  session= currentUser.getSession();
+		        session.setAttribute("currentUser", loginService.LoginByDev());
+		        return "redirect:/home/index.do";
+		 }
+	 /*
+	  * 
 	 @RequestMapping(value = "/loginByDev.do")
      public String loginByDev(ModelMap model){
     	 
          try{
         	 LoginUserVM  loginUser=_loginService.LoginByDev();
         	 _sessionHelper.AddSessionUser(loginUser);
-        	 return "redirect:/index/home";
+        	 return "redirect:/home/index.do";
 
          }
          catch (Exception e){
@@ -117,11 +128,19 @@ public class LoginController {
              return "login/index";
          }
      }
-     
+      */
+	 
 	 @RequestMapping(value = "/logout.do")
+	 public String logout(){
+    	 return "login/index";
+     }
+	
+	 /*
+	  *
      public String logout(){
 		 _sessionHelper.Clear();
     	 return "login/index";
      }
-	
+    */
+    
 }
