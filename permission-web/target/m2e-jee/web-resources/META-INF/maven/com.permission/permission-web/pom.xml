@@ -25,5 +25,20 @@
       <artifactId>permission-controllers</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
+    <dependency>
+      <groupId>com.permission</groupId>
+      <artifactId>permission-redis</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.permission</groupId>
+      <artifactId>permission-security</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+     <dependency>
+      <groupId>com.permission</groupId>
+      <artifactId>permission-context</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 </project>

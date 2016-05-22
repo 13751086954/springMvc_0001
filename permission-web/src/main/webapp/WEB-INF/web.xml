@@ -14,22 +14,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 			<!--<param-value>classpath:spring/applicationContext-mybatis.xml</param-value> -->
 			<param-value>classpath:spring/applicationContext-*.xml</param-value>
 	</context-param>
-	
-	<!-- 编码过滤器 -->
-	<filter>
-		<filter-name>encodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<async-supported>true</async-supported>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>*.do</url-pattern>
-	</filter-mapping>
-	
+		
 	<!-- Spring监听器 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -108,6 +93,32 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
             org.springframework.web.util.Log4jConfigListener  
         </listener-class>  
     </listener> 
+    <!-- Shiro Security filter -->
+	<filter>
+	   <filter-name>shiroFilter</filter-name>
+	   <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>  
+	  <filter-name>shiroFilter</filter-name>  
+	  <url-pattern>*.do</url-pattern>  
+	  <dispatcher>REQUEST</dispatcher>  
+	  <dispatcher>FORWARD</dispatcher>  
+	</filter-mapping>  
+    
+    <!-- 编码过滤器 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
  
 	
 	<welcome-file-list>

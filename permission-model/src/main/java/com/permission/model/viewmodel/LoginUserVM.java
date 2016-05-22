@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.permission.pojo.Org;
 import com.permission.pojo.Resource;
+import com.permission.pojo.Role;
 import com.permission.pojo.User;
 
 /**
@@ -14,6 +15,11 @@ import com.permission.pojo.User;
 public class LoginUserVM {
 
 	private User user ;
+	
+	/**
+     *用户所属角色
+     */
+	private List<Role> roles ;
 	
 	/**
 	 * 用户可以访问到的模块（包括所属角色与自己的所有模块）
@@ -34,6 +40,15 @@ public class LoginUserVM {
      * 用户可访问的机构
      */
 	private List<Org> accessedorgs ;
+	
+	public  List<Role> getRoles() {
+	    return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+	    	
+	    this.roles = roles;
+    }
 	
 	
 	public  User getUser() {

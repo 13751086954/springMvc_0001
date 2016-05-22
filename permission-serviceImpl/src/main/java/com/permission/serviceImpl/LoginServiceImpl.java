@@ -9,15 +9,17 @@ import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.springframework.stereotype.Service;
 
-import com.permission.dao.IModuleDao;
-import com.permission.dao.IModuleElementDao;
-import com.permission.dao.IOrgDao;
-import com.permission.dao.IRelevanceDao;
-import com.permission.dao.IResourceDao;
-import com.permission.dao.IUserDao;
+import com.permission.mapping.ModuleElementMapper;
+import com.permission.mapping.ModuleMapper;
+import com.permission.mapping.OrgMapper;
+import com.permission.mapping.RelevanceMapper;
+import com.permission.mapping.ResourceMapper;
+import com.permission.mapping.RoleMapper;
+import com.permission.mapping.UserMapper;
 import com.permission.model.viewmodel.LoginUserVM;
 import com.permission.model.viewmodel.ModuleView;
 import com.permission.pojo.Module;
+import com.permission.pojo.Role;
 import com.permission.pojo.User;
 import com.permission.service.ILoginService;
 
@@ -25,17 +27,19 @@ import com.permission.service.ILoginService;
 public class LoginServiceImpl implements ILoginService  {
 
    @Resource
-   private IUserDao _userDao;
+   private UserMapper _userDao;
    @Resource
-   private IModuleDao _moduleDao;
+   private ModuleMapper _moduleDao;
    @Resource
-   private IRelevanceDao _relevanceDao;
+   private RelevanceMapper _relevanceDao;
    @Resource
-   private IModuleElementDao _moduleElementDao;  
+   private ModuleElementMapper _moduleElementDao;  
    @Resource
-   private IResourceDao _resourceDao;
+   private ResourceMapper _resourceDao;
    @Resource
-   private IOrgDao _orgDao;
+   private OrgMapper _orgDao;  
+   @Resource
+   private RoleMapper _roleDao;
 	  
    Mapper _mapper ;
 	  
@@ -50,7 +54,7 @@ public class LoginServiceImpl implements ILoginService  {
 		if (user == null){
             throw new Exception("用户帐号不存在");
         }
-		//user.CheckPassword(password);
+		
 		CheckPassword(user.getPassword(),  password);
 		
 		LoginUserVM loginVM = new LoginUserVM();
@@ -64,7 +68,10 @@ public class LoginServiceImpl implements ILoginService  {
 
         //用户角色与自己分配到的菜单ID
         List<Integer> elementIds = _relevanceDao.FindElementIds(user.getId(),userRoleIds);
-                       
+        
+        List<Role> roles= _roleDao.FindUserRoles(userRoleIds);
+         
+        loginVM.setRoles(roles);
             
         List<ModuleView> moduleViews=null;
         
@@ -136,6 +143,12 @@ public class LoginServiceImpl implements ILoginService  {
 	    loginUser.setAccessedOrgs(_orgDao.FindAll());
 	    
 		return loginUser;
+	}
+
+	@Override
+	public User FindSingle(String account) {
+		// TODO Auto-generated method stub
+		return _userDao.FindSingle(account);
 	}
 
 }

@@ -24,7 +24,7 @@
     </dependency>
     <dependency>
       <groupId>com.permission</groupId>
-      <artifactId>permission-daoImpl</artifactId>
+      <artifactId>permission-mapping</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>

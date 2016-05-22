@@ -19,7 +19,7 @@ public interface CategoryMapper {
     
     List<Category>  LoadCategoryListPage(@Param("page")PageInfo page);
        
-    List<Category>  LoadInOrgListPage(@Param("page")PageInfo page,@Param("orgIds")Integer... orgIds) ;
+    List<Category>  LoadInOrgListPage(@Param("page")PageInfo page,@Param("ids")List<Integer> orgIds) ;
 
     int updateByPrimaryKeySelective(Category record);
 

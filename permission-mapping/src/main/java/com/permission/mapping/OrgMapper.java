@@ -1,7 +1,7 @@
 package com.permission.mapping;
 
 import java.util.List;
-import java.util.Map;
+import org.apache.ibatis.annotations.Param;
 
 import com.permission.pojo.Org;
 
@@ -18,7 +18,7 @@ public interface OrgMapper {
     
     List<Org> LoadByUser(Integer userId);
     
-    List<Org> GetSubOrgs(Map<String,Object> map);
+    List<Org> GetSubOrgs(@Param("cascadeId")String cascadeId,@Param("orgId")Integer orgId);
     
     List<Org> Find(List<Integer> orgIds);
     

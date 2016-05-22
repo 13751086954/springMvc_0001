@@ -3,6 +3,8 @@ package com.permission.mapping;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.permission.pojo.ModuleElement;
 import com.permission.pojo.ModuleElementWithBLOBs;
 
@@ -21,7 +23,7 @@ public interface ModuleElementMapper {
 
     int updateByPrimaryKey(ModuleElement record);
     
-    List<ModuleElement> Find(Map<String, Object> paramMap);
+    List<ModuleElement> Find(@Param("moduleId")Integer moduleId, @Param("ids")List<Integer> elementIds);
     
     List<ModuleElement> FindByModuleId(Integer moduleId);
 }

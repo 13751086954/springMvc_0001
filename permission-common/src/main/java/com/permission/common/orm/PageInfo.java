@@ -65,6 +65,18 @@ public class PageInfo implements Serializable {
 		this.order = order;
 	}
 	
+	public PageInfo(){}
+	
+	public PageInfo(Integer pageindex, Integer pagesize){
+		int currentPage = pageindex;
+	    int pageSize = 3;
+	    if (currentPage<=0){
+	         currentPage =1;
+	     }
+	    int currentResult = (currentPage-1) * pageSize;	
+	    this.showCount=pageSize;
+	    this.currentResult=currentResult;
+   }
     
 }
 

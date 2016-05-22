@@ -21,6 +21,19 @@
     from role
     where Id = #{id,jdbcType=INTEGER}
   </select>
+  
+  
+  <select id="FindUserRoles" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    where 
+    Id in
+    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+      ${item}
+   </foreach>
+    order by Id
+  </select>
    
   <select id="LoadRoleListPage" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
