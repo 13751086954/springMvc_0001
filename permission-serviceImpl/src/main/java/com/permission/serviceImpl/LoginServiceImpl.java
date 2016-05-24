@@ -96,7 +96,7 @@ public class LoginServiceImpl implements ILoginService  {
         loginVM.setResources(_resourceDao.Find(resourceIds)); 
 
         //用户角色与自己分配到的机构ID
-        List<Integer> orgids = _relevanceDao.FindOrgids(user.getId(),userRoleIds);
+        List<Integer> orgids = _relevanceDao.FindOrgIds(user.getId(),userRoleIds);
         
         loginVM.setAccessedOrgs(_orgDao.Find(orgids)); 
                         

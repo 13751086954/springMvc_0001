@@ -32,8 +32,8 @@
         <property name="loginUrl" value="/login/index.do"/>    
         <!-- 配置我们在登录页登录成功后的跳转地址，如果你访问的是非/login地址，则跳到您访问的地址 -->  
         <property name="successUrl" value="/index/home.do"/>    
-        <!-- 如果您请求的资源不再您的权限范围，则跳转到/403请求地址 -->  
-        <property name="unauthorizedUrl" value="/error/noAccess.do"/>    
+        <!-- 如果您请求的资源不再您的权限范围，则跳转到/403请求地址 -->         
+        <property name="unauthorizedUrl" value="/error/noAccess.do"/>  
         <!-- 权限配置 -->  
         <property name="filterChainDefinitions">    
             <value>    
@@ -43,23 +43,27 @@
 				/check/captcha**=anon
 				/static/** = anon
 				/# = anon
-				**/validationCodeServlet.png**= anon
-				**/check/captcha**=anon
-				**/static/** = anon
-				**/# = anon
 				/login/index.do = anon
 				/login/login.do = anon
 				/login/loginByDev.do = anon
 				<!-- 请求 logout.action地址，shiro去清除session-->
-				/login/logout.do = logout             
+				/login/logout.do = logout          
                 <!--所有的请求(除去配置的静态资源请求或请求地址为anon的请求)都要通过登录验证,如果未登录则跳到/login-->    
                 <!--/** = authc-->   
                 /*.do = authc
-                **/*.do = authc
             </value>    
-        </property>    
+       </property> 
+       <property name="filters">
+		    <map>
+		        <!--<entry key="authc" value-ref="authenticationFilter" />-->
+		        <entry key="logout" value-ref="logoutFilter" />
+		    </map>
+	   </property>
     </bean>  
       
+   <bean id="logout" class="org.apache.shiro.web.filter.authc.LogoutFilter"> 
+        <property name="redirectUrl" value="/login/index.do" /> 
+    </bean> 
       
     <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />    
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />

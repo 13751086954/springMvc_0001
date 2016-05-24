@@ -29,6 +29,6 @@ public interface RelevanceMapper {
 
 	List<Integer> FindResourceIds(@Param("firstId")Integer firstId, @Param("ids")List<Integer> ids) ;
 
-	List<Integer> FindOrgids(@Param("firstId")Integer firstId, @Param("ids")List<Integer> ids) ;
+	List<Integer> FindOrgIds(@Param("firstId")Integer firstId, @Param("ids")List<Integer> ids) ;
        
 }

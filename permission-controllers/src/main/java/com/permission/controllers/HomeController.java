@@ -20,4 +20,9 @@ public class HomeController {
 		model.addAttribute("modules", loginUserVM.getModules());
 		return "home/index";
      }
+	 
+	 @RequestMapping(value = "/main.do")
+	 public String index(){	
+		return "home/main";
+     }
 }

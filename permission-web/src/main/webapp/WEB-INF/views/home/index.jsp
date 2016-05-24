@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -197,7 +198,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </li>
                             <li><a href="javascript:;">&nbsp;<span class="glyphicon glyphicon-user"></span> 我的资料</a></li>
                             <li class="divider"></li>
-                            <li><a href="/login/logout.do" class="red">&nbsp;<span class="glyphicon glyphicon-off"></span> 注销登陆</a></li>
+                            <li><a href="<%=path%>/login/logout.do" class="red">&nbsp;<span class="glyphicon glyphicon-off"></span> 注销登陆</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -222,7 +223,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                                 <ul id="bjui-doc-tree-base" class="ztree ztree_main" data-toggle="ztree" data-on-click="MainMenuClick"
                                     data-expand-all="true" data-faicon="star-o" data-tit="控制台">
-
+								<c:forEach items="${modules}" var="module">
+								   <li data-id="${module.id}" data-pid="${module.parentid}"
+								   <c:choose>
+									   <c:when test="${ empty module.url}">  
+									       data-faicon="folder-open-o" data-faicon-close="folder-o"    
+									   </c:when>
+									   <c:otherwise> 
+									       data-url="${module.url}" data-tabid="${module.id}"
+									   </c:otherwise> 
+									</c:choose>
+								   >${module.name}</li>
+								</c:forEach>
                                 </ul>
                             </div>
                         </li>
@@ -231,7 +243,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <i class="fa fa-cog"></i> 系统设置 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                                <li class="divider"></li>
+                                <!--<li class="divider"></li>-->
                                 <li><a href="https://github.com/milanyangbo/permission" target="_blank">GitHub</a></li>
                                 <li><a href="http://b-jui.com/" target="_blank">友情链接</a></li>
                             </ul>
@@ -259,7 +271,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <!--标签头-->
                     <div class="tabsPageHeaderContent">
                         <ul class="navtab-tab nav nav-tabs">
-                            <li data-url="Home/Main">
+                           <!--class="external"  该class标识在iframe中打开-->
+                            <li data-url="home/main.do" >
                                 <a href="javascript:;">
                                     <span>
                                         <i class="fa fa-home"></i> #maintab#
