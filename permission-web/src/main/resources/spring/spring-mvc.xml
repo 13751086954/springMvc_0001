@@ -12,18 +12,22 @@
                         
 	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
 	<context:component-scan base-package="com.permission.controllers" />
-
+    
+    <!-- 异常处理类 -->  	
+	<bean id="exceptionHandler" class="com.permission.common.filter.UnExceptionHandler"/> 
 	
 	<!--避免IE执行AJAX时，返回JSON出现下载文件 -->
 	<bean id="mappingJacksonHttpMessageConverter"
 		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="objectMapper" ref="customObjectMapper"></property>
 		<property name="supportedMediaTypes">
 			<list>
 				<value>text/html;charset=UTF-8</value>
 			</list>
 		</property>
 	</bean>
-	
+	<bean id="customObjectMapper" class="com.permission.common.utils.CustomObjectMapper"></bean> 
+	 
 	<!-- 启动SpringMVC的注解功能，完成请求和注解POJO的映射 -->
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">

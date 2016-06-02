@@ -19,6 +19,9 @@
         <dependent-module archiveName="permission-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/permission-common/permission-common">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="permission-queue-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/permission-queue/permission-queue">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="permission-redis-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/permission-redis/permission-redis">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -34,7 +37,7 @@
         <dependent-module archiveName="permission-context-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/permission-context/permission-context">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="fastdfs-client-java-1.25.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fastdfs-client/fastdfs-client">
+        <dependent-module archiveName="fastdfs-client-java-1.25.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fastdfs-client-java/fastdfs-client-java">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="permission-web"/>

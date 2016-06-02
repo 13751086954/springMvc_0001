@@ -1,4 +1,4 @@
-package com.permission.common.helper;
+package com.permission.common.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

@@ -1,6 +1,6 @@
-package com.permission.common.helper;
+package com.permission.common.utils;
 
-public interface ISessionHelper {
+public interface SessionService {
 
 	 public <T> void AddSessionUser(T user);
         	
