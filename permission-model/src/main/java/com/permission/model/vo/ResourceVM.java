@@ -1,4 +1,4 @@
-package com.permission.model.viewmodel;
+package com.permission.model.vo;
 
 /**
  * 资源表视图模型

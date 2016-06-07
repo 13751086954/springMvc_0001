@@ -3,7 +3,7 @@
  */
 package com.permission.service;
 
-import com.permission.model.viewmodel.LoginUserVM;
+import com.permission.model.vo.LoginUserVM;
 import com.permission.pojo.User;
 
 /**

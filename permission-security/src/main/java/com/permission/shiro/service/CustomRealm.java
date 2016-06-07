@@ -4,8 +4,8 @@ package com.permission.shiro.service;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.permission.model.viewmodel.LoginUserVM;
-import com.permission.model.viewmodel.ModuleView;
+import com.permission.model.vo.LoginUserVM;
+import com.permission.model.vo.ModuleView;
 import com.permission.pojo.Role;
 import com.permission.pojo.User;
 import com.permission.service.ILoginService;
@@ -20,6 +20,7 @@ import org.apache.shiro.authz.Permission;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+
 
 
 

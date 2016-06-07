@@ -1,4 +1,4 @@
-package com.permission.model.viewmodel;
+package com.permission.model.vo;
 
 /**
  * 模块元素视图模型

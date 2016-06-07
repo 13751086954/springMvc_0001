@@ -20,8 +20,10 @@ public interface RelevanceMapper {
     int updateByPrimaryKey(Relevance record);
     
     void deleteByKeyAndFirstIds(@Param("key")String key, @Param("ids")List<Integer> firstIds);
-    
+      
     List<Integer> FindUserRoleIds(Integer firstId); 
+    
+    List<Integer> FindRoleIds(Integer firstId); 
 
 	List<Integer> FindModuleIds(@Param("firstId")Integer firstId, @Param("ids")List<Integer> ids) ;
 
@@ -30,5 +32,7 @@ public interface RelevanceMapper {
 	List<Integer> FindResourceIds(@Param("firstId")Integer firstId, @Param("ids")List<Integer> ids) ;
 
 	List<Integer> FindOrgIds(@Param("firstId")Integer firstId, @Param("ids")List<Integer> ids) ;
+	
+	List<Integer> FindRoleUserIds(@Param("firstId")Integer firstId, @Param("ids")List<Integer> ids) ;
        
 }

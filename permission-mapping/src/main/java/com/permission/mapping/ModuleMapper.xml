@@ -39,6 +39,38 @@
     order by SortNo
   </select>
   
+  <select id="FindById" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from module
+    where Id = #{id,jdbcType=INTEGER}
+    order by SortNo
+  </select>
+  
+   <select id="LoadByParent" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from module
+    where ParentId = #{parentId,jdbcType=INTEGER}
+    order by SortNo
+  </select>
+  
+   <select id="FindOrgs" parameterType="java.lang.String" >
+    select 
+    Id
+    from module
+    where
+    CascadeId like CONCAT('%','${cascadeId}','%' )  
+  </select>
+  
+  <select id="SameLevels" parameterType="java.lang.String" >
+    select 
+     <include refid="Base_Column_List" />
+    from module
+    where
+    ParentId = #{parentId,jdbcType=INTEGER}  and Id !=#{id,jdbcType=INTEGER}
+  </select>
+  
     
    <select id="LoadModuleListPage" resultMap="BaseResultMap" >
     select 

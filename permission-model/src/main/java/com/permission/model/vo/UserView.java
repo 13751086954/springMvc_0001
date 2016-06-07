@@ -1,4 +1,4 @@
-package com.permission.model.viewmodel;
+package com.permission.model.vo;
 
 import java.util.Date;
 

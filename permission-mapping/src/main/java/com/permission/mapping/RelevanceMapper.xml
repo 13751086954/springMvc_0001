@@ -29,6 +29,14 @@
     FirstId = #{firstId,jdbcType=INTEGER} and `Key` = 'UserRole'
   </select>
   
+   <select id="FindRoleIds"  resultType="java.lang.Integer">
+    select 
+    SecondId
+    from relevance
+    where 
+    FirstId = #{firstId,jdbcType=INTEGER} and `Key` = 'RoleModule'
+  </select>
+  
   
   <select id="FindModuleIds" resultType="java.lang.Integer"  >
     select 
@@ -109,6 +117,26 @@
 			   </foreach>
 			    and `Key` = 'UserAccessedOrg'
 			    )
+       </when>
+     </choose> 
+  </select>
+  
+  <select id="FindRoleUserIds" resultType="java.lang.Integer" >    
+      <choose>
+         <when test="ids.size()>0">
+		    select 
+		    SecondId
+		    from relevance
+		     where
+		     (FirstId = #{firstId,jdbcType=INTEGER} and `Key` = 'UserModule')
+		    or 
+		    (
+		    FirstId in
+		    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+		       #{item}
+		   </foreach>
+		    and `Key` = 'RoleModule'
+		    )
        </when>
      </choose> 
   </select>

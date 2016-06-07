@@ -27,5 +27,13 @@ public interface ModuleMapper {
  	List<Module> Find(@Param("ids")List<Integer> ids);
  	
  	List<Module> FindAll();
+ 	
+ 	Module FindById(Integer id);
+ 	
+ 	List<Module> LoadByParent(Integer parentId);
+ 	
+ 	List<Integer> FindOrgs(@Param("cascadeId")String cascadeId);
+ 	
+ 	List<Module> SameLevels(@Param("parentId")Integer parentId,@Param("id")Integer id);
 
 }
