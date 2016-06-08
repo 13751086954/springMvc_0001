@@ -81,7 +81,7 @@ public class LoginServiceImpl implements ILoginService  {
         	 moduleViews= new ArrayList<ModuleView>();
         	 for (Module module : modules) {
             	 ModuleView moduleView= (ModuleView) _mapper.map(module,ModuleView.class);
-            	 moduleView .Elements= _moduleElementDao.Find(module.getId(), elementIds);
+            	 moduleView .setElements(_moduleElementDao.Find(module.getId(), elementIds));
             	 moduleViews.add(moduleView);
              }
         	 
@@ -135,7 +135,7 @@ public class LoginServiceImpl implements ILoginService  {
        	    moduleViews= new ArrayList<ModuleView>();	    
 		    for (Module module : modules) {
 		         ModuleView moduleView= (ModuleView) _mapper.map(module,ModuleView.class);
-		         moduleView .Elements= _moduleElementDao.FindByModuleId(module.getId());
+		         moduleView .setElements(_moduleElementDao.FindByModuleId(module.getId()));
 		         moduleViews.add(moduleView);
 		    }
 	    }

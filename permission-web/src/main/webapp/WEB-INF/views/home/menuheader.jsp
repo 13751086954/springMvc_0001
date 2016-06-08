@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </a></li>
                  -->
             <div class="pull-right">
-            	<c:forEach items="${elements}" var="element">
+            	<c:forEach items="${module.elements}" var="element">
                  <${element.Type} 
                     data-icon='${element.Icon}' id='${element.DomId}' class='${element.class}' onclick='${element.Script}' ${element.Attr}>
                     ${element.Name}

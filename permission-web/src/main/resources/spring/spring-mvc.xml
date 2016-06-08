@@ -14,7 +14,17 @@
 	<context:component-scan base-package="com.permission.controllers" />
     
     <!-- 异常处理类 -->  	
-	<bean id="exceptionHandler" class="com.permission.common.filter.UnExceptionHandler"/> 
+	<bean id="exceptionHandler" class="com.permission.filter.UnExceptionHandler"/> 
+	
+	<bean id="baseHandlerInterceptor" class="com.permission.filter.BaseHandlerInterceptor">       
+    </bean>    
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">    
+	    <property name="interceptors">    
+	        <list>    
+	            <ref bean="baseHandlerInterceptor"/>    
+	        </list>    
+	    </property>    
+	</bean>    
 	
 	<!--避免IE执行AJAX时，返回JSON出现下载文件 -->
 	<bean id="mappingJacksonHttpMessageConverter"

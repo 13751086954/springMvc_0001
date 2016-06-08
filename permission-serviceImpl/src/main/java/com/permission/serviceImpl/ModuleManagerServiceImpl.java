@@ -64,7 +64,7 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
         	   mv.setUrl(module.getUrl());
         	   mv.setParentid(module.getParentid());
         	   mv.setIconname(module.getIconname());
-        	   mv.Childern=LoadByParent(module.getId());
+        	   mv.setChildern(LoadByParent(module.getId()));
         	   modules.add(mv);
            }
            return modules;

@@ -1,4 +1,4 @@
-package com.permission.common.filter;
+package com.permission.filter;
 
 import java.io.IOException;
 

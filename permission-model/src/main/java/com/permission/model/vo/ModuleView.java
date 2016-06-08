@@ -1,6 +1,5 @@
 package com.permission.model.vo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.permission.pojo.ModuleElement;
@@ -85,11 +84,28 @@ public class ModuleView {
 	/**
      * 子节点
      */
-    public List<ModuleView> Childern = new ArrayList<ModuleView>();
+    private List<ModuleView> childern ;
+    
+    public List<ModuleView> getChildern() {
+        return childern;
+    }
+
+    public void setChildern(List<ModuleView> childern) {
+        this.childern = childern;
+    }
 
 
     /**
      * 模块中的元素
      */
-    public List<ModuleElement> Elements = new ArrayList<ModuleElement>();
+    private List<ModuleElement> elements;
+    
+    public List<ModuleElement> getElements() {
+        return elements;
+    }
+
+    public void setElements(List<ModuleElement> elements) {
+        this.elements = elements;
+    }
+    
 }
