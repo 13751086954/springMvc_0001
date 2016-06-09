@@ -12,7 +12,7 @@ public class JedisClientClusterImpl implements JedisClient {
 
 	@Autowired
 	private JedisCluster jedisCluster;
-	
+
 	@Override
 	public String get(String key) {
 		return jedisCluster.get(key);
@@ -74,7 +74,7 @@ public class JedisClientClusterImpl implements JedisClient {
 
 	@Override
 	public long del(String key) {
-		
+
 		return jedisCluster.del(key);
 	}
 
@@ -85,7 +85,7 @@ public class JedisClientClusterImpl implements JedisClient {
 
 	@Override
 	public long hdel(String hkey, String key) {
-		
+
 		return jedisCluster.hdel(hkey, key);
 	}
 

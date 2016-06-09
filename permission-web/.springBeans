@@ -10,6 +10,8 @@
 		<config>src/main/resources/spring/applicationContext-mybatis.xml</config>
 		<config>src/main/resources/spring/spring-mvc.xml</config>
 		<config>src/main/resources/redis-shiro.xml</config>
+		<config>src/main/resources/spring/applicationContext-jedis.xml</config>
+		<config>src/main/resources/applicationContext-shiro.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

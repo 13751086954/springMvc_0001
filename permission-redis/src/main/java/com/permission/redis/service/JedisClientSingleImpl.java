@@ -11,7 +11,7 @@ public class JedisClientSingleImpl implements JedisClient {
 
 	@Autowired
 	private JedisPool jedisPool;
-	
+
 	@Override
 	public String get(String key) {
 		String value = null;

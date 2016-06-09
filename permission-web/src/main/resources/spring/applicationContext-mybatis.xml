@@ -8,18 +8,18 @@
                         http://www.springframework.org/schema/context  
                         http://www.springframework.org/schema/context/spring-context-3.1.xsd  
                         http://www.springframework.org/schema/mvc  
-                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">	
-    <!-- 自动扫描 -->
-	<context:component-scan base-package="com.permission" />	
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+	<!-- 自动扫描 -->
+	<context:component-scan base-package="com.permission" />
 	<!-- 引入配置文件 -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">  
-            <list>  
-                <value>classpath:resource/jdbc.properties</value>  
-                <value>classpath:resource/jedis.properties</value>  
-            </list> 
-        </property>  
+		<property name="locations">
+			<list>
+				<value>classpath:resource/jdbc.properties</value>
+				<value>classpath:resource/jedis.properties</value>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -46,20 +46,11 @@
 		<!-- 自动扫描mapping.xml文件 -->
 		<property name="mapperLocations" value="classpath:com/permission/mapping/*.xml"></property>
 		<property name="typeAliasesPackage" value="com.permission.pojo" />
-		<property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml"></property>  
-		
-		<!--<property name="plugins">
-	        <array>
-	            <bean class="com.permission.common.orm.PagePlugin">
-	               <property name="properties">
-	                    <value>
-	                        dialect=mysql
-	                        pageSqlId=.*ListPage.*
-	                    </value>	                 	                 
-                   </property>
-	            </bean>
-	        </array>
-       </property> --> 
+		<property name="configLocation" value="classpath:mybatis/mybatisConfig.xml"></property>
+
+		<!--<property name="plugins"> <array> <bean class="com.permission.common.orm.PagePlugin"> 
+			<property name="properties"> <value> dialect=mysql pageSqlId=.*ListPage.* 
+			</value> </property> </bean> </array> </property> -->
 	</bean>
 
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
@@ -73,5 +64,5 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	
+
 </beans>

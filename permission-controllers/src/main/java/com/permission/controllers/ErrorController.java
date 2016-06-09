@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/error")
 public class ErrorController {
-	
+
 	@RequestMapping(value = "/noAccess.do")
-	 public String noAccess(){
-		 return "error/noAccess";
-     }
+	public String noAccess(){
+		return "error/noAccess";
+	}
 }

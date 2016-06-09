@@ -8,9 +8,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PasswordServiceImpl implements PasswordService {
-
-    @Autowired
-    HashedCredentialsMatcher credentialsMatcher;
+    
+    HashedCredentialsMatcher credentialsMatcher = new HashedCredentialsMatcher();
 
     @Override
     public String encryptPassword(String password, String salt) {

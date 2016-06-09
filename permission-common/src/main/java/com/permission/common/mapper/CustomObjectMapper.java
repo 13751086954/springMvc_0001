@@ -1,16 +1,17 @@
-package com.permission.common.utils;
+package com.permission.common.mapper;
 
 import java.io.IOException;  
 import java.text.SimpleDateFormat;  
 import java.util.Date;  
-  
+
 import org.codehaus.jackson.JsonGenerator;  
 import org.codehaus.jackson.JsonProcessingException;  
 import org.codehaus.jackson.map.JsonSerializer;  
 import org.codehaus.jackson.map.ObjectMapper;  
 import org.codehaus.jackson.map.SerializerProvider;  
-import org.codehaus.jackson.map.ser.CustomSerializerFactory;
+import org.codehaus.jackson.map.ser.CustomSerializerFactory; 
 
+  
 /** 
  * @description 解决Date类型返回json格式为自定义格式 
  * @author aokunsang 

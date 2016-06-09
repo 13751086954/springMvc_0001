@@ -25,7 +25,7 @@ public class KafKaImpl implements QueueService {
 	private static final String ProducerCONFIG = "/kafka/context.xml";
 	private static final String ConsumerCONFIG = "/kafka/consumer_context.xml";
 	private static Random rand = new Random();
-	
+
 	@Override
 	public void send(String Key, String topic,String message) {
 		// TODO Auto-generated method stub
@@ -33,9 +33,9 @@ public class KafKaImpl implements QueueService {
 		ctx.start();
 
 		final MessageChannel channel = ctx.getBean("inputToKafka", MessageChannel.class);
-	
-	    channel.send(MessageBuilder.withPayload("Message-" + rand.nextInt()).setHeader("messageKey", Key).setHeader(topic, message).build());
-		
+
+		channel.send(MessageBuilder.withPayload("Message-" + rand.nextInt()).setHeader("messageKey", Key).setHeader(topic, message).build());
+
 		ctx.close();
 	}
 
@@ -54,12 +54,12 @@ public class KafKaImpl implements QueueService {
 				String topic = (String)entry.getKey();
 				System.out.println("Topic:" + topic);
 				ConcurrentHashMap<Integer,List<byte[]>> messages = (ConcurrentHashMap<Integer,List<byte[]>>)entry.getValue();
-			    if (topic.equals("error")) {			    	
-			    	ExecutorService executor = Executors.newFixedThreadPool(1);			    	
-			    	executor.submit(new ErrorConsumer(messages));
+				if (topic.equals("error")) {			    	
+					ExecutorService executor = Executors.newFixedThreadPool(1);			    	
+					executor.submit(new ErrorConsumer(messages));
 				}			
 			}
-			
+
 		}		
 		ctx.close();
 	}

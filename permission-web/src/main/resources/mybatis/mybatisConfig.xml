@@ -6,9 +6,9 @@
 	<!-- 配置分页插件 -->
 	<plugins>
 		<plugin interceptor="com.permission.common.orm.PagePlugin">
-			<!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库-->        
-        	<property name="dialect" value="mysql"/>
-        	<property name="pageSqlId" value=".*ListPage.*"/>
+			<!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库 -->
+			<property name="dialect" value="mysql" />
+			<property name="pageSqlId" value=".*ListPage.*" />
 		</plugin>
 	</plugins>
 </configuration>

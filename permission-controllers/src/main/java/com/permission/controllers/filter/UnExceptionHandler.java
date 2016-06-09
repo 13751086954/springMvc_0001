@@ -1,4 +1,4 @@
-package com.permission.filter;
+package com.permission.controllers.filter;
 
 import java.io.IOException;
 
@@ -16,34 +16,34 @@ import com.permission.queue.QueueService;
 
 
 public class UnExceptionHandler implements HandlerExceptionResolver {  
-	
+
 	private static Logger logger = Logger.getLogger(UnExceptionHandler.class);  
-	
+
 	//@Autowired
 	//QueueService queueService;
-	
-    public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler,  
-            Exception ex) {
-    	
-    	logger.error(ex.getMessage());
-    	//queueService.send(request.getRequestURI(), "error", ex.getMessage());
-    	
-    	HandlerMethod mathod = (HandlerMethod) handler;
-    	ResponseBody body = mathod.getMethodAnnotation(ResponseBody.class);
-    	//判断有没有@ResponseBody的注解没有的话调用父方法
-    	 if (body == null) {       	     
-    		 return new ModelAndView("error/noAccess.do");  
-    	 }
-    	 else {
-    		//避免乱码
-    		 response.setContentType("text/html;charset=UTF-8"); 
-    		 try {
+
+	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler,  
+			Exception ex) {
+
+		logger.error(ex.getMessage());
+		//queueService.send(request.getRequestURI(), "error", ex.getMessage());
+
+		HandlerMethod mathod = (HandlerMethod) handler;
+		ResponseBody body = mathod.getMethodAnnotation(ResponseBody.class);
+		//判断有没有@ResponseBody的注解没有的话调用父方法
+		if (body == null) {       	     
+			return new ModelAndView("error/noAccess.do");  
+		}
+		else {
+			//避免乱码
+			response.setContentType("text/html;charset=UTF-8"); 
+			try {
 				response.getWriter().write("{\"statusCode\":300,\"message\":\""+ ex.getMessage() +"\"}");
-			 } catch (IOException e) {
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			 }   		    		
-     	     return new ModelAndView();
+			}   		    		
+			return new ModelAndView();
 		}  	
-    }  
+	}  
 }  

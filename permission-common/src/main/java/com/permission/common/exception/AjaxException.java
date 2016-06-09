@@ -5,7 +5,7 @@ package com.permission.common.exception;
  */
 public class AjaxException  extends PermissionException  {
 
-    public AjaxException(String message){
-        super(message);
-    }
+	public AjaxException(String message){
+		super(message);
+	}
 }

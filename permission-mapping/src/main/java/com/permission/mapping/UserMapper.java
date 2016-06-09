@@ -9,23 +9,23 @@ import com.permission.pojo.User;
 
 
 public interface UserMapper {
-	
-    int deleteByPrimaryKey(Integer id);
 
-    int insert(User record);
+	int deleteByPrimaryKey(Integer id);
 
-    int insertSelective(User record);
+	int insert(User record);
 
-    User selectByPrimaryKey(Integer id);
-         
-    int updateByPrimaryKeySelective(User record);
+	int insertSelective(User record);
 
-    int updateByPrimaryKey(User record);
-    
-    List<User> LoadUserListPage(@Param("page")PageInfo page) ;
+	User selectByPrimaryKey(Integer id);
+
+	int updateByPrimaryKeySelective(User record);
+
+	int updateByPrimaryKey(User record);
+
+	List<User> LoadUserListPage(@Param("page")PageInfo page) ;
 
 	List<User> LoadInOrgListPage(@Param("page")PageInfo page,@Param("orgId")List<Integer> orgId) ;
-	
+
 	User FindSingle(String account) ;
 
 }

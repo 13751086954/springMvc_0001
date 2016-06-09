@@ -8,10 +8,10 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
-    <int:channel id="inputFromKafka">
-        <int:queue/>
-    </int:channel>
-    
+	<int:channel id="inputFromKafka">
+		<int:queue />
+	</int:channel>
+
 	<int-kafka:inbound-channel-adapter
 		id="kafkaInboundChannelAdapter" kafka-consumer-context-ref="consumerContext"
 		auto-startup="false" channel="inputFromKafka">
@@ -32,7 +32,8 @@
 	</bean>
 
 	<int-kafka:consumer-context id="consumerContext"
-		consumer-timeout="4000" zookeeper-connect="zookeeperConnect" consumer-properties="consumerProperties">
+		consumer-timeout="4000" zookeeper-connect="zookeeperConnect"
+		consumer-properties="consumerProperties">
 		<int-kafka:consumer-configurations>
 			<int-kafka:consumer-configuration
 				group-id="mygroup" max-messages="5000">

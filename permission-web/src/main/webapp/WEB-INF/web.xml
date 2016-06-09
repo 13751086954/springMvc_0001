@@ -93,7 +93,8 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
             org.springframework.web.util.Log4jConfigListener  
         </listener-class>  
     </listener> 
-    <!-- Shiro Security filter -->
+    
+    <!-- Shiro Security filter 
 	<filter>
 	   <filter-name>shiroFilter</filter-name>
 	   <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -104,6 +105,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	  <dispatcher>REQUEST</dispatcher>  
 	  <dispatcher>FORWARD</dispatcher>  
 	</filter-mapping>  
+	-->
     
     <!-- 编码过滤器 -->
 	<filter>

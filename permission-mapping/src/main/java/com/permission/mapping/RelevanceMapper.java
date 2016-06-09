@@ -6,24 +6,24 @@ import org.apache.ibatis.annotations.Param;
 import com.permission.pojo.Relevance;
 
 public interface RelevanceMapper {
-	
-    int deleteByPrimaryKey(Integer id);
 
-    int insert(Relevance record);
+	int deleteByPrimaryKey(Integer id);
 
-    int insertSelective(Relevance record);
+	int insert(Relevance record);
 
-    Relevance selectByPrimaryKey(Integer id);
+	int insertSelective(Relevance record);
 
-    int updateByPrimaryKeySelective(Relevance record);
+	Relevance selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKey(Relevance record);
-    
-    void deleteByKeyAndFirstIds(@Param("key")String key, @Param("ids")List<Integer> firstIds);
-      
-    List<Integer> FindUserRoleIds(Integer firstId); 
-    
-    List<Integer> FindRoleIds(Integer firstId); 
+	int updateByPrimaryKeySelective(Relevance record);
+
+	int updateByPrimaryKey(Relevance record);
+
+	void deleteByKeyAndFirstIds(@Param("key")String key, @Param("ids")List<Integer> firstIds);
+
+	List<Integer> FindUserRoleIds(Integer firstId); 
+
+	List<Integer> FindRoleIds(Integer firstId); 
 
 	List<Integer> FindModuleIds(@Param("firstId")Integer firstId, @Param("ids")List<Integer> ids) ;
 
@@ -32,7 +32,7 @@ public interface RelevanceMapper {
 	List<Integer> FindResourceIds(@Param("firstId")Integer firstId, @Param("ids")List<Integer> ids) ;
 
 	List<Integer> FindOrgIds(@Param("firstId")Integer firstId, @Param("ids")List<Integer> ids) ;
-	
+
 	List<Integer> FindRoleUserIds(@Param("firstId")Integer firstId, @Param("ids")List<Integer> ids) ;
-       
+
 }

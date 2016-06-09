@@ -11,7 +11,7 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
-*/
+ */
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,22 +27,22 @@ import com.permission.service.ILoginService;;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
-  
-	 @Resource
-	 ILoginService _loginService;
-	 
-	 @Resource
-	 SessionService _sessionHelper;
-		
-	 @RequestMapping(value = "/index.do",method = RequestMethod.GET)
-	 public String index(){		 
+
+	@Resource
+	ILoginService _loginService;
+
+	@Resource
+	SessionService _sessionHelper;
+
+	@RequestMapping(value = "/index.do",method = RequestMethod.GET)
+	public String index(){		 
 		return "login/index";
-     }
-	 /*
-	  * 
+	}
+	/*
+	 * 
 	 @RequestMapping(value = "/login.do",method = RequestMethod.POST)
 	 public String login(String username, String password,boolean rememberMe,ModelMap model) throws Exception{		
-		 
+
 		    Subject currentUser = SecurityUtils.getSubject();
 	        if (!currentUser.isAuthenticated()) {
 	            UsernamePasswordToken token = new UsernamePasswordToken(username, password);
@@ -80,14 +80,14 @@ public class LoginController {
 	        return "redirect:/home/index.do";
 	 }
 	 */
-	 
-	 @RequestMapping(value = "/login.do",method = RequestMethod.POST)
-	 public String login(String username, String password,ModelMap model) throws Exception{			 
-		 try {
-			 LoginUserVM  loginUser=_loginService.Login(username,password);
-			 _sessionHelper.AddSessionUser(loginUser);			
+
+	@RequestMapping(value = "/login.do",method = RequestMethod.POST)
+	public String login(String username, String password,ModelMap model) throws Exception{			 
+		try {
+			LoginUserVM  loginUser=_loginService.Login(username,password);
+			_sessionHelper.AddSessionUser(loginUser);			
 			return "redirect:/home/index.do";
-			
+
 		} catch (Exception e) { 			
 			BjuiResponse response=new BjuiResponse();
 			response.setStatusCode("300");
@@ -95,10 +95,10 @@ public class LoginController {
 			model.addAttribute("response", response);			
 			return "login/index";
 		}
-     }
-      
-	 /*
-	  * 
+	}
+
+	/*
+	 * 
 		 @RequestMapping(value = "/loginByDev.do")
 	     public String loginByDev(boolean rememberMe,ModelMap model){	    	 
 			    Subject currentUser = SecurityUtils.getSubject();
@@ -111,42 +111,43 @@ public class LoginController {
 		        session.setAttribute("currentUser", _loginService.LoginByDev());
 		        return "redirect:/home/index.do";
 		 }
-		 */
-	 
-	  /**
-	   * 开发者登陆
-	   * @return
-	   */
-	 @RequestMapping(value = "/loginByDev.do")
-     public String loginByDev(ModelMap model){
-    	 
-         try{
-        	 LoginUserVM  loginUser=_loginService.LoginByDev();
-        	 _sessionHelper.AddSessionUser(loginUser);
-        	 return "redirect:/home/index.do";
+	 */
 
-         }
-         catch (Exception e){       	 
-        	 BjuiResponse response=new BjuiResponse();
- 			 response.setStatusCode("300");
- 			 response.setMessage(e.getMessage());
- 			 model.addAttribute("response", response);			 
-             return "login/index";
-         }
-     }
-      
-	 /*
-	  *
+	/**
+	 * 开发者登陆
+	 * @return
+	 */
+	@RequestMapping(value = "/loginByDev.do")
+	public String loginByDev(ModelMap model){
+
+		try{
+			LoginUserVM  loginUser=_loginService.LoginByDev();
+			_sessionHelper.AddSessionUser(loginUser);
+			return "redirect:/home/index.do";
+
+		}
+		catch (Exception e){       	 
+			BjuiResponse response=new BjuiResponse();
+			response.setStatusCode("300");
+			response.setMessage(e.getMessage());
+			model.addAttribute("response", response);			 
+			return "login/index";
+		}
+	}
+
+	/*
+	 *
 	 @RequestMapping(value = "/logout.do")
 	 public String logout(){
     	 return "login/index";
      }
-	*/
+	 */
 	
-     public String logout(){
-		 _sessionHelper.Clear();
-    	 return "login/index";
-     }
-    
-    
+	@RequestMapping(value = "/logout.do")
+	public String logout(){
+		_sessionHelper.Clear();
+		return "login/index";
+	}
+
+
 }

@@ -19,64 +19,64 @@ import java.util.UUID;
  */
 public class LocalhostAttachmentImpl implements AttachmentService {
 
-    @Value("${FILE_PATH}")
-    private String filePath;
+	@Value("${FILE_PATH}")
+	private String filePath;
 
-    @Override
-    public String upload(MultipartFile multipartFile) throws IOException {
-        String type = FileUtils.getFileType(multipartFile.getOriginalFilename()).toLowerCase();
-        return this.upload(multipartFile.getInputStream(),type);
-    }
+	@Override
+	public String upload(MultipartFile multipartFile) throws IOException {
+		String type = FileUtils.getFileType(multipartFile.getOriginalFilename()).toLowerCase();
+		return this.upload(multipartFile.getInputStream(),type);
+	}
 
-    @Override
-    public String upload(File file,String type) throws Exception  {
-        String fileName=this.getFileName(type);
-        InputStream in = new FileInputStream(file);
-        return this.upload(in,fileName);
-    }
+	@Override
+	public String upload(File file,String type) throws Exception  {
+		String fileName=this.getFileName(type);
+		InputStream in = new FileInputStream(file);
+		return this.upload(in,fileName);
+	}
 
-    @Override
-    public void delete(String id) {
-        String filePath=this.getPath()+id;
-        FileUtils.deleteFile(filePath);
-    }
+	@Override
+	public void delete(String id) {
+		String filePath=this.getPath()+id;
+		FileUtils.deleteFile(filePath);
+	}
 
-    private String getFileName(String type) {
-        StringBuffer sb = new StringBuffer();
-        sb.append("/");
-        sb.append(DateTimeUtils.format(new Date(),"yyyy-MM-dd"));
-        sb.append("/");
-        sb.append(UUID.randomUUID().toString());
-        sb.append(".");
-        sb.append(type);
-        return sb.toString();
-    }
+	private String getFileName(String type) {
+		StringBuffer sb = new StringBuffer();
+		sb.append("/");
+		sb.append(DateTimeUtils.format(new Date(),"yyyy-MM-dd"));
+		sb.append("/");
+		sb.append(UUID.randomUUID().toString());
+		sb.append(".");
+		sb.append(type);
+		return sb.toString();
+	}
 
-    @Override
-    public String upload(InputStream inputStream,String type) throws IOException {
-        String fileName=this.getFileName(type);
-        FileUtils.saveFile(inputStream, filePath + fileName);
-        return fileName;
-    }
+	@Override
+	public String upload(InputStream inputStream,String type) throws IOException {
+		String fileName=this.getFileName(type);
+		FileUtils.saveFile(inputStream, filePath + fileName);
+		return fileName;
+	}
 
-    @Override
-    public String getPath() {
-        StringBuffer sb = new StringBuffer();
-        sb.append(filePath);
-        sb.append("/");
-        return sb.toString();
-    }
+	@Override
+	public String getPath() {
+		StringBuffer sb = new StringBuffer();
+		sb.append(filePath);
+		sb.append("/");
+		return sb.toString();
+	}
 
-    @Override
-    public void download(String path, String fileName,HttpServletResponse response) {
-        String filePath=this.getPath()+path;
-        DownloadUtils.download(response,filePath,fileName);
-    }
+	@Override
+	public void download(String path, String fileName,HttpServletResponse response) {
+		String filePath=this.getPath()+path;
+		DownloadUtils.download(response,filePath,fileName);
+	}
 
-   @Override
-    public File download(String id) {
-        String filePath=this.getPath()+id;
-        return new File(filePath);
-    }
+	@Override
+	public File download(String id) {
+		String filePath=this.getPath()+id;
+		return new File(filePath);
+	}
 
 }

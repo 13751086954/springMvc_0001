@@ -6,22 +6,22 @@ import java.io.Serializable;
 
 public class PageInfo implements Serializable {
 
-    private static final long serialVersionUID = 587754556498974978L;
-    
-    //pagesize ，每一页显示多少
-    private int showCount = 3;
-    //总页数
-    private int totalPage;
-    //总记录数
-    private int totalResult;
-    //当前页数
-    private int currentPage;
-    //当前显示到的ID, 在mysql limit 中就是第一个参数.
-    private int currentResult;
-    private String sortField;
-    private String order;
-    
-    
+	private static final long serialVersionUID = 587754556498974978L;
+
+	//pagesize ，每一页显示多少
+	private int showCount = 3;
+	//总页数
+	private int totalPage;
+	//总记录数
+	private int totalResult;
+	//当前页数
+	private int currentPage;
+	//当前显示到的ID, 在mysql limit 中就是第一个参数.
+	private int currentResult;
+	private String sortField;
+	private String order;
+
+
 	public int getShowCount() {
 		return showCount;
 	}
@@ -64,19 +64,19 @@ public class PageInfo implements Serializable {
 	public void setOrder(String order) {
 		this.order = order;
 	}
-	
+
 	public PageInfo(){}
-	
+
 	public PageInfo(Integer pageindex, Integer pagesize){
 		int currentPage = pageindex;
-	    int pageSize = 3;
-	    if (currentPage<=0){
-	         currentPage =1;
-	     }
-	    int currentResult = (currentPage-1) * pageSize;	
-	    this.showCount=pageSize;
-	    this.currentResult=currentResult;
-   }
-    
+		int pageSize = 3;
+		if (currentPage<=0){
+			currentPage =1;
+		}
+		int currentResult = (currentPage-1) * pageSize;	
+		this.showCount=pageSize;
+		this.currentResult=currentResult;
+	}
+
 }
 

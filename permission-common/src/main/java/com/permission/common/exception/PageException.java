@@ -5,7 +5,7 @@ package com.permission.common.exception;
  */
 public class PageException  extends PermissionException {
 
-    public PageException(String message){
-        super(message);
-    }
+	public PageException(String message){
+		super(message);
+	}
 }
