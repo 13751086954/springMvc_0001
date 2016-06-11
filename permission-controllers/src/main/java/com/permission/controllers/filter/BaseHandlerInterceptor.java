@@ -62,7 +62,7 @@ public class BaseHandlerInterceptor extends HandlerInterceptorAdapter {
 		List<ModuleView> moduleViews= loginUserVM.getModules();
 		ModuleView module = null;
 		for (ModuleView moduleView : moduleViews) {
-			if (moduleView.getUrl().contains(controllername)) {
+			if (moduleView.getUrl().toLowerCase().contains(controllername.toLowerCase())) {
 				module=moduleView;
 				break;
 			}

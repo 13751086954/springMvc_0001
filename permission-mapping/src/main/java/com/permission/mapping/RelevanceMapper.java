@@ -20,19 +20,14 @@ public interface RelevanceMapper {
 	int updateByPrimaryKey(Relevance record);
 
 	void deleteByKeyAndFirstIds(@Param("key")String key, @Param("ids")List<Integer> firstIds);
+	
+	void deleteByKeyAndFirstIdAndSecondIds(@Param("key")String key,@Param("firstId")Integer firstId, @Param("ids")List<Integer> secondIds);
 
 	List<Integer> FindUserRoleIds(Integer firstId); 
 
 	List<Integer> FindRoleIds(Integer firstId); 
-
-	List<Integer> FindModuleIds(@Param("firstId")Integer firstId, @Param("ids")List<Integer> ids) ;
-
-	List<Integer> FindElementIds(@Param("firstId")Integer firstId, @Param("ids")List<Integer> ids) ;
-
-	List<Integer> FindResourceIds(@Param("firstId")Integer firstId, @Param("ids")List<Integer> ids) ;
-
-	List<Integer> FindOrgIds(@Param("firstId")Integer firstId, @Param("ids")List<Integer> ids) ;
-
-	List<Integer> FindRoleUserIds(@Param("firstId")Integer firstId, @Param("ids")List<Integer> ids) ;
-
+	
+	List<Integer> FindSecondIds(@Param("firstId")Integer firstId, @Param("key1")String key1, @Param("key2")String key2, @Param("ids")List<Integer> ids);
+	
+	Relevance FindAccesseType(@Param("accessType")String accessType, @Param("firstId")Integer firstId,@Param("secondId")Integer secondId) ;
 }

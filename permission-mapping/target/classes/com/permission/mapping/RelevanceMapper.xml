@@ -38,117 +38,50 @@
   </select>
   
   
-  <select id="FindModuleIds" resultType="java.lang.Integer"  >
-    select 
-    SecondId
-    from relevance
-    where 
-    (FirstId = #{firstId,jdbcType=INTEGER} and `Key` = 'UserModule') 
-    <choose>
-         <when test="ids.size()>0">
-                  or 
-			    (
-			    FirstId in
-			    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
-			       #{item}
-			   </foreach>
-			    and `Key` = 'RoleModule'
-			    )
-         </when>
-     </choose> 
-  </select>
-  
-  
-  <select id="FindElementIds" resultType="java.lang.Integer" >
+   <select id="FindSecondIds" resultType="java.lang.Integer" >
     select 
     SecondId
     from relevance
     where
-     (FirstId = #{firstId,jdbcType=INTEGER} and `Key` = 'UserElement') 
+     (FirstId = #{firstId,jdbcType=INTEGER} and `Key` = #{key1,jdbcType=VARCHAR}) 
       <choose>
-         <when test="ids.size()>0">
+         <when test=" ids!=null and ids.size()>0">
 			    or 
 			    (
 			    FirstId in
 			    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
 			       #{item}
 			   </foreach>
-			    and `Key` = 'RoleElement'
-			    )
-        </when>
-     </choose> 
-  </select>
-  
-  
-   <select id="FindResourceIds" resultType="java.lang.Integer" >
-    select 
-    SecondId
-    from relevance
-    where
-     (FirstId = #{firstId,jdbcType=INTEGER} and `Key` = 'UserResource') 
-      <choose>
-         <when test="ids.size()>0">
-		    or 
-		    (
-		    FirstId in
-		    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
-		       #{item}
-		   </foreach>
-		    and `Key` = 'UserResource'
-		    )
-        </when>
-     </choose> 
-  </select>
-  
-  
-   <select id="FindOrgIds" resultType="java.lang.Integer" >
-    select 
-    SecondId
-    from relevance
-    where
-     (FirstId = #{firstId,jdbcType=INTEGER} and `Key` = 'UserAccessedOrg') 
-      <choose>
-         <when test="ids.size()>0">
-			    or 
-			    (
-			    FirstId in
-			    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
-			       #{item}
-			   </foreach>
-			    and `Key` = 'UserAccessedOrg'
+			    and `Key` = #{key2,jdbcType=VARCHAR}
 			    )
        </when>
      </choose> 
   </select>
   
-  <select id="FindRoleUserIds" resultType="java.lang.Integer" >    
-      <choose>
-         <when test="ids.size()>0">
-		    select 
-		    SecondId
-		    from relevance
-		     where
-		     (FirstId = #{firstId,jdbcType=INTEGER} and `Key` = 'UserModule')
-		    or 
-		    (
-		    FirstId in
-		    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
-		       #{item}
-		   </foreach>
-		    and `Key` = 'RoleModule'
-		    )
-       </when>
-     </choose> 
-  </select>
+
+   <select id="FindAccesseType" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from relevance
+    where `Key` = #{accessType} and  FirstId = #{firstId,jdbcType=INTEGER} and  SecondId = #{secondId,jdbcType=INTEGER}
+   </select>
+   
   
-  <select id="deleteByKeyAndFirstIds" resultMap="BaseResultMap" >
+  <delete id="deleteByKeyAndFirstIds">
     delete from relevance
     where key = #{key} and FirstId in
      <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
        #{item}
      </foreach>
-    order by Id
-  </select>
+  </delete>
+  
+  <delete id="deleteByKeyAndFirstIdAndSecondIds">
+    delete from relevance
+    where key = #{key} and  FirstId = #{firstId,jdbcType=INTEGER} and SecondId in
+     <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+       #{item}
+     </foreach>
+  </delete>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from relevance

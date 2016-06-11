@@ -27,5 +27,7 @@ public interface UserMapper {
 	List<User> LoadInOrgListPage(@Param("page")PageInfo page,@Param("orgId")List<Integer> orgId) ;
 
 	User FindSingle(String account) ;
+	
+	Integer GetUserCntInOrg(List<Integer> getSubOrgIds);
 
 }

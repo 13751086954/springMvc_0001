@@ -24,4 +24,12 @@ public interface CategoryMapper {
     int updateByPrimaryKeySelective(Category record);
 
     int updateByPrimaryKey(Category record);
+    
+    List<Category> SameLevels(@Param("parentId")Integer parentId,@Param("id")Integer id);
+    
+    List<Category> LoadAll();
+
+	Integer GetCategoryCntInOrg(List<Integer> getSubOrgIds);
+	
+	List<Integer> GetSubOrgIds(@Param("cascadeId")String cascadeId);
 }

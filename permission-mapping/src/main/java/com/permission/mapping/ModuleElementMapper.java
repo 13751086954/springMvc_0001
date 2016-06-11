@@ -23,7 +23,9 @@ public interface ModuleElementMapper {
 
     int updateByPrimaryKey(ModuleElement record);
     
-    List<ModuleElement> Find(@Param("moduleId")Integer moduleId, @Param("ids")List<Integer> elementIds);
+    List<ModuleElementWithBLOBs> Find(@Param("moduleId")Integer moduleId, @Param("ids")List<Integer> elementIds);
     
-    List<ModuleElement> FindByModuleId(Integer moduleId);
+    List<ModuleElementWithBLOBs> FindByModuleId(Integer moduleId);
+    
+    List<Integer> FindIdsByModuleId(Integer moduleId);
 }

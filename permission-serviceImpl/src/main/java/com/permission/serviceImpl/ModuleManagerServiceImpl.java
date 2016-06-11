@@ -30,14 +30,12 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
 		// TODO Auto-generated method stub
 		List<Module> Modules = null;
 		Integer total = 0;
-		if (parentId == 0)
-		{
+		if (parentId == 0){
 			PageInfo page=new PageInfo(pageindex,pagesize);
 			Modules = _moduleDao.LoadModuleListPage(page);
 			total = page.getTotalPage();
 		}
-		else
-		{
+		else{
 			PageInfo page=new PageInfo(pageindex,pagesize);
 			Modules = _moduleDao.LoadInOrgListPage(page, GetSubOrgIds(parentId));
 			total = page.getTotalPage();
@@ -101,7 +99,7 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
 	public List<Module> LoadForUser(Integer userId) {
 		// TODO Auto-generated method stub
 		List<Integer> userRoleIds =_relevanceDao.FindUserRoleIds(userId);
-		List<Integer> moduleIds =_relevanceDao.FindRoleUserIds(userId,userRoleIds);
+		List<Integer> moduleIds = _relevanceDao.FindSecondIds(userId,"UserModule" ,"RoleModule" ,userRoleIds);
 		if (moduleIds==null || moduleIds.size()==0) {
 			return new ArrayList<Module>();
 		}

@@ -39,6 +39,13 @@
     where Id = #{id,jdbcType=INTEGER}
   </select>
   
+  <select id="SameLevels" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from org
+    where ParentId = #{parentId,jdbcType=INTEGER} and  Id != #{id,jdbcType=INTEGER}
+  </select>
+  
   <select id="LoadOrgs" resultMap="ResultMapWithBLOBs" >
     select 
     <include refid="Base_Column_List" />
@@ -54,13 +61,39 @@
 	WHERE (t0.FirstId = #{userId,jdbcType=INTEGER }) AND ('t1.Key' = '')
   </select>
   
+  <select id="LoadByParentId" resultMap="ResultMapWithBLOBs" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from org
+    WHERE  ParentId = #{parentId,jdbcType=INTEGER}
+  </select>
+  
   <select id="GetSubOrgs" resultMap="ResultMapWithBLOBs">
     SELECT 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     FROM org 
-    WHERE  (CascadeId  LIKE CONCAT('%',#{cascadeId,jdbcType=VARCHAR},'%')  ) AND (Id != #{orgId,jdbcType=INTEGER})
+    WHERE  (CascadeId  LIKE CONCAT('%',#{cascadeId,jdbcType=VARCHAR},'%')  ) 
+    <choose>
+         <when test="Id>0">
+            AND (Id != #{orgId,jdbcType=INTEGER})
+         </when>
+     </choose>  
+  </select>
+  
+   <select id="GetSubOrgIds" >
+    SELECT 
+    Id
+    FROM org 
+    WHERE  (CascadeId  LIKE CONCAT('%',#{cascadeId,jdbcType=VARCHAR},'%')  ) 
+    <choose>
+         <when test="Id>0">
+            AND (Id != #{orgId,jdbcType=INTEGER})
+         </when>
+     </choose>  
   </select>
   
   
@@ -91,6 +124,12 @@
     delete from org
     where Id = #{id,jdbcType=INTEGER}
   </delete>
+  
+   <delete id="deleteByCascadeId" parameterType="java.lang.Integer" >
+    delete from org
+    where CascadeId  LIKE CONCAT('%',#{cascadeId,jdbcType=VARCHAR},'%')
+  </delete>
+  
   <insert id="insert" parameterType="com.permission.pojo.Org" >
     insert into org (Id, CascadeId, Name, 
       HotKey, ParentId, ParentName, 

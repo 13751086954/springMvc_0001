@@ -8,23 +8,27 @@ import com.permission.common.orm.PageInfo;
 import com.permission.pojo.Role;
 
 public interface RoleMapper {
-    int deleteByPrimaryKey(Integer id);
+	int deleteByPrimaryKey(Integer id);
 
-    int insert(Role record);
+	int insert(Role record);
 
-    int insertSelective(Role record);
-    
-    List<Role> LoadRoleListPage(@Param("page")PageInfo page);
+	int insertSelective(Role record);
 
-    List<Role> LoadInOrgListPage(@Param("page")PageInfo page,@Param("orgIds")List<Integer> orgIds);
-         
-    Role selectByPrimaryKey(Integer id);
+	List<Role> LoadRoleListPage(@Param("page")PageInfo page);
 
-    int updateByPrimaryKeySelective(Role record);
+	List<Role> LoadInOrgListPage(@Param("page")PageInfo page,@Param("orgIds")List<Integer> orgIds);
 
-    int updateByPrimaryKey(Role record);
-    
-    List<Role> FindUserRoles(@Param("ids")List<Integer> userRoleIds);
+	Role selectByPrimaryKey(Integer id);
+
+	int updateByPrimaryKeySelective(Role record);
+
+	int updateByPrimaryKey(Role record);
+
+	List<Role> FindUserRoles(@Param("ids")List<Integer> userRoleIds);
+	
+	List<Role> FindByOrgId(@Param("orgId")Integer orgId);
 
 	List<Role> FindAll();
+
+	Integer GetRoleCntInOrgs(List<Integer> getSubOrgIds);
 }

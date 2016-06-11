@@ -21,12 +21,10 @@ public class HttpSessionUtil implements SessionService {
 	@SuppressWarnings("unchecked")
 	@Override
 	public  <T> T GetSessionUser() throws Exception  { 
-    	 try 
-         { 
+    	 try { 
     	    return (T) session.getAttribute(SessionUser);
          }
-         catch (Exception e)
-         {
+         catch (Exception e){
              throw new Exception(e.getMessage());
          }
 	} 

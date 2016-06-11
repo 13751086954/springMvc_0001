@@ -12,6 +12,8 @@
 
 	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
 	<context:component-scan base-package="com.permission.controllers" />
+	<mvc:annotation-driven /> 
+    <mvc:resources mapping="/static/**" location="/static/" />
 
 	<!-- 异常处理类 -->
 	<bean id="exceptionHandler" class="com.permission.controllers.filter.UnExceptionHandler" />

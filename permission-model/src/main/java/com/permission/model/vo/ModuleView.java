@@ -2,7 +2,7 @@ package com.permission.model.vo;
 
 import java.util.List;
 
-import com.permission.pojo.ModuleElement;
+import com.permission.pojo.ModuleElementWithBLOBs;
 
 /**
  * 
@@ -98,13 +98,13 @@ public class ModuleView {
     /**
      * 模块中的元素
      */
-    private List<ModuleElement> elements;
+    private List<ModuleElementWithBLOBs> elements;
     
-    public List<ModuleElement> getElements() {
+    public List<ModuleElementWithBLOBs> getElements() {
         return elements;
     }
 
-    public void setElements(List<ModuleElement> elements) {
+    public void setElements(List<ModuleElementWithBLOBs> elements) {
         this.elements = elements;
     }
     

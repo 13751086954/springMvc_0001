@@ -21,6 +21,20 @@
     where Id = #{id,jdbcType=INTEGER}
   </select>
   
+  <select id="SameLevels" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from category
+    where ParentId = #{parentId,jdbcType=INTEGER} and  Id != #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="LoadAll" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from category
+    order by Id desc
+  </select>
+  
    <select id="LoadCategoryListPage" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -32,12 +46,43 @@
     select 
     <include refid="Base_Column_List" />
     from category
-    Id in
-    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
-       #{item}
-   </foreach>
+     <choose>
+         <when test="ids !=null and ids.size()>0">
+            WHERE
+		    Id in
+		    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+		       #{item}
+		   </foreach>
+         </when>
+     </choose>
     order by Id
   </select>
+  
+   <select id="GetCategoryCntInOrg" resultType="java.lang.Integer">
+    select 
+    COUNT(ID)
+    from category
+    <choose>
+         <when test="ids !=null and ids.size()>0">
+            WHERE
+		    Id in
+		    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+		       #{item}
+		   </foreach>
+         </when>
+     </choose>   
+  </select>
+  
+   <select id="GetSubOrgIds" resultType="java.lang.String">
+    select 
+    Id
+    from category
+    WHERE 
+    CascadeId like CONCAT('%','${cascadeId}','%' )  
+    order by Id 
+  </select>
+  
+  
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from category

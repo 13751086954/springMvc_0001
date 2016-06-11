@@ -58,6 +58,30 @@
     </foreach>
     order by Id
   </select>
+  
+   <select id="GetRoleCntInOrgs" resultType="java.lang.Integer">
+    select 
+    COUNT(ID)
+    from role
+    <choose>
+         <when test="ids !=null and ids.size()>0">
+            WHERE
+		    Id in
+		    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+		       #{item}
+		   </foreach>
+         </when>
+     </choose>   
+  </select>
+  
+    
+  <select id="FindByOrgId" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    where Id = #{orgId,jdbcType=INTEGER}
+    order by Id
+  </select>
    
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from role

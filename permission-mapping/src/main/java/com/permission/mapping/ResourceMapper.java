@@ -20,6 +20,8 @@ public interface ResourceMapper {
     
     List<Resource> LoadInOrgListPage(@Param("page")PageInfo page,@Param("orgIds")List<Integer> orgIds) ;
     
+    List<Resource> LoadInOrgs(@Param("ids")List<Integer> orgIds);
+    
     List<Resource> Find(List<Integer> resourceIds);
     
     List<Resource> FindAll();
@@ -29,4 +31,7 @@ public interface ResourceMapper {
     int updateByPrimaryKeyWithBLOBs(Resource record);
 
     int updateByPrimaryKey(Resource record);
+    
+    Integer GetResourceCntInOrgs(List<Integer> getSubOrgIds);
+
 }

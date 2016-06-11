@@ -30,6 +30,9 @@ public class ResourceVM {
     
     private Boolean isbelonguser;
 
+
+	private String description;
+
     public Integer getId() {
         return id;
     }
@@ -71,5 +74,17 @@ public class ResourceVM {
     public void setIsBelongUser(Boolean isbelonguser) {
         this.isbelonguser = isbelonguser;
     }
+
+    public String getDescription() {
+		// TODO Auto-generated method stub
+		return this.description;
+	} 
+    
+	public void setDescription(String description) {
+		// TODO Auto-generated method stub
+		this.description = description;
+	}
+	
+	
 
 }

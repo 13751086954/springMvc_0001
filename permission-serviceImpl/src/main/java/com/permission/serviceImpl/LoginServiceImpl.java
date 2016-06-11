@@ -64,10 +64,10 @@ public class LoginServiceImpl implements ILoginService  {
 		List<Integer> userRoleIds = _relevanceDao.FindUserRoleIds(user.getId());
 
 		//用户角色与自己分配到的模块ID
-		List<Integer> moduleIds = _relevanceDao.FindModuleIds(user.getId(),userRoleIds);
+		List<Integer> moduleIds = _relevanceDao.FindSecondIds(user.getId(),"UserModule" ,"RoleModule" ,userRoleIds);
 
 		//用户角色与自己分配到的菜单ID
-		List<Integer> elementIds = _relevanceDao.FindElementIds(user.getId(),userRoleIds);
+		List<Integer> elementIds = _relevanceDao.FindSecondIds(user.getId(),"UserElement" ,"RoleElement" ,userRoleIds);
 
 		List<Role> roles= _roleDao.FindUserRoles(userRoleIds);
 
@@ -91,12 +91,12 @@ public class LoginServiceImpl implements ILoginService  {
 		loginVM.setModules(moduleViews);
 
 		//用户角色与自己分配到的资源ID
-		List<Integer> resourceIds = _relevanceDao.FindResourceIds(user.getId(),userRoleIds);
+		List<Integer> resourceIds = _relevanceDao.FindSecondIds(user.getId(),"UserResource" ,"UserResource" ,userRoleIds);
 
 		loginVM.setResources(_resourceDao.Find(resourceIds)); 
 
 		//用户角色与自己分配到的机构ID
-		List<Integer> orgids = _relevanceDao.FindOrgIds(user.getId(),userRoleIds);
+		List<Integer> orgids = _relevanceDao.FindSecondIds(user.getId(),"UserAccessedOrg" ,"UserAccessedOrg" ,userRoleIds);
 
 		loginVM.setAccessedOrgs(_orgDao.Find(orgids)); 
 
@@ -106,7 +106,6 @@ public class LoginServiceImpl implements ILoginService  {
 
 	public void CheckPassword(String sqlpassword, String password) throws Exception{
 		if (!sqlpassword.equals(password) ){
-
 			throw  new Exception("密码错误");
 		}
 	}

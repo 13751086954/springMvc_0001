@@ -55,6 +55,14 @@
     order by Sort
   </select>
   
+   <select id="FindIdsByModuleId" resultType="java.lang.Integer" parameterType="java.lang.Integer"  >
+    select 
+    Id
+    from moduleelement
+    where ModuleId = #{moduleId,jdbcType=INTEGER} 
+    order by Sort
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from moduleelement
     where Id = #{id,jdbcType=INTEGER}

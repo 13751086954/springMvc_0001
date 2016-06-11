@@ -57,6 +57,21 @@
 	)
     order by Id
   </select>
+  
+   <select id="GetUserCntInOrg" resultType="java.lang.Integer">
+    select 
+    COUNT(ID)
+    from user
+    <choose>
+         <when test="ids !=null and ids.size()>0">
+            WHERE
+		    Id in
+		    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+		       #{item}
+		   </foreach>
+         </when>
+     </choose>   
+  </select>
    
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user
