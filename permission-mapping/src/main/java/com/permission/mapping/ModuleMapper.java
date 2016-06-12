@@ -26,9 +26,7 @@ public interface ModuleMapper {
  	
  	List<Module> Find(@Param("ids")List<Integer> ids);
  	
- 	List<Module> FindAll();
- 	
- 	Module FindById(Integer id);
+ 	List<Module> FindAll(); 	
  	
  	List<Module> LoadByParent(Integer parentId);
  	

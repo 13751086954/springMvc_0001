@@ -5,17 +5,19 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import com.permission.common.orm.PageInfo;
 import com.permission.common.utils.SessionService;
 import com.permission.mapping.OrgMapper;
 import com.permission.mapping.StockMapper;
-import com.permission.model.bo.CategoryBO;
 import com.permission.model.bo.StockBO;
 import com.permission.model.vo.LoginUserVM;
 import com.permission.pojo.Org;
 import com.permission.pojo.Stock;
 import com.permission.service.IStockManagerService;
 
+@Service
 public class StockManagerServiceImpl implements IStockManagerService {
 
 	@javax.annotation.Resource

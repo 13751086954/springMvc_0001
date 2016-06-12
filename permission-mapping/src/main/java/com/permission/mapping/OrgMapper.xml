@@ -58,7 +58,7 @@
     SELECT t1.*
 	FROM relevance AS t0
 	INNER JOIN org AS t1 ON t0.SecondId = t1.Id
-	WHERE (t0.FirstId = #{userId,jdbcType=INTEGER }) AND ('t1.Key' = '')
+	WHERE (t0.FirstId = #{userId,jdbcType=INTEGER }) AND ('t1.Key' = 'UserOrg')
   </select>
   
   <select id="LoadByParentId" resultMap="ResultMapWithBLOBs" >
@@ -84,7 +84,7 @@
      </choose>  
   </select>
   
-   <select id="GetSubOrgIds" >
+   <select id="GetSubOrgIds" resultType="java.lang.Integer">
     SELECT 
     Id
     FROM org 

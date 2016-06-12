@@ -49,7 +49,7 @@ public class ModuleElementManagerServiceImpl implements IModuleElementManagerSer
 		// TODO Auto-generated method stub
 		List<ModuleElementVM> listVms = new ArrayList<ModuleElementVM>();
 		if (moduleId == 0) return listVms;
-		String modulename = _moduleDao.FindById(moduleId).getName();
+		String modulename = _moduleDao.selectByPrimaryKey(moduleId).getName();
 		List<ModuleElementWithBLOBs> elements = LoadByModuleId(moduleId);
 		for (ModuleElementWithBLOBs element : elements) {
 			Relevance accessed = _relevanceDao.FindAccesseType(accessType, firstId, element.getId());

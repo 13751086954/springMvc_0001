@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import com.permission.mapping.OrgMapper;
 import com.permission.mapping.RelevanceMapper;
 import com.permission.pojo.Category;
@@ -13,6 +15,7 @@ import com.permission.pojo.Org;
 import com.permission.pojo.Relevance;
 import com.permission.service.IOrgManagerService;
 
+@Service
 public class OrgManagerServiceImpl implements IOrgManagerService {
 
 	@Resource

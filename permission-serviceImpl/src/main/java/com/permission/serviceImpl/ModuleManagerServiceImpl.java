@@ -72,13 +72,13 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
 	}
 
 	@Override
-	public Module Find(int id) {
+	public Module Find(Integer id) {
 		// TODO Auto-generated method stub
-		return _moduleDao.FindById(id);
+		return _moduleDao.selectByPrimaryKey(id);
 	}
 
 	@Override
-	public void Delete(int id) {
+	public void Delete(Integer id) {
 		// TODO Auto-generated method stub
 		_moduleDao.deleteByPrimaryKey(id);
 	}
@@ -156,7 +156,7 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
 	 * @return
 	 */
 	private List<Integer> GetSubOrgIds(Integer parentId){
-		Module parent =_moduleDao.FindById(parentId);
+		Module parent =_moduleDao.selectByPrimaryKey(parentId);
 		if (parent==null) {
 			return null;
 		}
@@ -181,7 +181,7 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
 
 		if (module.getParentid() != 0)
 		{
-			Module parentOrg = _moduleDao.FindById(module.getParentid());
+			Module parentOrg = _moduleDao.selectByPrimaryKey(module.getParentid());
 			if (parentOrg != null)
 			{
 				cascadeId = parentOrg.getCascadeid() + "." + currentCascadeId;

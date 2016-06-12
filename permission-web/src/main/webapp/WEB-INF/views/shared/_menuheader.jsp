@@ -1,8 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page pageEncoding="utf-8"%>
 
 <div class="bjui-pageHeader">
     <div class="bjui-searchBar">
@@ -16,10 +12,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  -->
             <div class="pull-right">
             	<c:forEach items="${module.elements}" var="element">
-                 <${element.Type} 
-                    data-icon='${element.Icon}' id='${element.DomId}' class='${element.class}' onclick='${element.Script}' ${element.Attr}>
-                    ${element.Name}
-                 </${element.Type}>      
+                 <${element.type} data-icon='${element.icon}' id='${element.domid}' class='${element.classify}' onclick='${element.script}' ${element.attr}>
+                 ${element.name}
+                 </${element.type}>      
 	            </c:forEach>               
             </div>
         </div>

@@ -25,6 +25,7 @@
     <include refid="Base_Column_List" />
     from module
     where Id = #{id,jdbcType=INTEGER}
+    order by SortNo
   </select>
   
   <select id="Find" resultMap="BaseResultMap" >
@@ -39,15 +40,8 @@
     order by SortNo
   </select>
   
-  <select id="FindById" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from module
-    where Id = #{id,jdbcType=INTEGER}
-    order by SortNo
-  </select>
   
-   <select id="LoadByParent" parameterType="java.lang.Integer" >
+   <select id="LoadByParent" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from module
@@ -55,15 +49,16 @@
     order by SortNo
   </select>
   
-   <select id="FindOrgs" parameterType="java.lang.String" >
+   <select id="FindOrgs"  resultType="java.lang.Integer" parameterType="java.lang.String" >
     select 
     Id
     from module
     where
     CascadeId like CONCAT('%','${cascadeId}','%' )  
+    order by SortNo
   </select>
   
-  <select id="SameLevels" parameterType="java.lang.String" >
+  <select id="SameLevels" resultMap="BaseResultMap"  >
     select 
      <include refid="Base_Column_List" />
     from module

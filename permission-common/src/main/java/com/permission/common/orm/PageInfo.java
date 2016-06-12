@@ -69,7 +69,7 @@ public class PageInfo implements Serializable {
 
 	public PageInfo(Integer pageindex, Integer pagesize){
 		int currentPage = pageindex;
-		int pageSize = 3;
+		int pageSize = pagesize;
 		if (currentPage<=0){
 			currentPage =1;
 		}

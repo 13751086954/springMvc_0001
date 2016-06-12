@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.apache.commons.lang.StringUtils;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
+import org.springframework.stereotype.Service;
 
 import com.permission.common.orm.PageInfo;
 import com.permission.mapping.UserMapper;
@@ -18,6 +19,7 @@ import com.permission.pojo.User;
 import com.permission.pojo.Org;
 import com.permission.service.IUserManagerService;
 
+@Service
 public class UserManagerServiceImpl implements IUserManagerService {
 
 	@Resource

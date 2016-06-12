@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
+import org.springframework.stereotype.Service;
 
 import com.permission.common.orm.PageInfo;
 import com.permission.mapping.OrgMapper;
@@ -18,6 +19,7 @@ import com.permission.pojo.Relevance;
 import com.permission.pojo.Role;
 import com.permission.service.IRoleManagerService;
 
+@Service
 public class RoleManagerServiceImpl implements IRoleManagerService {
 
 	@javax.annotation.Resource

@@ -2,6 +2,7 @@ package com.permission.model.vo;
 
 import java.util.List;
 
+import com.permission.pojo.ModuleElement;
 import com.permission.pojo.ModuleElementWithBLOBs;
 
 /**
@@ -38,6 +39,9 @@ public class ModuleView {
      * 节点图标文件名称
      */
 	private String iconname;
+	
+	private String cascadeid;
+    
 	
 
 	 public Integer getId() {
@@ -99,7 +103,8 @@ public class ModuleView {
      * 模块中的元素
      */
     private List<ModuleElementWithBLOBs> elements;
-    
+
+	
     public List<ModuleElementWithBLOBs> getElements() {
         return elements;
     }
@@ -107,5 +112,15 @@ public class ModuleView {
     public void setElements(List<ModuleElementWithBLOBs> elements) {
         this.elements = elements;
     }
+    
+    public String getCascadeid(String cascadeid) {
+		// TODO Auto-generated method stub
+		return this.cascadeid;
+	}
+
+	public void setCascadeid(String cascadeid) {
+		// TODO Auto-generated method stub
+		this.cascadeid=cascadeid;
+	}
     
 }

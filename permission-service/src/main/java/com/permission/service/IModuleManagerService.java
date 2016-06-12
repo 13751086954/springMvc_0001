@@ -29,9 +29,9 @@ public interface IModuleManagerService {
 	 */
 	public List<ModuleView> LoadByParent(Integer parentId);
 
-	public Module Find(int id);
+	public Module Find(Integer id);
 
-	public void Delete(int id);
+	public void Delete(Integer id);
 
 	public void AddOrUpdate(Module vm) throws Exception;
 

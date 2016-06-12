@@ -4,5 +4,7 @@ encoding//src/main/resources=UTF-8
 encoding//src/main/webapp/WEB-INF/views/error/noAccess.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/home/index.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/home/main.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/modulemanager/add.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/shared/_bjuilayout.jsp=UTF-8
 encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8

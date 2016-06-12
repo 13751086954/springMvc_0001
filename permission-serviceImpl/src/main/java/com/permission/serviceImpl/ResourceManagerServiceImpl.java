@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.permission.common.orm.PageInfo;
 import com.permission.mapping.CategoryMapper;
 import com.permission.mapping.RelevanceMapper;
@@ -15,6 +17,7 @@ import com.permission.pojo.Relevance;
 import com.permission.pojo.Resource;
 import com.permission.service.IResourceManagerService;
 
+@Service
 public class ResourceManagerServiceImpl implements IResourceManagerService {
    
 	@javax.annotation.Resource

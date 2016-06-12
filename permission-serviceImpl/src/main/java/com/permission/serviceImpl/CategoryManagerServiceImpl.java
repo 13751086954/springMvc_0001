@@ -1,7 +1,10 @@
 package com.permission.serviceImpl;
 
 import java.util.List;
+
 import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
 
 import com.permission.common.orm.PageInfo;
 import com.permission.mapping.CategoryMapper;
@@ -11,6 +14,7 @@ import com.permission.pojo.Category;
 import com.permission.pojo.Org;
 import com.permission.service.ICategoryManagerService;
 
+@Service
 public class CategoryManagerServiceImpl implements ICategoryManagerService {
 
 	@Resource
