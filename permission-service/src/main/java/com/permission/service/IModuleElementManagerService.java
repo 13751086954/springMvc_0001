@@ -29,4 +29,5 @@ public interface IModuleElementManagerService {
 	public void AssignForRole(Integer roleId,Integer moduleId, List<Integer> menuIds);
 	
 	public void AssignForUser(Integer userId, Integer moduleId, List<Integer> ids);
+
 }
