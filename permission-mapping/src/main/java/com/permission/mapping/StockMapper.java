@@ -18,7 +18,7 @@ public interface StockMapper {
     
     List<Stock>  LoadStocksListPage(@Param("page")PageInfo page);
     
-    List<Stock>  LoadInOrgListPage(@Param("page")PageInfo page,@Param("orgIds")List<Integer> orgIds) ;
+    List<Stock>  LoadInOrgListPage(@Param("page")PageInfo page,@Param("ids")List<Integer> orgIds) ;
     
     List<Stock>  LoadUserListPage(@Param("page")PageInfo page,@Param("user")String user);
 

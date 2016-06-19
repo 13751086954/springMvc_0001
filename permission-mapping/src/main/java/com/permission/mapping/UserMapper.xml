@@ -49,7 +49,7 @@
 	        FROM relevance 
 	        WHERE `Key`='UserOrg' 
 	        and SecondId IN 
-	        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+	        <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
              #{item}
             </foreach>
 	        ) AS t2

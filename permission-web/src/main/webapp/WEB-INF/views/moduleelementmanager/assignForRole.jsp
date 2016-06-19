@@ -10,7 +10,7 @@ String _treeDetail = _prefix + "Detail";
 %>
 <div class="bjui-pageHeader">
     <div class="bjui-searchBar">
-        <input style="display: none" id="roleId" value="${roleId}" />
+        <input style="display: none" id="roleid" value="${roleid}" />
         <div class="pull-right">
             <div class="alert alert-info search-inline">
                 <i class="fa fa-info-circle"></i> 点击行为单选，点击复选框可多选统一授权
@@ -51,12 +51,12 @@ String _treeDetail = _prefix + "Detail";
             filterThead: false,
             columns: [
                   {
-                      name: 'Id',
+                      name: 'id',
                       label: '元素名称',
                       hide: true
                   },
                {
-                   name: 'Name',
+                   name: 'name',
                    label: '元素名称',
                    width: 80
                },
@@ -74,7 +74,7 @@ String _treeDetail = _prefix + "Detail";
                    width: 80
                }
             ],
-            dataUrl: '<%=path%>/moduleelementmanager/loadforrole?orgId=' + selectedId +'&roleId='+$('#roleId').val(),
+            dataUrl: '<%=path%>/moduleelementmanager/loadforrole?orgid=' + selectedId +'&roleid='+$('#roleid').val(),
             fullGrid: true,
             showLinenumber: true,
             showCheckboxcol: true,
@@ -85,7 +85,7 @@ String _treeDetail = _prefix + "Detail";
     }
 
     function zTreeOnClick(event, treeId, treeNode) {
-        selectedId = treeNode.Id;
+        selectedId = treeNode.id;
         loadDataGrid();
     }
 
@@ -94,20 +94,20 @@ String _treeDetail = _prefix + "Detail";
             view: { selectedMulti: false },
             data: {
                 key: {
-                    name: 'Name',
-                    title: 'Name'
+                    name: 'name',
+                    title: 'name'
                 },
                 simpleData: {
                     enable: true,
-                    idKey: 'Id',
-                    pIdKey: 'ParentId',
+                    idKey: 'id',
+                    pIdKey: 'parentid',
                     rootPId: 'null'
                 }
             },
             callback: { onClick: zTreeOnClick }
         };
         $.getJSON('<%=path%>/modulemanager/loadforrole',
-            { roleId: $('#roleId').val() },
+            { roleid: $('#roleid').val() },
             function (json) {
             var zTreeObj = $.fn.zTree.init($('#<%=_treeId%>'), setting, json);
             zTreeObj.expandAll(true);
@@ -121,7 +121,7 @@ String _treeDetail = _prefix + "Detail";
       
         $.post("<%=path%>/moduleelementmanager/assignforrole",
         {
-            roleId: $('#roleId').val(),
+            roleid: $('#roleid').val(),
             moduleId: selectedId,
             menuIds: selected
         },

@@ -22,7 +22,7 @@ public interface ModuleMapper {
     
     List<Module> LoadModuleListPage(@Param("page")PageInfo page) ;
 
- 	List<Module> LoadInOrgListPage(@Param("page")PageInfo page,@Param("ids")List<Integer> ids) ;
+ 	List<Module> LoadInOrgListPage(@Param("page")PageInfo page,@Param("ids")List<Integer> orgIds) ;
  	
  	List<Module> Find(@Param("ids")List<Integer> ids);
  	

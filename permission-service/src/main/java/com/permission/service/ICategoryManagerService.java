@@ -6,17 +6,17 @@ import com.permission.pojo.Category;
 
 public interface ICategoryManagerService {
 
-	public Integer GetCategoryCntInOrg(Integer orgId);
+	public int GetCategoryCntInOrg(int orgId);
 
 	public List<Category> LoadAll();
 
-	public CategoryBO Load(Integer orgId, Integer pageindex, Integer pagesize);
+	public CategoryBO Load(int orgId, int pageindex, int pagesize);
 
-	public List<Integer> GetSubOrgIds(Integer orgId);
+	public List<Integer> GetSubOrgIds(int orgId);
 
-	public Category Find(Integer id);
+	public Category Find(int id);
 
-	public void Delete(Integer id);
+	public void Delete(int id);
 
 	public void AddOrUpdate(Category model) throws Exception;
 

@@ -80,9 +80,9 @@
     FROM module
     WHERE 
     ParentId IN 
-   <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
-       #{item}
-   </foreach>
+    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+	   ${item}
+	</foreach>
     order by Id
   </select>
   

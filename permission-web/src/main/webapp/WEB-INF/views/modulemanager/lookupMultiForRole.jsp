@@ -5,7 +5,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 <div class="bjui-pageContent">
-    <input style="display: none" id="roleId" value="${roleId}"/>
+    <input style="display: none" id="roleid" value="${roleid}"/>
     <div style="float: left; width: 220px; height: 240px; overflow: auto;" class="table table-bordered">
         <ul id="lookupTree" class="ztree"></ul>
     </div>
@@ -38,13 +38,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             },
             data: {
                 key: {
-                    name: 'Name',
-                    title: 'Name'
+                    name: 'name',
+                    title: 'name'
                 },
                 simpleData: {
                     enable: true,
-                    idKey: 'Id',
-                    pIdKey: 'ParentId',
+                    idKey: 'id',
+                    pIdKey: 'parentid',
                     rootPId: 'null'
                 }
             },
@@ -64,13 +64,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           
             data: {
                 key: {
-                    name: 'Name',
-                    title: 'Name'
+                    name: 'name',
+                    title: 'name'
                 },
                 simpleData: {
                     enable: true,
-                    idKey: 'Id',
-                    pIdKey: 'ParentId',
+                    idKey: 'id',
+                    pIdKey: 'parentid',
                     rootPId: 'null'
                 }
             },
@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 onCheck: zTreeCheck
             }
         };
-        $.post('<%=path%>/modulemanager/loadforrole.do', { roleId: $('#roleId').val() },
+        $.post('<%=path%>/modulemanager/loadforrole.do', { roleid: $('#roleid').val() },
             function (json) {
                 var zTreeObj = $.fn.zTree.init($('#selected'), setting, eval(json));
                 zTreeObj.expandAll(true);
@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }
 
     function save() {
-        $.post('<%=path%>/modulemanager/assignmoduleforrole.do', { roleId: $('#roleId').val(), moduleIds: moduleIds },
+        $.post('<%=path%>/modulemanager/assignmoduleforrole.do', { roleid: $('#roleid').val(), moduleIds: moduleIds },
             function (json) {
                 var rel = $.parseJSON(json);
                 if (rel.statusCode == "200") {
@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             nodes = zTree.getCheckedNodes(true);
         var ids = '';
         for (var i = 0; i < nodes.length; i++) {
-            ids += ',' + nodes[i].Id;
+            ids += ',' + nodes[i].id;
         }
         if (ids.length > 0) {  //去掉第一个逗号
             ids = ids.substr(1);

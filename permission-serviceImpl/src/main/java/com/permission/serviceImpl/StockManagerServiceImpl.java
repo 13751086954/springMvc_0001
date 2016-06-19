@@ -29,7 +29,7 @@ public class StockManagerServiceImpl implements IStockManagerService {
 	SessionService _sessionHelper;
 
 	@Override
-	public StockBO Load(Integer orgId, Integer pageindex, Integer pagesize) throws Exception {
+	public StockBO Load(int orgId, int pageindex, int pagesize) throws Exception {
 		// TODO Auto-generated method stub
 		List<Stock> Stocks;
 		LoginUserVM user = (LoginUserVM)_sessionHelper.GetSessionUser();
@@ -78,7 +78,7 @@ public class StockManagerServiceImpl implements IStockManagerService {
 	}
 
 	@Override
-	public Stock Find(Integer id) {
+	public Stock Find(int id) {
 		// TODO Auto-generated method stub
 		Stock stock = _stockDao.selectByPrimaryKey(id);
 		if (stock == null) {
@@ -88,7 +88,7 @@ public class StockManagerServiceImpl implements IStockManagerService {
 	}
 
 	@Override
-	public void Delete(Integer id) {
+	public void Delete(int id) {
 		// TODO Auto-generated method stub
 		_stockDao.deleteByPrimaryKey(id);
 	}

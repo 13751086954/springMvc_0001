@@ -3,7 +3,7 @@ package com.permission.model.vo;
 import java.util.Date;
 
 public class UserView {
-	 private Integer id;
+	 private int id;
 
 	    private String account;
 
@@ -11,11 +11,11 @@ public class UserView {
 
 	    private String name;
 
-	    private Integer sex;
+	    private int sex;
 
-	    private Integer status;
+	    private int status;
 
-	    private Integer type;
+	    private int type;
 
 	    private Date createtime;
 
@@ -28,11 +28,11 @@ public class UserView {
 
         public String organizationids;
 
-	    public Integer getId() {
+	    public int getId() {
 	        return id;
 	    }
 
-	    public void setId(Integer id) {
+	    public void setId(int id) {
 	        this.id = id;
 	    }
 
@@ -60,27 +60,27 @@ public class UserView {
 	        this.name = name == null ? null : name.trim();
 	    }
 
-	    public Integer getSex() {
+	    public int getSex() {
 	        return sex;
 	    }
 
-	    public void setSex(Integer sex) {
+	    public void setSex(int sex) {
 	        this.sex = sex;
 	    }
 
-	    public Integer getStatus() {
+	    public int getStatus() {
 	        return status;
 	    }
 
-	    public void setStatus(Integer status) {
+	    public void setStatus(int status) {
 	        this.status = status;
 	    }
 
-	    public Integer getType() {
+	    public int getType() {
 	        return type;
 	    }
 
-	    public void setType(Integer type) {
+	    public void setType(int type) {
 	        this.type = type;
 	    }
 

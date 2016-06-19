@@ -45,7 +45,7 @@
     <include refid="Blob_Column_List" />
     from stock
     OrgId in
-    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
        #{item}
    </foreach>
     order by Id

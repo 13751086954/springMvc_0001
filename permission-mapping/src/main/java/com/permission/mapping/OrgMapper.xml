@@ -105,7 +105,7 @@
     FROM org 
 	WHERE 
 	 Id in
-    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
       #{item}
    </foreach>
    order by Id

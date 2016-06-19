@@ -5,7 +5,7 @@ public class RoleVM {
 	/**
 	 *  流水号
 	 */
-    private Integer id;
+    private int id;
 
     /**
    	 * 名称
@@ -28,11 +28,11 @@ public class RoleVM {
      */   
     public boolean isbelonguser;
     
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

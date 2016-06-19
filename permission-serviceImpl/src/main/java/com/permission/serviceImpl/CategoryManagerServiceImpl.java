@@ -23,7 +23,7 @@ public class CategoryManagerServiceImpl implements ICategoryManagerService {
 	OrgMapper _orgDao;
 
 	@Override
-	public Integer GetCategoryCntInOrg(Integer orgId) {
+	public int GetCategoryCntInOrg(int orgId) {
 		// TODO Auto-generated method stub
 		if (orgId == 0){
 			return _categoryDao.GetCategoryCntInOrg(null);
@@ -40,11 +40,11 @@ public class CategoryManagerServiceImpl implements ICategoryManagerService {
 	 */
 	private void ChangeModuleCascade(Category org) throws Exception{
 		String cascadeId;
-		Integer currentCascadeId = 1;  //当前结点的级联节点最后一位
+		int currentCascadeId = 1;  //当前结点的级联节点最后一位
 		List<Category> sameLevels = _categoryDao.SameLevels(org.getParentid(), org.getId());
 		for (Category obj : sameLevels) {
 			String[] arrStrings= obj.getCascadeid().split(",");
-			Integer objCascadeId=Integer.getInteger(arrStrings[arrStrings.length-1]);
+			int objCascadeId=Integer.getInteger(arrStrings[arrStrings.length-1]);
 			if (currentCascadeId <= objCascadeId) currentCascadeId = objCascadeId + 1;
 		}
 
@@ -71,11 +71,10 @@ public class CategoryManagerServiceImpl implements ICategoryManagerService {
 	}
 
 	@Override
-	public CategoryBO Load(Integer orgId, Integer pageindex,
-			Integer pagesize) {
+	public CategoryBO Load(int orgId, int pageindex, int pagesize) {
 		// TODO Auto-generated method stub
 		List<Category> categories = null;
-		Integer total = 0;
+		int total = 0;
 		if (orgId == 0){
 			PageInfo page=new PageInfo(pageindex,pagesize);
 			categories = _categoryDao.LoadInOrgListPage(page,null);
@@ -94,20 +93,20 @@ public class CategoryManagerServiceImpl implements ICategoryManagerService {
 	}
 
 	@Override
-	public List<Integer> GetSubOrgIds(Integer orgId) {
+	public List<Integer> GetSubOrgIds(int orgId) {
 		// TODO Auto-generated method stub
 		Org org = _orgDao.selectByPrimaryKey(orgId);
 		return _orgDao.GetSubOrgIds(org.getCascadeid(), 0);
 	}
 
 	@Override
-	public Category Find(Integer id) {
+	public Category Find(int id) {
 		// TODO Auto-generated method stub
 		return _categoryDao.selectByPrimaryKey(id);
 	}
 
 	@Override
-	public void Delete(Integer id) {
+	public void Delete(int id) {
 		// TODO Auto-generated method stub
 		_categoryDao.deleteByPrimaryKey(id);
 	}

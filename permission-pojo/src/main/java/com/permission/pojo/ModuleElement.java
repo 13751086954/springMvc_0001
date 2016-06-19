@@ -9,7 +9,7 @@ public class ModuleElement {
 	/**
 	 * 流水号
 	 */
-    private Integer id;
+    private int id;
     
     /**
 	 * DOM ID
@@ -29,7 +29,7 @@ public class ModuleElement {
     /**
 	 * 功能模块Id
 	 */
-    private Integer moduleid;
+    private int moduleid;
 
     /**
 	 * 元素图标
@@ -49,14 +49,14 @@ public class ModuleElement {
     /**
    	 * 排序字段
    	 */
-    private Integer sort;
+    private int sort;
      
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -84,11 +84,11 @@ public class ModuleElement {
         this.type = type == null ? null : type.trim();
     }
 
-    public Integer getModuleid() {
+    public int getModuleid() {
         return moduleid;
     }
 
-    public void setModuleid(Integer moduleid) {
+    public void setModuleid(int moduleid) {
         this.moduleid = moduleid;
     }
 
@@ -116,11 +116,11 @@ public class ModuleElement {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public Integer getSort() {
+    public int getSort() {
         return sort;
     }
 
-    public void setSort(Integer sort) {
+    public void setSort(int sort) {
         this.sort = sort;
     }
 }

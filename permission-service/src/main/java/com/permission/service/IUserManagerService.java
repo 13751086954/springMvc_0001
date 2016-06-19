@@ -7,15 +7,15 @@ import com.permission.model.vo.UserView;
 
 public interface IUserManagerService {
 
-	public Integer GetUserCntInOrg(Integer orgId);
+	public int GetUserCntInOrg(int orgId);
 
-	public UserBO Load(Integer orgId, Integer pageindex, Integer pagesize);
+	public UserBO Load(int orgId, int pageindex, int pagesize);
 
-	public List<Integer> GetSubOrgIds(Integer orgId);
+	public List<Integer> GetSubOrgIds(int orgId);
 
-	public UserView Find(Integer id);
+	public UserView Find(int id);
 
-	public void Delete(Integer id);
+	public void Delete(int id);
 
 	public void AddOrUpdate(UserView view);
 }

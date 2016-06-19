@@ -9,7 +9,7 @@ public interface IModuleElementManagerService {
 
 	public void AddOrUpdate(ModuleElementWithBLOBs model);
 
-	public List<ModuleElementWithBLOBs> LoadByModuleId(Integer id);
+	public List<ModuleElementWithBLOBs> LoadByModuleId(int id);
 
 	/**
 	 * 获取带有授权状态的菜单列表
@@ -22,12 +22,12 @@ public interface IModuleElementManagerService {
 	 * 模块ID
 	 * @return
 	 */
-	public List<ModuleElementVM> LoadWithAccess(String accessType, Integer firstId, Integer moduleId);
+	public List<ModuleElementVM> LoadWithAccess(String accessType, int firstId, int moduleId);
 
 	public void Delete(int id);
 
-	public void AssignForRole(Integer roleId,Integer moduleId, List<Integer> menuIds);
+	public void AssignForRole(int roleId,int moduleId, List<Integer> menuIds);
 	
-	public void AssignForUser(Integer userId, Integer moduleId, List<Integer> ids);
+	public void AssignForUser(int userId, int moduleId, List<Integer> ids);
 
 }

@@ -11,17 +11,17 @@ public class Relevance {
 	/**
 	 * 流水号
 	 */
-    private Integer id;
+    private int id;
 
     /**
 	 * 第一个表主键ID
 	 */
-    private Integer firstid;
+    private int firstid;
 
     /**
 	 * 第二个表主键ID
 	 */
-    private Integer secondid;
+    private int secondid;
 
     /**
    	 * 描述
@@ -36,7 +36,7 @@ public class Relevance {
     /**
    	 * 状态
    	 */
-    private Integer status;
+    private int status;
 
     /**
    	 * 授权时间
@@ -46,30 +46,30 @@ public class Relevance {
     /**
    	 * 授权人
    	 */
-    private Integer operatorid;
+    private int operatorid;
     
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Integer getFirstid() {
+    public int getFirstid() {
         return firstid;
     }
 
-    public void setFirstid(Integer firstid) {
+    public void setFirstid(int firstid) {
         this.firstid = firstid;
     }
 
-    public Integer getSecondid() {
+    public int getSecondid() {
         return secondid;
     }
 
-    public void setSecondid(Integer secondid) {
+    public void setSecondid(int secondid) {
         this.secondid = secondid;
     }
 
@@ -89,11 +89,11 @@ public class Relevance {
         this.key = key == null ? null : key.trim();
     }
 
-    public Integer getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -105,11 +105,11 @@ public class Relevance {
         this.operatetime = operatetime;
     }
 
-    public Integer getOperatorid() {
+    public int getOperatorid() {
         return operatorid;
     }
 
-    public void setOperatorid(Integer operatorid) {
+    public void setOperatorid(int operatorid) {
         this.operatorid = operatorid;
     }
 }

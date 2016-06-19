@@ -11,6 +11,10 @@ SSM框架——详细整合教程（Spring+SpringMVC+MyBatis）
 http://blog.csdn.net/zhshulin/article/details/37956105
 
 fastdfs-client-java操作fastdfs5.0.4
-https://github.com/happyfish100/fastdfs-client-java 
+http://my.oschina.net/chaun/blog/467450 
 
 permission.sql为mysql数据库初始化脚本文件
+
+## 开发框架
+B-JUI (Best jQuery UI) 前端管理框架
+http://b-jui.com/

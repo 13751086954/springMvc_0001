@@ -26,19 +26,19 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
 	private RelevanceMapper _relevanceDao;
 
 	@Override
-	public ModuleBO Load(Integer parentId, Integer pageindex, Integer pagesize) {
+	public ModuleBO Load(int parentId, int pageindex, int pagesize) {
 		// TODO Auto-generated method stub
 		List<Module> Modules = null;
-		Integer total = 0;
+		int total = 0;
 		if (parentId == 0){
 			PageInfo page=new PageInfo(pageindex,pagesize);
 			Modules = _moduleDao.LoadModuleListPage(page);
-			total = page.getTotalPage();
+			total = page.getTotalResult();
 		}
 		else{
 			PageInfo page=new PageInfo(pageindex,pagesize);
 			Modules = _moduleDao.LoadInOrgListPage(page, GetSubOrgIds(parentId));
-			total = page.getTotalPage();
+			total = page.getTotalResult();
 		}
 		ModuleBO moduleBO=new ModuleBO();
 		moduleBO.setTotal(total);
@@ -54,7 +54,7 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
 	}
 
 	@Override
-	public List<ModuleView> LoadByParent(Integer parentId) {
+	public List<ModuleView> LoadByParent(int parentId) {
 		// TODO Auto-generated method stub
 		List<ModuleView> modules = new ArrayList<ModuleView>();
 		List<Module> roots = _moduleDao.LoadByParent(parentId);
@@ -72,13 +72,17 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
 	}
 
 	@Override
-	public Module Find(Integer id) {
+	public Module Find(int id) {
 		// TODO Auto-generated method stub
-		return _moduleDao.selectByPrimaryKey(id);
+		Module module = _moduleDao.selectByPrimaryKey(id);
+		if (module == null) {
+			module = new Module();
+		}
+		return module;
 	}
 
 	@Override
-	public void Delete(Integer id) {
+	public void Delete(int id) {
 		// TODO Auto-generated method stub
 		_moduleDao.deleteByPrimaryKey(id);
 	}
@@ -96,7 +100,7 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
 	}
 
 	@Override
-	public List<Module> LoadForUser(Integer userId) {
+	public List<Module> LoadForUser(int userId) {
 		// TODO Auto-generated method stub
 		List<Integer> userRoleIds =_relevanceDao.FindUserRoleIds(userId);
 		List<Integer> moduleIds = _relevanceDao.FindSecondIds(userId,"UserModule" ,"RoleModule" ,userRoleIds);
@@ -107,12 +111,12 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
 	}
 
 	@Override
-	public void AssignModuleForUser(Integer userId, Integer[] ids) {
+	public void AssignModuleForUser(int userId, Integer[] ids) {
 		// TODO Auto-generated method stub
 		List<Integer> ids1=new ArrayList<Integer>();
 		ids1.add(userId);
 		_relevanceDao.deleteByKeyAndFirstIds("UserModule", ids1);
-		for (Integer secondid : ids) {
+		for (int secondid : ids) {
 			Relevance relevance=new Relevance();
 			relevance.setKey("UserModule");
 			relevance.setFirstid(userId);
@@ -124,7 +128,7 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
 	}
 
 	@Override
-	public List<Module> LoadForRole(Integer roleId) {
+	public List<Module> LoadForRole(int roleId) {
 		// TODO Auto-generated method stub
 		List<Integer> moduleIds =_relevanceDao.FindRoleIds(roleId);
 		if (moduleIds==null || moduleIds.size()==0) {
@@ -134,12 +138,12 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
 	}
 
 	@Override
-	public void AssignModuleForRole(Integer roleId, Integer[] ids) {
+	public void AssignModuleForRole(int roleId, Integer[] ids) {
 		// TODO Auto-generated method stub
 		List<Integer> ids1=new ArrayList<Integer>();
 		ids1.add(roleId);
 		_relevanceDao.deleteByKeyAndFirstIds("RoleModule", ids1);
-		for (Integer secondid : ids) {
+		for (int secondid : ids) {
 			Relevance relevance=new Relevance();
 			relevance.setKey("RoleModule");
 			relevance.setFirstid(roleId);
@@ -155,7 +159,7 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
 	 * @param parentId
 	 * @return
 	 */
-	private List<Integer> GetSubOrgIds(Integer parentId){
+	private List<Integer> GetSubOrgIds(int parentId){
 		Module parent =_moduleDao.selectByPrimaryKey(parentId);
 		if (parent==null) {
 			return null;
@@ -171,11 +175,11 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
 	 */
 	private void ChangeModuleCascade(Module module) throws Exception{
 		String cascadeId;
-		Integer currentCascadeId = 1;  //当前结点的级联节点最后一位
+		int currentCascadeId = 1;  //当前结点的级联节点最后一位
 		List<Module> sameLevels=_moduleDao.SameLevels(module.getParentid(), module.getId());
 		for (Module obj : sameLevels) {
 			String[] arrStrings= obj.getCascadeid().split(",");
-			Integer objCascadeId=Integer.getInteger(arrStrings[arrStrings.length-1]);
+			int objCascadeId = Integer.getInteger(arrStrings[arrStrings.length-1]);
 			if (currentCascadeId <= objCascadeId) currentCascadeId = objCascadeId + 1;
 		}
 

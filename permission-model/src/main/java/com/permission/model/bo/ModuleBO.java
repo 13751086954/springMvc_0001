@@ -7,17 +7,17 @@ import com.permission.pojo.Module;
 
 public class ModuleBO {
    
-	private Integer total;
+	private int total;
 	
 	private List<Module> list;
 	
-	private Integer pageCurrent;
+	private int pageCurrent;
 	
-	public  Integer getTotal() {
+	public  int getTotal() {
 	    return total;
 	}
 
-	public void setTotal(Integer total) {	    	
+	public void setTotal(int total) {	    	
 	    this.total = total;
     }
 	
@@ -29,11 +29,11 @@ public class ModuleBO {
 	    this.list = list;
     }
 	
-	public  Integer getPageCurrent() {
+	public  int getPageCurrent() {
 	    return pageCurrent;
 	}
 
-	public void setPageCurrent(Integer pageCurrent) {	    	
+	public void setPageCurrent(int pageCurrent) {	    	
 	    this.pageCurrent = pageCurrent;
     }
 }

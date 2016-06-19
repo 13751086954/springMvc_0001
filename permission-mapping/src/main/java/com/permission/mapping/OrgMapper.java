@@ -28,7 +28,7 @@ public interface OrgMapper {
     
     List<Integer> GetSubOrgIds(@Param("cascadeId")String cascadeId,@Param("orgId")Integer orgId);
     
-    List<Org> Find(List<Integer> orgIds);
+    List<Org> Find(@Param("ids")List<Integer> orgIds);
     
     List<Org> FindAll();
 

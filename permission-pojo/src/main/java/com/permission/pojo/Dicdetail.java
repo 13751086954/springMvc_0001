@@ -9,7 +9,7 @@ public class Dicdetail {
 	/**
 	 * ID
 	 */
-    private Integer id;
+    private int id;
 
     /**
 	 * 值
@@ -24,17 +24,17 @@ public class Dicdetail {
     /**
    	 * 所属字典ID
    	 */
-    private Integer dicid;
+    private int dicid;
 
     /**
    	 * 排序号
    	 */
-    private Integer sortno;
+    private int sortno;
 
     /**
    	 * 状态
    	 */
-    private Integer status;
+    private int status;
 
     /**
    	 * 描述
@@ -42,11 +42,11 @@ public class Dicdetail {
     private String description;
     
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -66,27 +66,27 @@ public class Dicdetail {
         this.text = text == null ? null : text.trim();
     }
 
-    public Integer getDicid() {
+    public int getDicid() {
         return dicid;
     }
 
-    public void setDicid(Integer dicid) {
+    public void setDicid(int dicid) {
         this.dicid = dicid;
     }
 
-    public Integer getSortno() {
+    public int getSortno() {
         return sortno;
     }
 
-    public void setSortno(Integer sortno) {
+    public void setSortno(int sortno) {
         this.sortno = sortno;
     }
 
-    public Integer getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

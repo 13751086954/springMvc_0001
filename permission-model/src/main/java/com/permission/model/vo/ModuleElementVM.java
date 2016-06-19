@@ -10,7 +10,7 @@ public class ModuleElementVM {
 	/**
 	 * 流水号
 	 */
-    private Integer id;
+    private int id;
     
     /**
 	 * DOM ID
@@ -26,7 +26,7 @@ public class ModuleElementVM {
     /**
 	 * 功能模块Id
 	 */
-    private Integer moduleid;
+    private int moduleid;
 
     /**
    	 * 所属模块名称
@@ -40,11 +40,11 @@ public class ModuleElementVM {
 
 
   
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -65,11 +65,11 @@ public class ModuleElementVM {
     }
 
  
-    public Integer getModuleid() {
+    public int getModuleid() {
         return moduleid;
     }
 
-    public void setModuleid(Integer moduleid) {
+    public void setModuleid(int moduleid) {
         this.moduleid = moduleid;
     }
 

@@ -8,7 +8,7 @@ import com.permission.pojo.Role;
 
 public interface IRoleManagerService {
 
-	public Integer GetRoleCntInOrg(Integer orgId);
+	public int GetRoleCntInOrg(int orgId);
 
 	/**
 	 * 加载一个部门及子部门全部Roles
@@ -17,24 +17,24 @@ public interface IRoleManagerService {
 	 * @param pagesize
 	 * @return
 	 */
-	RoleBO Load(Integer orgId, Integer pageindex, Integer pagesize);
+	RoleBO Load(int orgId, int pageindex, int pagesize);
 
 	/**
 	 * 获取当前组织的所有下级组织
 	 * @param orgId
 	 * @return
 	 */
-	public List<Integer> GetSubOrgIds(Integer orgId);
+	public List<Integer> GetSubOrgIds(int orgId);
 
-	public Role Find(Integer id);
+	public Role Find(int id);
 
-	public void Delete(Integer id);
+	public void Delete(int id);
 
 	public void AddOrUpdate(Role role);
 
-	public List<RoleVM> LoadForOrgAndUser(Integer orgId, Integer userId);
+	public List<RoleVM> LoadForOrgAndUser(int orgId, int userId);
 
-	public void AccessRole(Integer userId, List<Integer> roleIds);
+	public void AccessRole(int userId, List<Integer> roleIds);
 
 
 }

@@ -32,7 +32,7 @@ public class ModuleView {
     /**
      * 父节点流水号
      */
-	private Integer parentid;
+	private int parentid;
 
 
 	/**
@@ -44,11 +44,11 @@ public class ModuleView {
     
 	
 
-	 public Integer getId() {
+	 public int getId() {
 	        return id;
 	  }
 
-	 public void setId(Integer id) {
+	 public void setId(int id) {
 	        this.id = id;
 	  }
 	
@@ -69,11 +69,11 @@ public class ModuleView {
         this.url = url == null ? null : url.trim();
      }
      
-     public Integer getParentid() {
+     public int getParentid() {
          return parentid;
      }
 
-     public void setParentid(Integer parentid) {
+     public void setParentid(int parentid) {
          this.parentid = parentid;
      }
      

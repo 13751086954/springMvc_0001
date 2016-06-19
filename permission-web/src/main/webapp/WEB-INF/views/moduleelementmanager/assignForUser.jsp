@@ -11,7 +11,7 @@ String _treeDetail = _prefix + "Detail";
 
 <div class="bjui-pageHeader">
     <div class="bjui-searchBar">
-        <input style="display: none" id="userId" value="${userId}" />
+        <input style="display: none" id="userid" value="${userid}" />
         <div class="pull-right">
             <div class="alert alert-info search-inline">
                 <i class="fa fa-info-circle"></i> 点击行为单选，点击复选框可多选统一授权
@@ -51,22 +51,22 @@ String _treeDetail = _prefix + "Detail";
             filterThead: false,
             columns: [
                   {
-                      name: 'Id',
+                      name: 'id',
                       label: '元素名称',
                       hide: true
                   },
                {
-                   name: 'Name',
+                   name: 'name',
                    label: '元素名称',
                    width: 80
                },
                {
-                   name: 'ModuleName',
+                   name: 'modulename',
                    label: '所属模块',
                    width: 80
                },
                {
-                   name: 'Accessed',
+                   name: 'accessed',
                    label: '是否已经授权',
                    type: 'select',
                    align: 'center',
@@ -74,7 +74,7 @@ String _treeDetail = _prefix + "Detail";
                    width: 80
                }
             ],
-            dataUrl: '<%=path%>/moduleelementmanager/loadforuser?orgId=' + selectedId + '&userId=' + $('#userId').val(),
+            dataUrl: '<%=path%>/moduleelementmanager/loadforuser?orgid=' + selectedId + '&userid=' + $('#userid').val(),
             fullGrid: true,
             showLinenumber: true,
             showCheckboxcol: true,
@@ -85,7 +85,7 @@ String _treeDetail = _prefix + "Detail";
     }
 
     function zTreeOnClick(event, treeId, treeNode) {
-        selectedId = treeNode.Id;
+        selectedId = treeNode.id;
         loadDataGrid();
     }
 
@@ -94,19 +94,19 @@ String _treeDetail = _prefix + "Detail";
             view: { selectedMulti: false },
             data: {
                 key: {
-                    name: 'Name',
-                    title: 'Name'
+                    name: 'name',
+                    title: 'name'
                 },
                 simpleData: {
                     enable: true,
-                    idKey: 'Id',
-                    pIdKey: 'ParentId',
+                    idKey: 'id',
+                    pIdKey: 'parentid',
                     rootPId: 'null'
                 }
             },
             callback: { onClick: zTreeOnClick }
         };
-        $.getJSON('<%=path%>/modulemanager/loadforuser?userId=' + $('#userId').val(), function (json) {
+        $.getJSON('<%=path%>/modulemanager/loadforuser?userid=' + $('#userid').val(), function (json) {
             var zTreeObj = $.fn.zTree.init($('#<%=_treeId%>'), setting, json);
             zTreeObj.expandAll(true);
         });
@@ -119,7 +119,7 @@ String _treeDetail = _prefix + "Detail";
 
         $.post("<%=path%>/moduleelementmanager/assignforuser",
         {
-            userId: $('#userId').val(),
+            userid: $('#userid').val(),
             moduleId:selectedId,
             menuIds: selected
         },

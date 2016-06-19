@@ -9,7 +9,7 @@ public class UserExt {
 	/**
 	 * 用户ID
 	 */
-    private Integer id;
+    private int id;
 
     /**
 	 * 电子邮件
@@ -54,7 +54,7 @@ public class UserExt {
     /**
 	 * 用户头像流文件ID
 	 */
-    private Integer bytearrayid;
+    private int bytearrayid;
 
     /**
 	 * 静态扩展字段1
@@ -71,11 +71,11 @@ public class UserExt {
 	 */
     private String field3;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -143,11 +143,11 @@ public class UserExt {
         this.qq = qq == null ? null : qq.trim();
     }
 
-    public Integer getBytearrayid() {
+    public int getBytearrayid() {
         return bytearrayid;
     }
 
-    public void setBytearrayid(Integer bytearrayid) {
+    public void setBytearrayid(int bytearrayid) {
         this.bytearrayid = bytearrayid;
     }
 

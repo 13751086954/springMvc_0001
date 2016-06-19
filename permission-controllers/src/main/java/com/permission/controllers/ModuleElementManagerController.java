@@ -72,7 +72,7 @@ public class ModuleElementManagerController {
 	 * @return
 	 */
 	@RequestMapping(value="/assignforrole.do",method= RequestMethod.POST)
-	public BjuiResponse AssignForRole(int roleId,int moduleId, String menuIds){
+	public BjuiResponse AssignForRole(int roleid,int moduleId, String menuIds){
 		BjuiResponse _bjuiResponse= new BjuiResponse();			
 		try{
 			String[] strs=  menuIds.split(",");
@@ -80,7 +80,7 @@ public class ModuleElementManagerController {
 			for (String str : strs) {
 				ids.add(Integer.getInteger(str)) ;
 			}
-			_moduleElementManagerService.AssignForRole(roleId,moduleId, ids);
+			_moduleElementManagerService.AssignForRole(roleid,moduleId, ids);
 		}
 		catch (Exception e){
 			_bjuiResponse.setStatusCode("300");
@@ -90,13 +90,13 @@ public class ModuleElementManagerController {
 	}
 
 	@RequestMapping(value="/loadforrole.do")
-	public List<ModuleElementVM> LoadForRole(int roleId, int orgId){
-		return	_moduleElementManagerService.LoadWithAccess("RoleElement", roleId, orgId);
+	public List<ModuleElementVM> LoadForRole(int roleid, int orgid){
+		return	_moduleElementManagerService.LoadWithAccess("RoleElement", roleid, orgid);
 	}
 
 	@RequestMapping(value="/assignforuser.do")
-	public String AssignForUser(int userId,ModelMap model) {
-		model.addAttribute("userId", userId);
+	public String AssignForUser(int userid,ModelMap model) {
+		model.addAttribute("userid", userid);
 		return "moduleelementmanager/assignForUser";
 	}
 
@@ -111,7 +111,7 @@ public class ModuleElementManagerController {
 	 * @return
 	 */
 	@RequestMapping(value="/assignforuser.do",method= RequestMethod.POST)
-	public BjuiResponse AssignForUser(int userId,int moduleId, String menuIds){
+	public BjuiResponse AssignForUser(int userid,int moduleId, String menuIds){
 		BjuiResponse _bjuiResponse= new BjuiResponse();
 		try{
 			String[] strs=  menuIds.split(",");
@@ -119,7 +119,7 @@ public class ModuleElementManagerController {
 			for (String str : strs) {
 				ids.add(Integer.getInteger(str)) ;
 			}
-			_moduleElementManagerService.AssignForUser(userId,moduleId, ids);
+			_moduleElementManagerService.AssignForUser(userid,moduleId, ids);
 		}
 		catch (Exception e) {
 			_bjuiResponse.setStatusCode("300");
@@ -129,7 +129,7 @@ public class ModuleElementManagerController {
 	}
 
 	@RequestMapping(value="/loadforuser.do")
-	public List<ModuleElementVM> LoadForUser(int roleId, int orgId){
-		return	_moduleElementManagerService.LoadWithAccess("UserElement", roleId, orgId);
+	public List<ModuleElementVM> LoadForUser(int roleid, int orgid){
+		return	_moduleElementManagerService.LoadWithAccess("UserElement", roleid, orgid);
 	}
 }

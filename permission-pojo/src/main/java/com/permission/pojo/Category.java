@@ -9,7 +9,7 @@ public class Category {
 	/**
 	 * 分类表ID
 	 */
-    private Integer id;
+    private int id;
 
     /**
 	 * 节点语义ID
@@ -24,17 +24,17 @@ public class Category {
     /**
 	 * 节点语义ID
 	 */
-    private Integer parentid;
+    private int parentid;
 
     /**
      * 当前状态
      */
-    private Integer status;
+    private int status;
 
     /**
      * 排序号
      */
-    private Integer sortno;
+    private int sortno;
 
     /**
      * 分类所属科目
@@ -47,11 +47,11 @@ public class Category {
     private String rootname;
     
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -71,27 +71,27 @@ public class Category {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getParentid() {
+    public int getParentid() {
         return parentid;
     }
 
-    public void setParentid(Integer parentid) {
+    public void setParentid(int parentid) {
         this.parentid = parentid;
     }
 
-    public Integer getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public Integer getSortno() {
+    public int getSortno() {
         return sortno;
     }
 
-    public void setSortno(Integer sortno) {
+    public void setSortno(int sortno) {
         this.sortno = sortno;
     }
 

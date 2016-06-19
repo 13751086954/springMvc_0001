@@ -16,7 +16,7 @@ public interface RoleMapper {
 
 	List<Role> LoadRoleListPage(@Param("page")PageInfo page);
 
-	List<Role> LoadInOrgListPage(@Param("page")PageInfo page,@Param("orgIds")List<Integer> orgIds);
+	List<Role> LoadInOrgListPage(@Param("page")PageInfo page,@Param("ids")List<Integer> orgIds);
 
 	Role selectByPrimaryKey(Integer id);
 
@@ -30,5 +30,5 @@ public interface RoleMapper {
 
 	List<Role> FindAll();
 
-	Integer GetRoleCntInOrgs(List<Integer> getSubOrgIds);
+	Integer GetRoleCntInOrgs(@Param("ids")List<Integer> getSubOrgIds);
 }

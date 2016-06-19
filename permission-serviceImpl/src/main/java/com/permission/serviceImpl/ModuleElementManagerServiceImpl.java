@@ -38,14 +38,14 @@ public class ModuleElementManagerServiceImpl implements IModuleElementManagerSer
 	}
 
 	@Override
-	public List<ModuleElementWithBLOBs> LoadByModuleId(Integer id) {
+	public List<ModuleElementWithBLOBs> LoadByModuleId(int id) {
 		// TODO Auto-generated method stub
 		return _moduleElementDao.FindByModuleId(id);
 	}
 
 	@Override
 	public List<ModuleElementVM> LoadWithAccess(String accessType,
-			Integer firstId, Integer moduleId) {
+			int firstId, int moduleId) {
 		// TODO Auto-generated method stub
 		List<ModuleElementVM> listVms = new ArrayList<ModuleElementVM>();
 		if (moduleId == 0) return listVms;
@@ -72,13 +72,12 @@ public class ModuleElementManagerServiceImpl implements IModuleElementManagerSer
 	}
 
 	@Override
-	public void AssignForRole(Integer roleId, Integer moduleId,
-			List<Integer> menuIds) {	
+	public void AssignForRole(int roleId, int moduleId, List<Integer> menuIds) {	
 		// TODO Auto-generated method stub
 		List<Integer> elements = _moduleElementDao.FindIdsByModuleId(moduleId);
 		_relevanceDao.deleteByKeyAndFirstIdAndSecondIds("RoleElement", roleId,elements);
 
-		for (Integer menuId : menuIds) {
+		for (int menuId : menuIds) {
 			Relevance relevance= new Relevance();
 			relevance.setKey("RoleElement");
 			relevance.setFirstid(roleId);
@@ -90,12 +89,12 @@ public class ModuleElementManagerServiceImpl implements IModuleElementManagerSer
 	}
 
 	@Override
-	public void AssignForUser(Integer userId, Integer moduleId, List<Integer> ids) {
+	public void AssignForUser(int userId, int moduleId, List<Integer> ids) {
 		// TODO Auto-generated method stub
 		List<Integer> elements = _moduleElementDao.FindIdsByModuleId(moduleId);
 		_relevanceDao.deleteByKeyAndFirstIdAndSecondIds("UserElement", userId,elements);
 
-		for (Integer id : ids) {
+		for (int id : ids) {
 			Relevance relevance= new Relevance();
 			relevance.setKey("UserElement");
 			relevance.setFirstid(userId);

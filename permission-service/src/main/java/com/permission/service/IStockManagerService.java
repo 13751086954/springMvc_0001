@@ -13,11 +13,11 @@ public interface IStockManagerService {
 	 * @return
 	 * @throws Exception 
 	 */
-	public StockBO Load(Integer orgId, Integer pageindex, Integer pagesize) throws Exception;
+	public StockBO Load(int orgId, int pageindex, int pagesize) throws Exception;
 
-	public Stock Find(Integer id);
+	public Stock Find(int id);
 
-	public void Delete(Integer id);
+	public void Delete(int id);
 
 	public void AddOrUpdate(Stock model);
 

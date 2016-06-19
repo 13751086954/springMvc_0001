@@ -29,17 +29,17 @@ $('#tableButtons').on('afterdelete.bjui.tabledit', function(e) {
                data-single-noindex="true">
             <thead>
             <tr data-idname="Id">
-                <th width="8%" title="元素类型"><input type="text" name="Type" data-rule="required" value="button" size="5"></th>
-                <th width="10%" title="按钮标识"><input type="text" name="DomId" data-rule="required" value="" size="5"></th>
-                <th width="10%" title="按钮显示"><input type="text" name="Name" data-rule="required" value="" size="5"></th>
-                <th width="10%" title="按钮样式"><input type="text" name="Class" data-rule="required" value="btn-green" size="5"></th>
-                <th width="8%" title="按钮图标"><input type="text" name="Icon" data-rule="required" value="pencil" size="5"></th>
+                <th width="8%" title="元素类型"><input type="text" name="type" data-rule="required" value="button" size="5"></th>
+                <th width="10%" title="按钮标识"><input type="text" name="domid" data-rule="required" value="" size="5"></th>
+                <th width="10%" title="按钮显示"><input type="text" name="name" data-rule="required" value="" size="5"></th>
+                <th width="10%" title="按钮样式"><input type="text" name="classify" data-rule="required" value="btn-green" size="5"></th>
+                <th width="8%" title="按钮图标"><input type="text" name="icon" data-rule="required" value="pencil" size="5"></th>
                 <th width="10%" title="按钮脚本">
                     <input type="text" name="Script" data-rule="required" value="javascript:;" size="5">
                 </th>
-                <th width="24%" title="附加属性"><textarea name="Attr" data-toggle="autoheight"></textarea></th>
+                <th width="24%" title="附加属性"><textarea name="attr" data-toggle="autoheight"></textarea></th>
                 <th width="10%" title="所属模块ID">
-                    <input readonly="readonly" type="text" value="${moduleId}" name="ModuleId"/>
+                    <input readonly="readonly" type="text" value="${moduleId}" name="moduleid"/>
                 </th>
                 <th title="操作" width="10%">
                     <a href="javascript:;" class="btn btn-green" data-toggle="dosave">增加</a>

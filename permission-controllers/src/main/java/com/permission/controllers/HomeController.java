@@ -59,7 +59,7 @@ public class HomeController {
 	@Anonymous
 	@ResponseBody
 	@RequestMapping(value = "/getmodules.do")
-	public List<ModuleView> GetModules(Integer parentId){
+	public List<ModuleView> GetModules(int parentId){
 		List<ModuleView> moduleViews= _moduleManagerService.LoadByParent(parentId);
 		return moduleViews;
 	}

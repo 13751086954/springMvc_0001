@@ -9,7 +9,7 @@ public class Resource {
 	/**
 	 * 资源表ID
 	 */
-    private Integer id;
+    private int id;
 
     /**
 	 * 节点语义ID
@@ -24,7 +24,7 @@ public class Resource {
     /**
    	 *父节点流水号
    	 */
-    private Integer parentid;
+    private int parentid;
 
 
     /**
@@ -35,28 +35,28 @@ public class Resource {
     /**
    	 * 排序号
    	 */
-    private Integer sortno;
+    private int sortno;
 
     /**
    	 * 状态
    	 */
-    private Integer status;
+    private int status;
     
     /**
    	 * 资源分类
    	 */
-    private Integer categoryid;
+    private int categoryid;
 
     /**
    	 * 描述
    	 */
     private String description;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -84,35 +84,35 @@ public class Resource {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getParentid() {
+    public int getParentid() {
         return parentid;
     }
 
-    public void setParentid(Integer parentid) {
+    public void setParentid(int parentid) {
         this.parentid = parentid;
     }
 
-    public Integer getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public Integer getSortno() {
+    public int getSortno() {
         return sortno;
     }
 
-    public void setSortno(Integer sortno) {
+    public void setSortno(int sortno) {
         this.sortno = sortno;
     }
 
-    public Integer getCategoryid() {
+    public int getCategoryid() {
         return categoryid;
     }
 
-    public void setCategoryid(Integer categoryid) {
+    public void setCategoryid(int categoryid) {
         this.categoryid = categoryid;
     }
 

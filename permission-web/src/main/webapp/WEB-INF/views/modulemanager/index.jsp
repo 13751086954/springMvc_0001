@@ -23,7 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </div>
 </div>
-  <!--   dataUrl: '<%=path%>/modulemanager/load.do?orgId=' + selectedId, -->
 
 <script type="text/javascript">
     var selectedId = 0;
@@ -95,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     label: '排序号'
                },    
             ],
-            dataUrl: '<%=path%>/modulemanager/load.do?orgId=' + selectedId,
+            dataUrl: '<%=path%>/modulemanager/load.do?orgid=' + selectedId,
             fullGrid: true,
             showLinenumber: true,
             showCheckboxcol: true,
@@ -108,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   
     function zTreeOnClick(event, treeId, treeNode) {
-        selectedId = treeNode.Id;
+        selectedId = treeNode.id;
         loadDataGrid();
     }
 
@@ -123,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 simpleData: {
                     enable: true,
                     idKey: 'id',
-                    pIdKey: 'parentId',
+                    pIdKey: 'parentid',
                     rootPId: 'null'
                 }
             },
@@ -141,7 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var selected = getSelected('#maingrid',2);
         if (selected == null) return;
         
-        $.getJSON('<%=path%>/modulemanager/delete.do?Id=' + selected, function (data) {
+        $.getJSON('<%=path%>/modulemanager/delete.do?id=' + selected, function (data) {
             if (data.statusCode == "200")
                 loadDataGrid();
             else {

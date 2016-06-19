@@ -9,7 +9,7 @@ public class Module {
 	/**
 	 * 功能模块流水号
 	 */
-    private Integer id;
+    private int id;
 
     /**
 	 * 节点语义ID
@@ -34,7 +34,7 @@ public class Module {
     /**
    	 * 父节点流水号
    	 */
-    private Integer parentid;
+    private int parentid;
 
     /**
    	 * 是否叶子节点
@@ -54,7 +54,7 @@ public class Module {
     /**
    	 * 当前状态
    	 */
-    private Integer status;
+    private int status;
 
     /**
    	 * 父节点名称
@@ -69,14 +69,14 @@ public class Module {
     /**
    	 * 排序号
    	 */
-    private Integer sortno;
+    private int sortno;
     
  
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -112,11 +112,11 @@ public class Module {
         this.hotkey = hotkey == null ? null : hotkey.trim();
     }
 
-    public Integer getParentid() {
+    public int getParentid() {
         return parentid;
     }
 
-    public void setParentid(Integer parentid) {
+    public void setParentid(int parentid) {
         this.parentid = parentid;
     }
 
@@ -144,11 +144,11 @@ public class Module {
         this.iconname = iconname == null ? null : iconname.trim();
     }
 
-    public Integer getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -168,11 +168,11 @@ public class Module {
         this.vector = vector == null ? null : vector.trim();
     }
 
-    public Integer getSortno() {
+    public int getSortno() {
         return sortno;
     }
 
-    public void setSortno(Integer sortno) {
+    public void setSortno(int sortno) {
         this.sortno = sortno;
     }
 }

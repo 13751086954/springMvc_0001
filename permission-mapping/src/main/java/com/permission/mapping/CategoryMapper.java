@@ -29,7 +29,7 @@ public interface CategoryMapper {
     
     List<Category> LoadAll();
 
-	Integer GetCategoryCntInOrg(List<Integer> getSubOrgIds);
+	Integer GetCategoryCntInOrg(@Param("ids")List<Integer> getSubOrgIds);
 	
 	List<Integer> GetSubOrgIds(@Param("cascadeId")String cascadeId);
 }

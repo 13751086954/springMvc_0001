@@ -24,10 +24,10 @@ public interface UserMapper {
 
 	List<User> LoadUserListPage(@Param("page")PageInfo page) ;
 
-	List<User> LoadInOrgListPage(@Param("page")PageInfo page,@Param("orgId")List<Integer> orgId) ;
+	List<User> LoadInOrgListPage(@Param("page")PageInfo page,@Param("ids")List<Integer> orgIds) ;
 
 	User FindSingle(String account) ;
 	
-	Integer GetUserCntInOrg(List<Integer> getSubOrgIds);
+	Integer GetUserCntInOrg(@Param("ids")List<Integer> getSubOrgIds);
 
 }

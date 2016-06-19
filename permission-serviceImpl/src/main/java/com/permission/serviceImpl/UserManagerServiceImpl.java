@@ -35,12 +35,12 @@ public class UserManagerServiceImpl implements IUserManagerService {
 	}
 
 	@Override
-	public UserBO Load(Integer orgId, Integer pageindex,
-			Integer pagesize) {
+	public UserBO Load(int orgId, int pageindex,
+			int pagesize) {
 		// TODO Auto-generated method stub
 		if (pageindex < 1) pageindex = 1;
 		List<User> users = null;
-		Integer total = 0;
+		int total = 0;
 		if (orgId == 0){
 			PageInfo page=new PageInfo(pageindex,pagesize);
 			users = _UserDao.LoadInOrgListPage(page,null);
@@ -72,21 +72,21 @@ public class UserManagerServiceImpl implements IUserManagerService {
 	}
 
 	@Override
-	public List<Integer> GetSubOrgIds(Integer orgId) {
+	public List<Integer> GetSubOrgIds(int orgId) {
 		// TODO Auto-generated method stub
 		Org org = _orgDao.selectByPrimaryKey(orgId);
 		return _orgDao.GetSubOrgIds(org.getCascadeid(), 0);
 	}
 
 	@Override
-	public UserView Find(Integer id) {
+	public UserView Find(int id) {
 		// TODO Auto-generated method stub
 		User model = _UserDao.selectByPrimaryKey(id);
 		return (UserView) _mapper.map(model,UserView.class);
 	}
 
 	@Override
-	public void Delete(Integer id) {
+	public void Delete(int id) {
 		// TODO Auto-generated method stub
 		_UserDao.deleteByPrimaryKey(id);
 	}
@@ -104,7 +104,7 @@ public class UserManagerServiceImpl implements IUserManagerService {
 	}
 
 	@Override
-	public Integer GetUserCntInOrg(Integer orgId) {
+	public int GetUserCntInOrg(int orgId) {
 		// TODO Auto-generated method stub
 		if (orgId == 0){
 			return _UserDao.GetUserCntInOrg(null);

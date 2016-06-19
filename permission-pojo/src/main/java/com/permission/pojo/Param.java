@@ -9,7 +9,7 @@ public class Param {
 	/**
 	 * ID
 	 */
-    private Integer id;
+    private int id;
 
     /**
 	 * 值
@@ -25,17 +25,17 @@ public class Param {
     /**
 	 * 所属分类
 	 */
-    private Integer categoryid;
+    private int categoryid;
 
     /**
 	 * 排序号
 	 */
-    private Integer sortno;
+    private int sortno;
 
     /**
    	 * 状态
    	 */
-    private Integer status;
+    private int status;
 
     /**
    	 * 描述
@@ -43,11 +43,11 @@ public class Param {
     private String description;
     
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -67,27 +67,27 @@ public class Param {
         this.key = key == null ? null : key.trim();
     }
 
-    public Integer getCategoryid() {
+    public int getCategoryid() {
         return categoryid;
     }
 
-    public void setCategoryid(Integer categoryid) {
+    public void setCategoryid(int categoryid) {
         this.categoryid = categoryid;
     }
 
-    public Integer getSortno() {
+    public int getSortno() {
         return sortno;
     }
 
-    public void setSortno(Integer sortno) {
+    public void setSortno(int sortno) {
         this.sortno = sortno;
     }
 
-    public Integer getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

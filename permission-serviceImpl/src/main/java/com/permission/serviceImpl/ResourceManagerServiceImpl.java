@@ -28,7 +28,7 @@ public class ResourceManagerServiceImpl implements IResourceManagerService {
 	RelevanceMapper _relevanceDao;
 	
 	@Override
-	public Integer GetResourceCntInOrg(Integer orgId) {
+	public int GetResourceCntInOrg(int orgId) {
 		// TODO Auto-generated method stub
 		 if (orgId == 0){
              return _resourceDao.GetResourceCntInOrgs(null);
@@ -39,11 +39,11 @@ public class ResourceManagerServiceImpl implements IResourceManagerService {
 	}
 
 	@Override
-	public ResourceBO Load(Integer categoryId, Integer pageindex,
-			Integer pagesize) {
+	public ResourceBO Load(int categoryId, int pageindex,
+			int pagesize) {
 		// TODO Auto-generated method stub
 		List<Resource> Resources = null;
-		Integer total = 0;
+		int total = 0;
 		if (categoryId == 0){
 			PageInfo page=new PageInfo(pageindex,pagesize);
 			Resources = _resourceDao.LoadInOrgListPage(page,null);
@@ -68,7 +68,7 @@ public class ResourceManagerServiceImpl implements IResourceManagerService {
 	}
 
 	@Override
-	public List<Integer> GetSubOrgIds(Integer orgId) {
+	public List<Integer> GetSubOrgIds(int orgId) {
 		// TODO Auto-generated method stub
 		Category org= _categoryDao.selectByPrimaryKey(orgId);
 		List<Integer> orgs =_categoryDao.GetSubOrgIds(org.getCascadeid());
@@ -76,13 +76,13 @@ public class ResourceManagerServiceImpl implements IResourceManagerService {
 	}
 
 	@Override
-	public Resource Find(Integer id) {
+	public Resource Find(int id) {
 		// TODO Auto-generated method stub
 		return _resourceDao.selectByPrimaryKey(id);
 	}
 
 	@Override
-	public void Delete(Integer id) {
+	public void Delete(int id) {
 		// TODO Auto-generated method stub
 		_resourceDao.deleteByPrimaryKey(id);
 	}
@@ -99,8 +99,8 @@ public class ResourceManagerServiceImpl implements IResourceManagerService {
 	}
 
 	@Override
-	public List<ResourceVM> LoadWithAccess(String accessType, Integer firstId,
-			Integer cId) {
+	public List<ResourceVM> LoadWithAccess(String accessType, int firstId,
+			int cId) {
 		// TODO Auto-generated method stub
 		List<ResourceVM> listVms =new ArrayList<ResourceVM>();
 		List<Resource> resources = _resourceDao.LoadInOrgs(new ArrayList<Integer>(cId));
@@ -119,11 +119,11 @@ public class ResourceManagerServiceImpl implements IResourceManagerService {
 	}
 
 	@Override
-	public void AssignResForUser(Integer userId, List<Integer> resIds) {
+	public void AssignResForUser(int userId, List<Integer> resIds) {
 		// TODO Auto-generated method stub
 		_relevanceDao.deleteByKeyAndFirstIds("UserResource", resIds);
 
-		for (Integer menuId : resIds) {
+		for (int menuId : resIds) {
 			Relevance relevance= new Relevance();
 			relevance.setKey("UserResource");
 			relevance.setFirstid(userId);
@@ -134,11 +134,11 @@ public class ResourceManagerServiceImpl implements IResourceManagerService {
 	}
 
 	@Override
-	public void AssignResForRole(Integer roleId, List<Integer> resIds) {
+	public void AssignResForRole(int roleId, List<Integer> resIds) {
 		// TODO Auto-generated method stub
 		_relevanceDao.deleteByKeyAndFirstIds("RoleResource", resIds);
 
-		for (Integer menuId : resIds) {
+		for (int menuId : resIds) {
 			Relevance relevance= new Relevance();
 			relevance.setKey("RoleResource");
 			relevance.setFirstid(roleId);

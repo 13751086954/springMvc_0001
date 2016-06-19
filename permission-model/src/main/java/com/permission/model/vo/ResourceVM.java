@@ -9,7 +9,7 @@ public class ResourceVM {
 	/**
 	 * 资源表ID
 	 */
-    private Integer id;
+    private int id;
 
   
     /**
@@ -26,18 +26,18 @@ public class ResourceVM {
     /**
    	 * 状态
    	 */
-    private Integer status;
+    private int status;
     
     private Boolean isbelonguser;
 
 
 	private String description;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -59,11 +59,11 @@ public class ResourceVM {
     }
 
     
-    public Integer getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

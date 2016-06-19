@@ -9,7 +9,7 @@ public class Dicindex {
 	/**
 	 * 数据字典ID
 	 */
-    private Integer id;
+    private int id;
 
     /**
 	 * 名称
@@ -24,12 +24,12 @@ public class Dicindex {
     /**
 	 * 排序号
 	 */
-    private Integer sortno;
+    private int sortno;
 
     /**
 	 * 所属分类
 	 */
-    private Integer categoryid;
+    private int categoryid;
 
 
     /**
@@ -38,11 +38,11 @@ public class Dicindex {
     private String description;
     
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -62,19 +62,19 @@ public class Dicindex {
         this.key = key == null ? null : key.trim();
     }
 
-    public Integer getSortno() {
+    public int getSortno() {
         return sortno;
     }
 
-    public void setSortno(Integer sortno) {
+    public void setSortno(int sortno) {
         this.sortno = sortno;
     }
 
-    public Integer getCategoryid() {
+    public int getCategoryid() {
         return categoryid;
     }
 
-    public void setCategoryid(Integer categoryid) {
+    public void setCategoryid(int categoryid) {
         this.categoryid = categoryid;
     }
 

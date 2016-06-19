@@ -31,13 +31,13 @@ public class OrgManagerServiceImpl implements IOrgManagerService {
 	}
 
 	@Override
-	public List<Org> LoadDirectChildren(Integer orgId) {
+	public List<Org> LoadDirectChildren(int orgId) {
 		// TODO Auto-generated method stub
 		return _orgDao.LoadByParentId(orgId);
 	}
 
 	@Override
-	public List<Org> LoadAllChildren(Integer orgId) throws Exception {
+	public List<Org> LoadAllChildren(int orgId) throws Exception {
 		// TODO Auto-generated method stub
 		String cascadeId = "0.";
 		if (orgId != 0){
@@ -50,7 +50,7 @@ public class OrgManagerServiceImpl implements IOrgManagerService {
 	}
 
 	@Override
-	public Integer AddOrUpdate(Org org) throws Exception {
+	public int AddOrUpdate(Org org) throws Exception {
 		// TODO Auto-generated method stub
 		if (org.getId() == 0) {
 			ChangeModuleCascade(org);
@@ -64,7 +64,7 @@ public class OrgManagerServiceImpl implements IOrgManagerService {
 	}
 
 	@Override
-	public void DelOrg(Integer id) {
+	public void DelOrg(int id) {
 		// TODO Auto-generated method stub
 		Org delOrg = _orgDao.selectByPrimaryKey(id);
 		if (delOrg == null) return;
@@ -72,7 +72,7 @@ public class OrgManagerServiceImpl implements IOrgManagerService {
 	}
 
 	@Override
-	public List<Org> LoadForUser(Integer userId) {
+	public List<Org> LoadForUser(int userId) {
 		// TODO Auto-generated method stub
 		//用户角色
 		List<Integer> userRoleIds = _relevanceDao.FindUserRoleIds(userId);
@@ -84,12 +84,12 @@ public class OrgManagerServiceImpl implements IOrgManagerService {
 	}
 
 	@Override
-	public void AssignModuleForUser(Integer userId, List<Integer> ids) {
+	public void AssignModuleForUser(int userId, List<Integer> ids) {
 		// TODO Auto-generated method stub
 		List<Integer> ids1=new ArrayList<Integer>();
 		ids1.add(userId);
 		_relevanceDao.deleteByKeyAndFirstIds("UserAccessedOrg", ids1);
-		for (Integer secondid : ids) {
+		for (int secondid : ids) {
 			Relevance relevance=new Relevance();
 			relevance.setKey("UserAccessedOrg");
 			relevance.setFirstid(userId);
@@ -100,7 +100,7 @@ public class OrgManagerServiceImpl implements IOrgManagerService {
 	}
 
 	@Override
-	public List<Org> LoadForRole(Integer roleId) {
+	public List<Org> LoadForRole(int roleId) {
 		// TODO Auto-generated method stub
 		List<Integer> moduleIds =_relevanceDao.FindSecondIds(roleId, "UserAccessedOrg", "", null);
 		if (moduleIds==null || moduleIds.size()==0) {
@@ -110,12 +110,12 @@ public class OrgManagerServiceImpl implements IOrgManagerService {
 	}
 
 	@Override
-	public void AssignModuleForRole(Integer roleId, List<Integer> ids) {
+	public void AssignModuleForRole(int roleId, List<Integer> ids) {
 		// TODO Auto-generated method stub
 		List<Integer> ids1=new ArrayList<Integer>();
 		ids1.add(roleId);
 		_relevanceDao.deleteByKeyAndFirstIds("RoleAccessedOrg", ids1);
-		for (Integer secondid : ids) {
+		for (int secondid : ids) {
 			Relevance relevance=new Relevance();
 			relevance.setKey("RoleAccessedOrg");
 			relevance.setFirstid(roleId);
@@ -132,11 +132,11 @@ public class OrgManagerServiceImpl implements IOrgManagerService {
 	 */
 	private void ChangeModuleCascade(Org org) throws Exception{
 		String cascadeId;
-		Integer currentCascadeId = 1;  //当前结点的级联节点最后一位
+		int currentCascadeId = 1;  //当前结点的级联节点最后一位
 		List<Category> sameLevels = _orgDao.SameLevels(org.getParentid(), org.getId());
 		for (Category obj : sameLevels) {
 			String[] arrStrings= obj.getCascadeid().split(",");
-			Integer objCascadeId=Integer.getInteger(arrStrings[arrStrings.length-1]);
+			int objCascadeId = Integer.getInteger(arrStrings[arrStrings.length-1]);
 			if (currentCascadeId <= objCascadeId) currentCascadeId = objCascadeId + 1;
 		}
 

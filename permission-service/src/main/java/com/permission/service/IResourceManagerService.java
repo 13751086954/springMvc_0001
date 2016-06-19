@@ -8,13 +8,13 @@ import com.permission.pojo.Resource;
 
 public interface IResourceManagerService {
 
-	public Integer GetResourceCntInOrg(Integer orgId);
+	public int GetResourceCntInOrg(int orgId);
 
 	/**
 	 * 加载一个节点下面的一个或全部Resources
 	 * @return
 	 */
-	public ResourceBO Load(Integer categoryId, Integer pageindex, Integer pagesize);
+	public ResourceBO Load(int categoryId, int pageindex, int pagesize);
 	
 	public List<Resource> LoadAll();
 
@@ -23,11 +23,11 @@ public interface IResourceManagerService {
 	 * @param orgId
 	 * @return
 	 */
-	public List<Integer> GetSubOrgIds(Integer orgId);
+	public List<Integer> GetSubOrgIds(int orgId);
 	
-    public Resource Find(Integer id);
+    public Resource Find(int id);
     
-    public void Delete(Integer id);
+    public void Delete(int id);
     
     public void AddOrUpdate(Resource model);
     
@@ -41,7 +41,7 @@ public interface IResourceManagerService {
      * @param cId
      * @return
      */
-    public List<ResourceVM> LoadWithAccess(String accessType, Integer firstId, Integer cId);
+    public List<ResourceVM> LoadWithAccess(String accessType, int firstId, int cId);
     
     /**
      * 为用户分配资源
@@ -50,7 +50,7 @@ public interface IResourceManagerService {
      * @param resIds
      * 资源ID数组
      */
-    public void AssignResForUser(Integer userId, List<Integer> resIds);
+    public void AssignResForUser(int userId, List<Integer> resIds);
     
     /**
      * 为角色分配资源
@@ -59,5 +59,5 @@ public interface IResourceManagerService {
      * @param resIds
      * 资源ID数组
      */
-    public void AssignResForRole(Integer roleId, List<Integer> resIds);
+    public void AssignResForRole(int roleId, List<Integer> resIds);
 }

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -34,7 +35,8 @@ public class BaseHandlerInterceptor extends HandlerInterceptorAdapter {
 		}
 		LoginUserVM  loginUserVM = (LoginUserVM)_sessionHelper.GetSessionUser();
 		if(loginUserVM == null){
-			response.sendRedirect("login/index.do");		
+			//response.sendRedirect("login/index.do");	
+			request.getRequestDispatcher("/WEB-INF/views/login/index.jsp").forward(request, response);
 			return false;
 		}
 
@@ -54,7 +56,8 @@ public class BaseHandlerInterceptor extends HandlerInterceptorAdapter {
 		}
 		Boolean isAnnotation= thisMethod.isAnnotationPresent(Anonymous.class);
 		if (module == null && isAnnotation == false){
-			response.sendRedirect("login/index.do");
+			//response.sendRedirect("login/index.do");	
+			request.getRequestDispatcher("/WEB-INF/views/login/index.jsp").forward(request, response);
 		}	   
 		return true;    
 	} 
@@ -99,6 +102,9 @@ public class BaseHandlerInterceptor extends HandlerInterceptorAdapter {
 	}  
 
 	private Method invokeMethod(Object handler,String actionname) throws Exception {
+		HandlerMethod handlerMethod =(HandlerMethod)handler;
+		Class<?> clazz=handlerMethod.getBeanType();
+		/*
 		String className = handler.getClass().getName();
 		Class<?> clazz = null;
 		try {
@@ -107,6 +113,7 @@ public class BaseHandlerInterceptor extends HandlerInterceptorAdapter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		 */
 		Method[] methods = clazz.getMethods();
 		Method thisMethod = null;
 		for (Method method : methods) {

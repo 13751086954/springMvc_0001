@@ -12,29 +12,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              
                 <tr>
                     <td>
-                        <input type="hidden" value="${model.id}" name="Id">
-                        <input type="hidden" value="${model.cascadeid}" name="CascadeId">
+                        <input type="hidden" value="${model.id}" name="id">
+                        <input type="hidden" value="${model.cascadeid}" name="cascadeid">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="Name" class="control-label x120">功能模块名称：</label>
-                        <input type="text" name="Name" id="Name" value="${model.name}"
+                        <label for="name" class="control-label x120">功能模块名称：</label>
+                        <input type="text" name="name" id="name" value="${model.name}"
                                data-rule="required" size="20">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="Url" class="control-label x120">主页面URL：</label>
-                        <input type="text" name="Url" id="Url" value="${model.url}"  size="20">
+                        <label for="url" class="control-label x120">主页面URL：</label>
+                        <input type="text" name="url" id="url" value="${model.url}"  size="20">
                     </td>
                 </tr>
                 <tr>
                     <td>
                    
-                        <label for="ParentId" class="control-label x120">上级功能模块：</label>
-                        <input id="ParentId" name="ParentId" value="${model.parentid}" style="display: none" />
-                        <input type="text" name="ParentName" id="ParentName" size="20"
+                        <label for="parentid" class="control-label x120">上级功能模块：</label>
+                        <input id="parentid" name="parentid" value="${model.parentid}" style="display: none" />
+                        <input type="text" name="parentname" id="parentname" size="20"
                                value="${model.parentname}"
                               <c:choose>
 							   <c:when test="${model.id == 0}">  
@@ -58,14 +58,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                
                 <tr>
                     <td>
-                        <label for="IconName" class="control-label x120">节点图标文件名称：</label>
-                        <input type="text" name="IconName" id="IconName" value="${model.iconname}"  size="20">
+                        <label for="iconname" class="control-label x120">节点图标文件名称：</label>
+                        <input type="text" name="iconname" id="iconname" value="${model.iconname}"  size="20">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="Status" class="control-label x120">当前状态：</label>
-                        <select name="Status" id="Status" data-toggle="selectpicker" data-rule="required">
+                        <label for="status" class="control-label x120">当前状态：</label>
+                        <select name="status" id="status" data-toggle="selectpicker" data-rule="required">
                             <c:choose>
 							   <c:when test="${model.status == 0}">  
 							       <option value="0" selected="selected" >默认</option>
@@ -82,14 +82,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               
                 <tr>
                     <td>
-                        <label for="Vector" class="control-label x120">矢量图标：</label>
-                        <input type="text" name="Vector" id="Vector" value="${model.vector}" size="20">
+                        <label for="vector" class="control-label x120">矢量图标：</label>
+                        <input type="text" name="vector" id="vector" value="${model.vector}" size="20">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="SortNo" class="control-label x120">排序号：</label>
-                        <select name="SortNo" id="SortNo" data-toggle="selectpicker" data-rule="required">
+                        <label for="sortno" class="control-label x120">排序号：</label>
+                        <select name="sortno" id="sortno" data-toggle="selectpicker" data-rule="required">
                            <c:choose>
 							   <c:when test="${model.sortno == 0}">  
 							       <option value="0" selected="selected" >默认</option>
@@ -130,13 +130,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             },
             data: {
                 key: {
-                    name: 'Name',
-                    title: 'Name'
+                    name: 'name',
+                    title: 'name'
                 },
                 simpleData: {
                     enable: true,
-                    idKey: 'Id',
-                    pIdKey: 'ParentId',
+                    idKey: 'id',
+                    pIdKey: 'parentid',
                     rootPId: 'null'
                 }
             },
@@ -156,8 +156,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             nodes = zTree.getCheckedNodes(true);
         var ids = '', names = '';
         for (var i = 0; i < nodes.length; i++) {
-            ids += ',' + nodes[i].Id;
-            names += ',' + nodes[i].Name;
+            ids += ',' + nodes[i].id;
+            names += ',' + nodes[i].name;
         }
         if (ids.length > 0) {  //去掉第一个逗号
             ids = ids.substr(1);
@@ -167,7 +167,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var $from = $('#' + treeId).data('fromObj');
         if ($from && $from.length) $from.val(names);
 
-        $('#ParentId').val(ids);
+        $('#parentid').val(ids);
     }
     function zTreeOnClick(event, treeId, treeNode) {
         var zTree = $.fn.zTree.getZTreeObj(treeId);

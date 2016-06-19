@@ -9,7 +9,7 @@ public class UserCfg {
 	/**
 	 * 用户ID
 	 */
-    private Integer id;
+    private int id;
 
     /**
 	 * 用户界面主题
@@ -34,13 +34,13 @@ public class UserCfg {
     /**
 	 * 导航缺省活动页
 	 */
-    private Integer navtabindex;
+    private int navtabindex;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -76,11 +76,11 @@ public class UserCfg {
         this.tabfocuscolor = tabfocuscolor == null ? null : tabfocuscolor.trim();
     }
 
-    public Integer getNavtabindex() {
+    public int getNavtabindex() {
         return navtabindex;
     }
 
-    public void setNavtabindex(Integer navtabindex) {
+    public void setNavtabindex(int navtabindex) {
         this.navtabindex = navtabindex;
     }
 }

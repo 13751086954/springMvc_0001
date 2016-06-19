@@ -11,7 +11,7 @@ public class Role {
 	/**
 	 *  流水号
 	 */
-    private Integer id;
+    private int id;
 
     /**
    	 * 名称
@@ -21,12 +21,12 @@ public class Role {
     /**
    	 * 状态
    	 */
-    private Integer status;
+    private int status;
     
     /**
    	 * 角色类型
    	 */
-    private Integer type;
+    private int type;
 
     /**
    	 * 创建时间
@@ -41,7 +41,7 @@ public class Role {
     /**
    	 * 所属部门流水号
    	 */
-    private Integer orgid;
+    private int orgid;
 
     /**
    	 * 所属部门节点语义ID
@@ -54,11 +54,11 @@ public class Role {
     private String orgname;
 
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -70,19 +70,19 @@ public class Role {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public Integer getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(int type) {
         this.type = type;
     }
 
@@ -102,11 +102,11 @@ public class Role {
         this.createid = createid == null ? null : createid.trim();
     }
 
-    public Integer getOrgid() {
+    public int getOrgid() {
         return orgid;
     }
 
-    public void setOrgid(Integer orgid) {
+    public void setOrgid(int orgid) {
         this.orgid = orgid;
     }
 

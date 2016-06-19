@@ -19,6 +19,11 @@ import com.permission.model.vo.ModuleView;
 import com.permission.pojo.Module;
 import com.permission.service.IModuleManagerService;
 
+/**
+ * 模块元素管理，无需权限控制
+ * @author milanyangbo
+ *
+ */
 @Controller
 @RequestMapping("/modulemanager")
 public class ModuleManagerController {
@@ -43,8 +48,8 @@ public class ModuleManagerController {
 	 * @return
 	 */
 	@RequestMapping(value="/lookupmultiforuser.do")
-	public String LookUpMultiForUser(int userId,ModelMap model){
-		model.addAttribute("userId", userId);
+	public String LookUpMultiForUser(int userid,ModelMap model){
+		model.addAttribute("userid", userid);
 		return "modulemanager/lookUpMultiForUser";
 	}
 
@@ -55,8 +60,8 @@ public class ModuleManagerController {
 	 * @return
 	 */
 	@RequestMapping(value="/lookupmultiforrole.do")
-	public String LookUpMultiForRole(int roleId,ModelMap model){
-		model.addAttribute("roleId", roleId);
+	public String LookUpMultiForRole(int roleid,ModelMap model){
+		model.addAttribute("roleid", roleid);
 		return "modulemanager/lookUpMultiForRole";
 	}
 
@@ -70,14 +75,14 @@ public class ModuleManagerController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/load.do")
-	public ModuleBO Load(Integer orgId, Integer pageCurrent , Integer pageSize ) {
+	public ModuleBO Load(Integer orgid , Integer pageCurrent , Integer pageSize ) {
 		if (pageCurrent == null) {
 			pageCurrent = 1;
 		}
 		if (pageSize == null) {
 			pageSize = 30;
 		}
-		return _moduleManagerService.Load(orgId, pageCurrent, pageSize);
+		return _moduleManagerService.Load(orgid, pageCurrent, pageSize);
 	}
 
 	/**
@@ -123,11 +128,8 @@ public class ModuleManagerController {
 
 	@ResponseBody
 	@RequestMapping(value="/loadforuser.do")
-	public List<Module> LoadForUser(Integer userId){
-		if (userId == null) {
-			userId = -1;
-		}
-		List<Module> orgs = _moduleManagerService.LoadForUser(userId);
+	public List<Module> LoadForUser(int userid){
+		List<Module> orgs = _moduleManagerService.LoadForUser(userid);
 		//添加根节点
 		Module module = new Module();
 		module.setId(0);
@@ -140,11 +142,8 @@ public class ModuleManagerController {
 
 	@ResponseBody
 	@RequestMapping(value="/loadforrole.do")
-	public List<Module> LoadForRole(Integer roleId){
-		if (roleId == null) {
-			roleId = -1;
-		}
-		List<Module> orgs = _moduleManagerService.LoadForRole(roleId);
+	public List<Module> LoadForRole(int roleid){
+		List<Module> orgs = _moduleManagerService.LoadForRole(roleid);
 		//添加根节点
 		Module module = new Module();
 		module.setId(0);
@@ -157,17 +156,14 @@ public class ModuleManagerController {
 
 	@ResponseBody
 	@RequestMapping(value="/assignmoduleforrole.do")
-	public BjuiResponse AssignModuleForRole(Integer roleId, String moduleIds){		
+	public BjuiResponse AssignModuleForRole(int roleid, String moduleIds){		
 		try{
-			if (roleId == null) {
-				roleId = -1;
-			}
 			List<Integer> ids =new ArrayList<Integer>();        	 
 			String[] strs = moduleIds.split("|");
 			for (String str : strs) {
 				ids.add(Integer.getInteger(str));
 			}         
-			_moduleManagerService.AssignModuleForRole(roleId, (Integer[])ids.toArray());
+			_moduleManagerService.AssignModuleForRole(roleid, (Integer[])ids.toArray());
 		}
 		catch (Exception e) {
 			bjuiResponse.setMessage(e.getMessage());
@@ -178,17 +174,14 @@ public class ModuleManagerController {
 
 	@ResponseBody
 	@RequestMapping(value="/assignmoduleforuser.do")
-	public BjuiResponse AssignModuleForUser(Integer userId, String moduleIds){		
+	public BjuiResponse AssignModuleForUser(int userid, String moduleIds){		
 		try{
-			if (userId == null) {
-				userId = -1;
-			}
 			List<Integer> ids =new ArrayList<Integer>();        	 
 			String[] strs = moduleIds.split("|");
 			for (String str : strs) {
 				ids.add(Integer.getInteger(str));
 			}         
-			_moduleManagerService.AssignModuleForUser(userId, (Integer[])ids.toArray());
+			_moduleManagerService.AssignModuleForUser(userid, (Integer[])ids.toArray());
 		}
 		catch (Exception e) {
 			bjuiResponse.setMessage(e.getMessage());
@@ -200,7 +193,7 @@ public class ModuleManagerController {
 	@RequestMapping(value="/add.do")
 	public String Add(Integer id,ModelMap model) {
 		if (id == null) {
-			id=-1;
+			id = 0;
 		}
 		Module module= _moduleManagerService.Find(id);
 		model.addAttribute("model",module);
@@ -222,9 +215,9 @@ public class ModuleManagerController {
 
 	@ResponseBody
 	@RequestMapping(value="/delete.do")
-	public BjuiResponse Delete(String Id) {
+	public BjuiResponse Delete(String id) {
 		try{
-			String[] strs = Id.split("|");
+			String[] strs = id.split("|");
 			for (String str : strs) {
 				_moduleManagerService.Delete(Integer.getInteger(str));
 			}        

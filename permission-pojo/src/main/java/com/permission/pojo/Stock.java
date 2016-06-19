@@ -12,12 +12,12 @@ public class Stock {
 	/**
 	 * 数据ID
 	 */
-    private Integer id;
+    private int id;
 
     /**
 	 * 产品数量
 	 */
-    private Integer number;
+    private int number;
 
     /**
 	 * 产品单价
@@ -27,7 +27,7 @@ public class Stock {
     /**
 	 * 出库/入库
 	 */
-    private Integer status;
+    private int status;
 
     /**
 	 * 
@@ -42,26 +42,26 @@ public class Stock {
     /**
 	 * 组织ID
 	 */
-    private Integer orgid;
+    private int orgid;
 
     /**
 	 * 产品名称
 	 */
     private String name;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Integer getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 
@@ -73,11 +73,11 @@ public class Stock {
         this.price = price;
     }
 
-    public Integer getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -97,11 +97,11 @@ public class Stock {
         this.time = time;
     }
 
-    public Integer getOrgid() {
+    public int getOrgid() {
         return orgid;
     }
 
-    public void setOrgid(Integer orgid) {
+    public void setOrgid(int orgid) {
         this.orgid = orgid;
     }
 

@@ -15,7 +15,7 @@ public interface IOrgManagerService {
 	 * The org unique identifier.
 	 * @return
 	 */
-	public List<Org> LoadDirectChildren(Integer orgId);
+	public List<Org> LoadDirectChildren(int orgId);
 
 	/**
 	 * 得到部门的所有子部门
@@ -24,15 +24,15 @@ public interface IOrgManagerService {
 	 * @return
 	 * @throws Exception 
 	 */
-	public List<Org> LoadAllChildren(Integer orgId) throws Exception;
+	public List<Org> LoadAllChildren(int orgId) throws Exception;
 
-	public Integer AddOrUpdate(Org org) throws Exception;
+	public int AddOrUpdate(Org org) throws Exception;
 
 	/**
 	 * 删除指定ID的部门及其所有子部门
 	 * @param id
 	 */
-	public void DelOrg(Integer id);
+	public void DelOrg(int id);
 
 	/**
 	 * 加载特定用户的角色
@@ -40,26 +40,26 @@ public interface IOrgManagerService {
 	 * @param userId
 	 * @return
 	 */
-	public List<Org> LoadForUser(Integer userId);
+	public List<Org> LoadForUser(int userId);
 
 	/**
 	 * 为特定的用户分配角色
 	 * @param userId
 	 * @param ids
 	 */
-	public void AssignModuleForUser(Integer userId, List<Integer> ids);
+	public void AssignModuleForUser(int userId, List<Integer> ids);
 
 	/**
 	 * 加载特定角色的角色
 	 * @param roleId
 	 * @return
 	 */
-	public List<Org> LoadForRole(Integer roleId);
+	public List<Org> LoadForRole(int roleId);
 
 	/**
 	 * 为特定的角色分配角色
 	 * @param roleId
 	 * @param ids
 	 */
-	public void AssignModuleForRole(Integer roleId, List<Integer> ids);
+	public void AssignModuleForRole(int roleId, List<Integer> ids);
 }

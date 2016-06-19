@@ -11,7 +11,7 @@ public class Org {
 	/**
 	 * 流水号
 	 */
-    private Integer id;
+    private int id;
 
     /**
 	 * 节点语义ID
@@ -31,7 +31,7 @@ public class Org {
     /**
 	 * 父节点流水号
 	 */
-    private Integer parentid;
+    private int parentid;
 
     /**
 	 * 父节点名称
@@ -56,12 +56,12 @@ public class Org {
     /**
    	 *当前状态
    	 */
-    private Integer status;
+    private int status;
 
     /**
    	 * 组织类型
    	 */
-    private Integer type;
+    private int type;
 
     /**
    	 * 业务对照码
@@ -76,12 +76,12 @@ public class Org {
     /**
    	 * 创建人ID
    	 */
-    private Integer createid;
+    private int createid;
 
     /**
    	 * 排序号
    	 */
-    private Integer sortno;
+    private int sortno;
 
     /**
      * 自定义扩展码
@@ -89,11 +89,11 @@ public class Org {
     private String customcode;
     
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -121,11 +121,11 @@ public class Org {
         this.hotkey = hotkey == null ? null : hotkey.trim();
     }
 
-    public Integer getParentid() {
+    public int getParentid() {
         return parentid;
     }
 
-    public void setParentid(Integer parentid) {
+    public void setParentid(int parentid) {
         this.parentid = parentid;
     }
 
@@ -161,19 +161,19 @@ public class Org {
         this.iconname = iconname == null ? null : iconname.trim();
     }
 
-    public Integer getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public Integer getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(int type) {
         this.type = type;
     }
 
@@ -193,19 +193,19 @@ public class Org {
         this.createtime = createtime;
     }
 
-    public Integer getCreateid() {
+    public int getCreateid() {
         return createid;
     }
 
-    public void setCreateid(Integer createid) {
+    public void setCreateid(int createid) {
         this.createid = createid;
     }
 
-    public Integer getSortno() {
+    public int getSortno() {
         return sortno;
     }
 
-    public void setSortno(Integer sortno) {
+    public void setSortno(int sortno) {
         this.sortno = sortno;
     }
 

@@ -6,17 +6,17 @@ import com.permission.pojo.Stock;
 
 public class StockBO {
 
-private Integer total;
+private int total;
 	
 	private List<Stock> list;
 	
-	private Integer pageCurrent;
+	private int pageCurrent;
 	
-	public  Integer getTotal() {
+	public  int getTotal() {
 	    return total;
 	}
 
-	public void setTotal(Integer total) {	    	
+	public void setTotal(int total) {	    	
 	    this.total = total;
     }
 	
@@ -28,11 +28,11 @@ private Integer total;
 	    this.list = list;
     }
 	
-	public  Integer getPageCurrent() {
+	public  int getPageCurrent() {
 	    return pageCurrent;
 	}
 
-	public void setPageCurrent(Integer pageCurrent) {	    	
+	public void setPageCurrent(int pageCurrent) {	    	
 	    this.pageCurrent = pageCurrent;
     }
 }

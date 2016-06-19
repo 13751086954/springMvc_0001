@@ -37,7 +37,7 @@ public class RoleManagerServiceImpl implements IRoleManagerService {
 	}
 
 	@Override
-	public Integer GetRoleCntInOrg(Integer orgId) {
+	public int GetRoleCntInOrg(int orgId) {
 		// TODO Auto-generated method stub
 		if (orgId == 0) {
 			return _roleDao.GetRoleCntInOrgs(null);
@@ -48,11 +48,11 @@ public class RoleManagerServiceImpl implements IRoleManagerService {
 	}
 
 	@Override
-	public RoleBO Load(Integer orgId, Integer pageindex, Integer pagesize) {
+	public RoleBO Load(int orgId, int pageindex, int pagesize) {
 		// TODO Auto-generated method stub
 		if (pageindex < 1) pageindex = 1;
 		List<Role> roles = null;
-		Integer total = 0;
+		int total = 0;
 		if (orgId == 0){
 			PageInfo page=new PageInfo(pageindex,pagesize);
 			roles = _roleDao.LoadInOrgListPage(page,null);
@@ -71,20 +71,20 @@ public class RoleManagerServiceImpl implements IRoleManagerService {
 	}
 
 	@Override
-	public List<Integer> GetSubOrgIds(Integer orgId) {
+	public List<Integer> GetSubOrgIds(int orgId) {
 		// TODO Auto-generated method stub
 		Org org = _orgDao.selectByPrimaryKey(orgId);
 		return _orgDao.GetSubOrgIds(org.getCascadeid(),null);
 	}
 
 	@Override
-	public Role Find(Integer id) {
+	public Role Find(int id) {
 		// TODO Auto-generated method stub
 		return _roleDao.selectByPrimaryKey(id);
 	}
 
 	@Override
-	public void Delete(Integer id) {
+	public void Delete(int id) {
 		// TODO Auto-generated method stub
 		_roleDao.deleteByPrimaryKey(id);
 	}
@@ -101,7 +101,7 @@ public class RoleManagerServiceImpl implements IRoleManagerService {
 	}
 
 	@Override
-	public List<RoleVM> LoadForOrgAndUser(Integer orgId, Integer userId) {
+	public List<RoleVM> LoadForOrgAndUser(int orgId, int userId) {
 		// TODO Auto-generated method stub
 		List<Role> roleIds = _roleDao.FindByOrgId(orgId);
 		List<RoleVM>  roleVMs =new ArrayList<RoleVM>();
@@ -115,11 +115,11 @@ public class RoleManagerServiceImpl implements IRoleManagerService {
 	}
 
 	@Override
-	public void AccessRole(Integer userId, List<Integer> roleIds) {
+	public void AccessRole(int userId, List<Integer> roleIds) {
 		// TODO Auto-generated method stub
 		_relevanceDao.deleteByKeyAndFirstIds("UserRole", roleIds);
 
-		for (Integer menuId : roleIds) {
+		for (int menuId : roleIds) {
 			Relevance relevance= new Relevance();
 			relevance.setKey("UserRole");
 			relevance.setFirstid(userId);
