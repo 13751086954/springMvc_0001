@@ -3,6 +3,7 @@
     <base href="<%=path%>">
     
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>OpenAuth,权限管理系统</title>
     <link rel="shortcut icon" type="image/x-icon" href="<%=path%>/favicon.ico" media="screen" /> 
     <meta name="Keywords" content="OpenAuth,权限管理系统,milanyangbo" />

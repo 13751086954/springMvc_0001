@@ -6,95 +6,106 @@ package com.permission.pojo;
  *
  */
 public class Dicdetail {
+
+	public Dicdetail(){
+		this.id= 0;
+		this.value= "";
+		this.text= "";
+		this.dicid= 0;
+		this.sortno= 0;
+		this.status= 0;
+		this.description= "";
+	}
 	/**
 	 * ID
 	 */
-    private int id;
+	private int id;
 
-    /**
+	/**
 	 * 值
 	 */
-    private String value;
+	private String value;
 
-    /**
-   	 * 文本描述
-   	 */
-    private String text;
+	/**
+	 * 文本描述
+	 */
+	private String text;
 
-    /**
-   	 * 所属字典ID
-   	 */
-    private int dicid;
+	/**
+	 * 所属字典ID
+	 */
+	private int dicid;
 
-    /**
-   	 * 排序号
-   	 */
-    private int sortno;
+	/**
+	 * 排序号
+	 */
+	private int sortno;
 
-    /**
-   	 * 状态
-   	 */
-    private int status;
+	/**
+	 * 状态
+	 */
+	private int status;
 
-    /**
-   	 * 描述
-   	 */
-    private String description;
-    
+	/**
+	 * 描述
+	 */
+	private String description;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getValue() {
-        return value;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setValue(String value) {
-        this.value = value == null ? null : value.trim();
-    }
+	public String getValue() {
+		return value;
+	}
 
-    public String getText() {
-        return text;
-    }
+	public void setValue(String value) {
+		this.value = value == null ? null : value.trim();
+	}
 
-    public void setText(String text) {
-        this.text = text == null ? null : text.trim();
-    }
+	public String getText() {
+		return text;
+	}
 
-    public int getDicid() {
-        return dicid;
-    }
+	public void setText(String text) {
+		this.text = text == null ? null : text.trim();
+	}
 
-    public void setDicid(int dicid) {
-        this.dicid = dicid;
-    }
+	public int getDicid() {
+		return dicid;
+	}
 
-    public int getSortno() {
-        return sortno;
-    }
+	public void setDicid(int dicid) {
+		this.dicid = dicid;
+	}
 
-    public void setSortno(int sortno) {
-        this.sortno = sortno;
-    }
+	public int getSortno() {
+		return sortno;
+	}
 
-    public int getStatus() {
-        return status;
-    }
+	public void setSortno(int sortno) {
+		this.sortno = sortno;
+	}
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
+	public int getStatus() {
+		return status;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
-    }
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description == null ? null : description.trim();
+	}
+
 }

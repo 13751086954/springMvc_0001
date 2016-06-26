@@ -6,83 +6,92 @@ package com.permission.pojo;
  *
  */
 public class Dicindex {
+
+	public Dicindex(){
+		this.id= 0;
+		this.name= "";
+		this.key= "";
+		this.sortno= 0;
+		this.categoryid= 0;
+		this.description= "";
+	}
 	/**
 	 * 数据字典ID
 	 */
-    private int id;
+	private int id;
 
-    /**
+	/**
 	 * 名称
 	 */
-    private String name;
+	private String name;
 
-    /**
+	/**
 	 * 
 	 */
-    private String key;
+	private String key;
 
-    /**
+	/**
 	 * 排序号
 	 */
-    private int sortno;
+	private int sortno;
 
-    /**
+	/**
 	 * 所属分类
 	 */
-    private int categoryid;
+	private int categoryid;
 
 
-    /**
+	/**
 	 * 描述
 	 */
-    private String description;
-    
+	private String description;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getKey() {
-        return key;
-    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-    public void setKey(String key) {
-        this.key = key == null ? null : key.trim();
-    }
+	public String getKey() {
+		return key;
+	}
 
-    public int getSortno() {
-        return sortno;
-    }
+	public void setKey(String key) {
+		this.key = key == null ? null : key.trim();
+	}
 
-    public void setSortno(int sortno) {
-        this.sortno = sortno;
-    }
+	public int getSortno() {
+		return sortno;
+	}
 
-    public int getCategoryid() {
-        return categoryid;
-    }
+	public void setSortno(int sortno) {
+		this.sortno = sortno;
+	}
 
-    public void setCategoryid(int categoryid) {
-        this.categoryid = categoryid;
-    }
+	public int getCategoryid() {
+		return categoryid;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setCategoryid(int categoryid) {
+		this.categoryid = categoryid;
+	}
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
-    }
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description == null ? null : description.trim();
+	}
 }

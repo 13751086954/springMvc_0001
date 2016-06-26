@@ -8,212 +8,230 @@ import java.util.Date;
  *
  */
 public class Org {
+
+	public Org() {
+		this.id= 0;
+		this.cascadeid= "";
+		this.name= "";
+		this.hotkey= "";
+		this.parentid= 0;
+		this.parentname= "";
+		this.iconname= "";
+		this.status= 0;
+		this.type= 0;
+		this.bizcode= "";
+		this.customcode= "";
+		this.createtime= new Date(System.currentTimeMillis());
+		this.createid= 0;
+		this.sortno= 0;
+	}
 	/**
 	 * 流水号
 	 */
-    private int id;
+	private int id;
 
-    /**
+	/**
 	 * 节点语义ID
 	 */
-    private String cascadeid;
+	private String cascadeid;
 
-    /**
+	/**
 	 * 组织名称
 	 */
-    private String name;
+	private String name;
 
-    /**
+	/**
 	 * 热键
 	 */
-    private String hotkey;
+	private String hotkey;
 
-    /**
+	/**
 	 * 父节点流水号
 	 */
-    private int parentid;
+	private int parentid;
 
-    /**
+	/**
 	 * 父节点名称
 	 */
-    private String parentname;
+	private String parentname;
 
-    /**
-   	 * 是否叶子节点
-   	 */
-    private Boolean isleaf;
+	/**
+	 * 是否叶子节点
+	 */
+	private Boolean isleaf;
 
-    /**
-   	 * 是否自动展开
-   	 */
-    private Boolean isautoexpand;
+	/**
+	 * 是否自动展开
+	 */
+	private Boolean isautoexpand;
 
-    /**
-   	 *  节点图标文件名称
-   	 */
-    private String iconname;
+	/**
+	 *  节点图标文件名称
+	 */
+	private String iconname;
 
-    /**
-   	 *当前状态
-   	 */
-    private int status;
+	/**
+	 *当前状态
+	 */
+	private int status;
 
-    /**
-   	 * 组织类型
-   	 */
-    private int type;
+	/**
+	 * 组织类型
+	 */
+	private int type;
 
-    /**
-   	 * 业务对照码
-   	 */
-    private String bizcode;
+	/**
+	 * 业务对照码
+	 */
+	private String bizcode;
 
-    /**
-   	 * 创建时间
-   	 */
-    private Date createtime;
+	/**
+	 * 创建时间
+	 */
+	private Date createtime;
 
-    /**
-   	 * 创建人ID
-   	 */
-    private int createid;
+	/**
+	 * 创建人ID
+	 */
+	private int createid;
 
-    /**
-   	 * 排序号
-   	 */
-    private int sortno;
+	/**
+	 * 排序号
+	 */
+	private int sortno;
 
-    /**
-     * 自定义扩展码
-     */
-    private String customcode;
-    
+	/**
+	 * 自定义扩展码
+	 */
+	private String customcode;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getCascadeid() {
-        return cascadeid;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setCascadeid(String cascadeid) {
-        this.cascadeid = cascadeid == null ? null : cascadeid.trim();
-    }
+	public String getCascadeid() {
+		return cascadeid;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setCascadeid(String cascadeid) {
+		this.cascadeid = cascadeid == null ? null : cascadeid.trim();
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getHotkey() {
-        return hotkey;
-    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-    public void setHotkey(String hotkey) {
-        this.hotkey = hotkey == null ? null : hotkey.trim();
-    }
+	public String getHotkey() {
+		return hotkey;
+	}
 
-    public int getParentid() {
-        return parentid;
-    }
+	public void setHotkey(String hotkey) {
+		this.hotkey = hotkey == null ? null : hotkey.trim();
+	}
 
-    public void setParentid(int parentid) {
-        this.parentid = parentid;
-    }
+	public int getParentid() {
+		return parentid;
+	}
 
-    public String getParentname() {
-        return parentname;
-    }
+	public void setParentid(int parentid) {
+		this.parentid = parentid;
+	}
 
-    public void setParentname(String parentname) {
-        this.parentname = parentname == null ? null : parentname.trim();
-    }
+	public String getParentname() {
+		return parentname;
+	}
 
-    public Boolean getIsleaf() {
-        return isleaf;
-    }
+	public void setParentname(String parentname) {
+		this.parentname = parentname == null ? null : parentname.trim();
+	}
 
-    public void setIsleaf(Boolean isleaf) {
-        this.isleaf = isleaf;
-    }
+	public Boolean getIsleaf() {
+		return isleaf;
+	}
 
-    public Boolean getIsautoexpand() {
-        return isautoexpand;
-    }
+	public void setIsleaf(Boolean isleaf) {
+		this.isleaf = isleaf;
+	}
 
-    public void setIsautoexpand(Boolean isautoexpand) {
-        this.isautoexpand = isautoexpand;
-    }
+	public Boolean getIsautoexpand() {
+		return isautoexpand;
+	}
 
-    public String getIconname() {
-        return iconname;
-    }
+	public void setIsautoexpand(Boolean isautoexpand) {
+		this.isautoexpand = isautoexpand;
+	}
 
-    public void setIconname(String iconname) {
-        this.iconname = iconname == null ? null : iconname.trim();
-    }
+	public String getIconname() {
+		return iconname;
+	}
 
-    public int getStatus() {
-        return status;
-    }
+	public void setIconname(String iconname) {
+		this.iconname = iconname == null ? null : iconname.trim();
+	}
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
+	public int getStatus() {
+		return status;
+	}
 
-    public int getType() {
-        return type;
-    }
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
-    public void setType(int type) {
-        this.type = type;
-    }
+	public int getType() {
+		return type;
+	}
 
-    public String getBizcode() {
-        return bizcode;
-    }
+	public void setType(int type) {
+		this.type = type;
+	}
 
-    public void setBizcode(String bizcode) {
-        this.bizcode = bizcode == null ? null : bizcode.trim();
-    }
+	public String getBizcode() {
+		return bizcode;
+	}
 
-    public Date getCreatetime() {
-        return createtime;
-    }
+	public void setBizcode(String bizcode) {
+		this.bizcode = bizcode == null ? null : bizcode.trim();
+	}
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
-    }
+	public Date getCreatetime() {
+		return createtime;
+	}
 
-    public int getCreateid() {
-        return createid;
-    }
+	public void setCreatetime(Date createtime) {
+		this.createtime = createtime;
+	}
 
-    public void setCreateid(int createid) {
-        this.createid = createid;
-    }
+	public int getCreateid() {
+		return createid;
+	}
 
-    public int getSortno() {
-        return sortno;
-    }
+	public void setCreateid(int createid) {
+		this.createid = createid;
+	}
 
-    public void setSortno(int sortno) {
-        this.sortno = sortno;
-    }
+	public int getSortno() {
+		return sortno;
+	}
 
-    public String getCustomcode() {
-        return customcode;
-    }
+	public void setSortno(int sortno) {
+		this.sortno = sortno;
+	}
 
-    public void setCustomcode(String customcode) {
-        this.customcode = customcode == null ? null : customcode.trim();
-    }
+	public String getCustomcode() {
+		return customcode;
+	}
+
+	public void setCustomcode(String customcode) {
+		this.customcode = customcode == null ? null : customcode.trim();
+	}
+
 }

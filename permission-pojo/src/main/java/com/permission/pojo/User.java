@@ -8,104 +8,118 @@ import java.util.Date;
  *
  */
 public class User {
-    private int id;
 
-    private String account;
+	public User() {
+		this.id= 0;
+		this.account= "";
+		this.password= "";
+		this.name= "";
+		this.sex= 0;
+		this.status= 0;
+		this.type= 0;
+		this.bizcode= "";
+		this.createtime= new Date(System.currentTimeMillis());
+		this.createid= 0;
+	}
 
-    private String password;
+	private int id;
 
-    private String name;
+	private String account;
 
-    private int sex;
+	private String password;
 
-    private int status;
+	private String name;
 
-    private int type;
+	private int sex;
 
-    private String bizcode;
+	private int status;
 
-    private Date createtime;
+	private int type;
 
-    private int createid;
-    
+	private String bizcode;
 
-    public int getId() {
-        return id;
-    }
+	private Date createtime;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	private int createid;
 
-    public String getAccount() {
-        return account;
-    }
 
-    public void setAccount(String account) {
-        this.account = account == null ? null : account.trim();
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
-    }
+	public String getAccount() {
+		return account;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setAccount(String account) {
+		this.account = account == null ? null : account.trim();
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public int getSex() {
-        return sex;
-    }
+	public void setPassword(String password) {
+		this.password = password == null ? null : password.trim();
+	}
 
-    public void setSex(int sex) {
-        this.sex = sex;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public int getStatus() {
-        return status;
-    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
+	public int getSex() {
+		return sex;
+	}
 
-    public int getType() {
-        return type;
-    }
+	public void setSex(int sex) {
+		this.sex = sex;
+	}
 
-    public void setType(int type) {
-        this.type = type;
-    }
+	public int getStatus() {
+		return status;
+	}
 
-    public String getBizcode() {
-        return bizcode;
-    }
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
-    public void setBizcode(String bizcode) {
-        this.bizcode = bizcode == null ? null : bizcode.trim();
-    }
+	public int getType() {
+		return type;
+	}
 
-    public Date getCreatetime() {
-        return createtime;
-    }
+	public void setType(int type) {
+		this.type = type;
+	}
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
-    }
+	public String getBizcode() {
+		return bizcode;
+	}
 
-    public int getCreateid() {
-        return createid;
-    }
+	public void setBizcode(String bizcode) {
+		this.bizcode = bizcode == null ? null : bizcode.trim();
+	}
 
-    public void setCreateid(int createid) {
-        this.createid = createid;
-    }
+	public Date getCreatetime() {
+		return createtime;
+	}
+
+	public void setCreatetime(Date createtime) {
+		this.createtime = createtime;
+	}
+
+	public int getCreateid() {
+		return createid;
+	}
+
+	public void setCreateid(int createid) {
+		this.createid = createid;
+	}
 }

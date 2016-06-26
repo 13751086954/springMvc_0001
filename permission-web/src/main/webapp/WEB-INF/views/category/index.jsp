@@ -38,67 +38,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     function loadDataGrid() {
         //b-jui的datagrid需要重新处理HTML
         $('#detail').empty()
-            .append('<table id="maingrid" class="table table-hover table-striped table-top"></table>');
+            .append('<table id="maingrid" class="table table-bordered table-hover table-striped table-top"></table>');
 
         $('#maingrid').datagrid({
             showToolbar: false,
             filterThead: false,
-            target: $(this),
-            columns: [
+            target:$(this),
+           columns: [
                {
                     name: 'id',
-                    label: '功能模块流水号',
-                    hide: true
+                    label: '资源表ID',
+                     width: 100
+                    , hide: true
                },    
                {
                     name: 'cascadeid',
                     label: '节点语义ID',
-                     width: 80
+                     width: 100
                },    
                {
                     name: 'name',
-                    label: '功能模块名称',
-                     width: 80
+                    label: '名称',
+                     width: 100
                },    
-               {
-                    name: 'url',
-                    label: '主页面URL',
-                     width: 80
-               },    
-                 
                {
                     name: 'parentid',
                     label: '父节点流水号',
-                    hide:true
-               },    
-                
-               {
-                    name: 'iconname',
-                     width: 80,
-                    label: '节点图标文件名称'
+                     width: 100
                },    
                {
                     name: 'status',
-                     width: 80,
-                    label: '当前状态'
-               },    
-               {
-                    name: 'parentname',
-                     width: 80,
-                    label: '父节点名称'
-               },    
-               {
-                    name: 'vector',
-                     width: 80,
-                    label: '矢量图标'
+                    label: '当前状态',
+                     width: 100
+                     ,type: 'select',
+                    align: 'center',
+                    items: [{ '0': '默认' }, { '1': '状态1' }],
                },    
                {
                     name: 'sortno',
-                     width: 80,
-                    label: '排序号'
+                    label: '排序号',
+                     width: 100
+                     ,type: 'select',
+                    align: 'center',
+                    items: [{ '0': '默认' }, { '1': '状态1' }],
+               },    
+               {
+                    name: 'rootkey',
+                    label: '根节点',
+                     width: 100
+               },    
+               {
+                    name: 'rootname',
+                    label: '根节点名称',
+                     width: 100
                },    
             ],
-            dataUrl: '<%=path%>/modulemanager/load.do?orgid=' + selectedId,
+            dataUrl: '<%=path%>/categorymanager/load?orgid=' + selectedId,
             fullGrid: true,
             showLinenumber: true,
             showCheckboxcol: true,
@@ -108,8 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             //,height: '100%'
         });
     }
-  
-  
+
     function zTreeOnClick(event, treeId, treeNode) {
         selectedId = treeNode.id;
         loadDataGrid();
@@ -132,19 +126,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             },
             callback: {onClick: zTreeOnClick}
         };
-
-        $.getJSON('<%=path%>/modulemanager/loadmodulewithroot.do', function (json) {
-             var zTreeObj = $.fn.zTree.init($('#maintree'), setting, json);
-             zTreeObj.expandAll(true);
+        $.getJSON('<%=path%>/categorymanager/loadfortree', function (json) {
+            var zTreeObj = $.fn.zTree.init($('#maintree'), setting, json);
+            zTreeObj.expandAll(true);
         });
     }
 
     //删除
-    function delModule() {
+    function delCategory() {
         var selected = getSelected('#maingrid',2);
         if (selected == null) return;
         
-        $.getJSON('<%=path%>/modulemanager/delete.do?id=' + selected, function (data) {
+        $.getJSON('<%=path%>/categorymanager/delete?id=' + selected, function (data) {
             if (data.statusCode == "200")
                 loadDataGrid();
             else {
@@ -154,13 +147,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }
 
     //自定义的编辑按钮
-    function editModule() {
+    function editCategory() {
         var selected = getSelected('#maingrid',2);
         if (selected == null) return;
 
         $(this).dialog({
             id: 'editDialog',
-            url: '<%=path%>/modulemanager/add.do?id=' + selected,
+            url: '<%=path%>/categorymanager/add?id=' + selected,
             title: '编辑',
             onClose:function() {
                 refreshModuleGrid();
@@ -169,26 +162,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     }
 
-    //为模块分配按钮
-    function assignButton() {
-        var selected = getSelected('#maingrid',2);
-        if (selected == null) return;
-
-        $(this).dialog({
-            id: 'editDialog',
-            width: 1000,
-            height: 500,
-            mask:true,
-            url: '<%=path%>/moduleelementmanager/index.do?id=' + selected,
-            title: '为模块分配按钮'
-        });
-
-    }
-
-    function refreshModuleGrid() {
+    function refreshCategoryGrid() {
         $('#maingrid').datagrid('refresh');
        // loadDataGrid();
     }
 </script>
-  </body>
 </html>

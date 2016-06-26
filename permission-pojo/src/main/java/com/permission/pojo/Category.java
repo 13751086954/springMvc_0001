@@ -6,108 +6,120 @@ package com.permission.pojo;
  *
  */
 public class Category {
+
+	public Category(){
+		this.id= 0;
+		this.cascadeid= "";
+		this.name= "";
+		this.parentid= 0;
+		this.status= 0;
+		this.sortno= 0;
+		this.rootkey= "";
+		this.rootname= "";
+	}
 	/**
 	 * 分类表ID
 	 */
-    private int id;
+	private int id;
 
-    /**
+	/**
 	 * 节点语义ID
 	 */
-    private String cascadeid;
+	private String cascadeid;
 
-    /**
+	/**
 	 * 节点语义ID
 	 */
-    private String name;
+	private String name;
 
-    /**
+	/**
 	 * 节点语义ID
 	 */
-    private int parentid;
+	private int parentid;
 
-    /**
-     * 当前状态
-     */
-    private int status;
+	/**
+	 * 当前状态
+	 */
+	private int status;
 
-    /**
-     * 排序号
-     */
-    private int sortno;
+	/**
+	 * 排序号
+	 */
+	private int sortno;
 
-    /**
-     * 分类所属科目
-     */
-    private String rootkey;
+	/**
+	 * 分类所属科目
+	 */
+	private String rootkey;
 
-    /**
-     * 分类所属科目名称
-     */
-    private String rootname;
-    
+	/**
+	 * 分类所属科目名称
+	 */
+	private String rootname;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getCascadeid() {
-        return cascadeid;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setCascadeid(String cascadeid) {
-        this.cascadeid = cascadeid == null ? null : cascadeid.trim();
-    }
+	public String getCascadeid() {
+		return cascadeid;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setCascadeid(String cascadeid) {
+		this.cascadeid = cascadeid == null ? null : cascadeid.trim();
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public String getName() {
+		return name;
+	}
 
-    public int getParentid() {
-        return parentid;
-    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-    public void setParentid(int parentid) {
-        this.parentid = parentid;
-    }
+	public int getParentid() {
+		return parentid;
+	}
 
-    public int getStatus() {
-        return status;
-    }
+	public void setParentid(int parentid) {
+		this.parentid = parentid;
+	}
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
+	public int getStatus() {
+		return status;
+	}
 
-    public int getSortno() {
-        return sortno;
-    }
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
-    public void setSortno(int sortno) {
-        this.sortno = sortno;
-    }
+	public int getSortno() {
+		return sortno;
+	}
 
-    public String getRootkey() {
-        return rootkey;
-    }
+	public void setSortno(int sortno) {
+		this.sortno = sortno;
+	}
 
-    public void setRootkey(String rootkey) {
-        this.rootkey = rootkey == null ? null : rootkey.trim();
-    }
+	public String getRootkey() {
+		return rootkey;
+	}
 
-    public String getRootname() {
-        return rootname;
-    }
+	public void setRootkey(String rootkey) {
+		this.rootkey = rootkey == null ? null : rootkey.trim();
+	}
 
-    public void setRootname(String rootname) {
-        this.rootname = rootname == null ? null : rootname.trim();
-    }
+	public String getRootname() {
+		return rootname;
+	}
+
+	public void setRootname(String rootname) {
+		this.rootname = rootname == null ? null : rootname.trim();
+	}
+
 }

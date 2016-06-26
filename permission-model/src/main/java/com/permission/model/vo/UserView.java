@@ -3,116 +3,123 @@ package com.permission.model.vo;
 import java.util.Date;
 
 public class UserView {
-	 private int id;
 
-	    private String account;
+	public UserView(){
+		organizations = "";
+		organizationids = "";
+		createuser = "";
+	}
 
-	    private String password;
+	private int id;
 
-	    private String name;
+	private String account;
 
-	    private int sex;
+	private String password;
 
-	    private int status;
+	private String name;
 
-	    private int type;
+	private int sex;
 
-	    private Date createtime;
+	private int status;
 
-	    private String createuser;
-	    
-	   /**
-	    * 所属组织名称，多个可用，分隔
-	   */
-        public String organizations;
+	private int type;
 
-        public String organizationids;
+	private Date createtime;
 
-	    public int getId() {
-	        return id;
-	    }
+	private String createuser;
 
-	    public void setId(int id) {
-	        this.id = id;
-	    }
+	/**
+	 * 所属组织名称，多个可用，分隔
+	 */
+	public String organizations;
 
-	    public String getAccount() {
-	        return account;
-	    }
+	public String organizationids;
 
-	    public void setAccount(String account) {
-	        this.account = account == null ? null : account.trim();
-	    }
+	public int getId() {
+		return id;
+	}
 
-	    public String getPassword() {
-	        return password;
-	    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-	    public void setPassword(String password) {
-	        this.password = password == null ? null : password.trim();
-	    }
+	public String getAccount() {
+		return account;
+	}
 
-	    public String getName() {
-	        return name;
-	    }
+	public void setAccount(String account) {
+		this.account = account == null ? null : account.trim();
+	}
 
-	    public void setName(String name) {
-	        this.name = name == null ? null : name.trim();
-	    }
+	public String getPassword() {
+		return password;
+	}
 
-	    public int getSex() {
-	        return sex;
-	    }
+	public void setPassword(String password) {
+		this.password = password == null ? null : password.trim();
+	}
 
-	    public void setSex(int sex) {
-	        this.sex = sex;
-	    }
+	public String getName() {
+		return name;
+	}
 
-	    public int getStatus() {
-	        return status;
-	    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-	    public void setStatus(int status) {
-	        this.status = status;
-	    }
+	public int getSex() {
+		return sex;
+	}
 
-	    public int getType() {
-	        return type;
-	    }
+	public void setSex(int sex) {
+		this.sex = sex;
+	}
 
-	    public void setType(int type) {
-	        this.type = type;
-	    }
+	public int getStatus() {
+		return status;
+	}
 
-	    public Date getCreatetime() {
-	        return createtime;
-	    }
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
-	    public void setCreatetime(Date createtime) {
-	        this.createtime = createtime;
-	    }
+	public int getType() {
+		return type;
+	}
 
-	    public String getCreateUser() {
-	        return createuser;
-	    }
+	public void setType(int type) {
+		this.type = type;
+	}
 
-	    public void setCreateUser(String createuser) {
-	        this.createuser = createuser;
-	    }
-	    
-	    public String getOrganizations() {
-	        return organizations;
-	    }
+	public Date getCreatetime() {
+		return createtime;
+	}
 
-	    public void setOrganizations(String organizations) {
-	        this.organizations = organizations;
-	    }
-	    
-	    public String getOrganizationIds() {
-	        return organizationids;
-	    }
+	public void setCreatetime(Date createtime) {
+		this.createtime = createtime;
+	}
 
-	    public void setOrganizationIds(String organizationids) {
-	        this.organizationids = organizationids;
-	    }
+	public String getCreateUser() {
+		return createuser;
+	}
+
+	public void setCreateUser(String createuser) {
+		this.createuser = createuser;
+	}
+
+	public String getOrganizations() {
+		return organizations;
+	}
+
+	public void setOrganizations(String organizations) {
+		this.organizations = organizations;
+	}
+
+	public String getOrganizationIds() {
+		return organizationids;
+	}
+
+	public void setOrganizationIds(String organizationids) {
+		this.organizationids = organizationids;
+	}
 }

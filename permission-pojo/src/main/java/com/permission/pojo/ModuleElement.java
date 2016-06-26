@@ -6,121 +6,134 @@ package com.permission.pojo;
  *
  */
 public class ModuleElement {
+
+	public ModuleElement(){
+		this.id= 0;
+		this.domid= "";
+		this.name= "";
+		this.type= "";
+		this.moduleid= 0;
+		this.icon= "";
+		this.classify= "";
+		this.remark= "";
+		this.sort= 0;
+	}
 	/**
 	 * 流水号
 	 */
-    private int id;
-    
-    /**
+	protected int id;
+
+	/**
 	 * DOM ID
 	 */
-    private String domid;
+	protected String domid;
 
-    /**
+	/**
 	 * 名称
 	 */
-    private String name;
+	protected String name;
 
-    /**
+	/**
 	 * 类型
 	 */
-    private String type;
+	protected String type;
 
-    /**
+	/**
 	 * 功能模块Id
 	 */
-    private int moduleid;
+	protected int moduleid;
 
-    /**
+	/**
 	 * 元素图标
 	 */
-    private String icon;
+	protected String icon;
 
-    /**
-   	 * 元素样式
-   	 */
-    private String classify;
+	/**
+	 * 元素样式
+	 */
+	protected String classify;
 
-    /**
-   	 * 备注
-   	 */
-    private String remark;
+	/**
+	 * 备注
+	 */
+	protected String remark;
 
-    /**
-   	 * 排序字段
-   	 */
-    private int sort;
-     
+	/**
+	 * 排序字段
+	 */
+	protected int sort;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getDomid() {
-        return domid;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setDomid(String domid) {
-        this.domid = domid == null ? null : domid.trim();
-    }
+	public String getDomid() {
+		return domid;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setDomid(String domid) {
+		this.domid = domid == null ? null : domid.trim();
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getType() {
-        return type;
-    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-    public void setType(String type) {
-        this.type = type == null ? null : type.trim();
-    }
+	public String getType() {
+		return type;
+	}
 
-    public int getModuleid() {
-        return moduleid;
-    }
+	public void setType(String type) {
+		this.type = type == null ? null : type.trim();
+	}
 
-    public void setModuleid(int moduleid) {
-        this.moduleid = moduleid;
-    }
+	public int getModuleid() {
+		return moduleid;
+	}
 
-    public String getIcon() {
-        return icon;
-    }
+	public void setModuleid(int moduleid) {
+		this.moduleid = moduleid;
+	}
 
-    public void setIcon(String icon) {
-        this.icon = icon == null ? null : icon.trim();
-    }
+	public String getIcon() {
+		return icon;
+	}
 
-    public String getClassify() {
-        return classify;
-    }
+	public void setIcon(String icon) {
+		this.icon = icon == null ? null : icon.trim();
+	}
 
-    public void setClassify(String classify) {
-        this.classify = classify == null ? null : classify.trim();
-    }
+	public String getClassify() {
+		return classify;
+	}
 
-    public String getRemark() {
-        return remark;
-    }
+	public void setClassify(String classify) {
+		this.classify = classify == null ? null : classify.trim();
+	}
 
-    public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
-    }
+	public String getRemark() {
+		return remark;
+	}
 
-    public int getSort() {
-        return sort;
-    }
+	public void setRemark(String remark) {
+		this.remark = remark == null ? null : remark.trim();
+	}
 
-    public void setSort(int sort) {
-        this.sort = sort;
-    }
+	public int getSort() {
+		return sort;
+	}
+
+	public void setSort(int sort) {
+		this.sort = sort;
+	}
+
 }

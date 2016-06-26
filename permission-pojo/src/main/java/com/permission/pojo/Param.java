@@ -6,96 +6,107 @@ package com.permission.pojo;
  *
  */
 public class Param {
+
+	public Param(){
+		this.id= 0;
+		this.value= "";
+		this.key= "";
+		this.categoryid= 0;
+		this.sortno= 0;
+		this.status= 0;
+		this.description= "";
+	}
 	/**
 	 * ID
 	 */
-    private int id;
+	private int id;
 
-    /**
+	/**
 	 * 值
 	 */
-    private String value;
+	private String value;
 
 
-    /**
+	/**
 	 * 
 	 */
-    private String key;
+	private String key;
 
-    /**
+	/**
 	 * 所属分类
 	 */
-    private int categoryid;
+	private int categoryid;
 
-    /**
+	/**
 	 * 排序号
 	 */
-    private int sortno;
+	private int sortno;
 
-    /**
-   	 * 状态
-   	 */
-    private int status;
+	/**
+	 * 状态
+	 */
+	private int status;
 
-    /**
-   	 * 描述
-   	 */
-    private String description;
-    
+	/**
+	 * 描述
+	 */
+	private String description;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getValue() {
-        return value;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setValue(String value) {
-        this.value = value == null ? null : value.trim();
-    }
+	public String getValue() {
+		return value;
+	}
 
-    public String getKey() {
-        return key;
-    }
+	public void setValue(String value) {
+		this.value = value == null ? null : value.trim();
+	}
 
-    public void setKey(String key) {
-        this.key = key == null ? null : key.trim();
-    }
+	public String getKey() {
+		return key;
+	}
 
-    public int getCategoryid() {
-        return categoryid;
-    }
+	public void setKey(String key) {
+		this.key = key == null ? null : key.trim();
+	}
 
-    public void setCategoryid(int categoryid) {
-        this.categoryid = categoryid;
-    }
+	public int getCategoryid() {
+		return categoryid;
+	}
 
-    public int getSortno() {
-        return sortno;
-    }
+	public void setCategoryid(int categoryid) {
+		this.categoryid = categoryid;
+	}
 
-    public void setSortno(int sortno) {
-        this.sortno = sortno;
-    }
+	public int getSortno() {
+		return sortno;
+	}
 
-    public int getStatus() {
-        return status;
-    }
+	public void setSortno(int sortno) {
+		this.sortno = sortno;
+	}
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
+	public int getStatus() {
+		return status;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
-    }
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description == null ? null : description.trim();
+	}
+
 }

@@ -6,172 +6,188 @@ package com.permission.pojo;
  *
  */
 public class UserExt {
+
+	public UserExt(){
+		this.id= 0;
+		this.email= "";
+		this.phone= "";
+		this.mobile= "";
+		this.address= "";
+		this.zip= "";
+		this.birthday= "";
+		this.idcard= "";
+		this.qq= "";
+		this.bytearrayid= 0;
+		this.field1= "";
+		this.field2= "";
+		this.field3= "";
+	}
 	/**
 	 * 用户ID
 	 */
-    private int id;
+	protected int id;
 
-    /**
+	/**
 	 * 电子邮件
 	 */
-    private String email;
+	protected String email;
 
-    /**
+	/**
 	 * 固定电话
 	 */
-    private String phone;
+	protected String phone;
 
-    /**
+	/**
 	 * 移动电话
 	 */
-    private String mobile;
+	protected String mobile;
 
-    /**
+	/**
 	 * 联系地址
 	 */
-    private String address;
+	protected String address;
 
-    /**
+	/**
 	 * 邮编
 	 */
-    private String zip;
+	protected String zip;
 
-    /**
+	/**
 	 * 生日
 	 */
-    private String birthday;
+	protected String birthday;
 
-    /**
+	/**
 	 *  身份证号
 	 */
-    private String idcard;
+	protected String idcard;
 
-    /**
+	/**
 	 * QQ
 	 */
-    private String qq;
+	protected String qq;
 
-    /**
+	/**
 	 * 用户头像流文件ID
 	 */
-    private int bytearrayid;
+	protected int bytearrayid;
 
-    /**
+	/**
 	 * 静态扩展字段1
 	 */
-    private String field1;
+	protected String field1;
 
-    /**
+	/**
 	 * 静态扩展字段2
 	 */
-    private String field2;
+	protected String field2;
 
-    /**
+	/**
 	 *  静态扩展字段3
 	 */
-    private String field3;
+	protected String field3;
 
-    public int getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
-    }
+	public void setEmail(String email) {
+		this.email = email == null ? null : email.trim();
+	}
 
-    public String getPhone() {
-        return phone;
-    }
+	public String getPhone() {
+		return phone;
+	}
 
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
-    }
+	public void setPhone(String phone) {
+		this.phone = phone == null ? null : phone.trim();
+	}
 
-    public String getMobile() {
-        return mobile;
-    }
+	public String getMobile() {
+		return mobile;
+	}
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile == null ? null : mobile.trim();
-    }
+	public void setMobile(String mobile) {
+		this.mobile = mobile == null ? null : mobile.trim();
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public String getAddress() {
+		return address;
+	}
 
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
-    }
+	public void setAddress(String address) {
+		this.address = address == null ? null : address.trim();
+	}
 
-    public String getZip() {
-        return zip;
-    }
+	public String getZip() {
+		return zip;
+	}
 
-    public void setZip(String zip) {
-        this.zip = zip == null ? null : zip.trim();
-    }
+	public void setZip(String zip) {
+		this.zip = zip == null ? null : zip.trim();
+	}
 
-    public String getBirthday() {
-        return birthday;
-    }
+	public String getBirthday() {
+		return birthday;
+	}
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday == null ? null : birthday.trim();
-    }
+	public void setBirthday(String birthday) {
+		this.birthday = birthday == null ? null : birthday.trim();
+	}
 
-    public String getIdcard() {
-        return idcard;
-    }
+	public String getIdcard() {
+		return idcard;
+	}
 
-    public void setIdcard(String idcard) {
-        this.idcard = idcard == null ? null : idcard.trim();
-    }
+	public void setIdcard(String idcard) {
+		this.idcard = idcard == null ? null : idcard.trim();
+	}
 
-    public String getQq() {
-        return qq;
-    }
+	public String getQq() {
+		return qq;
+	}
 
-    public void setQq(String qq) {
-        this.qq = qq == null ? null : qq.trim();
-    }
+	public void setQq(String qq) {
+		this.qq = qq == null ? null : qq.trim();
+	}
 
-    public int getBytearrayid() {
-        return bytearrayid;
-    }
+	public int getBytearrayid() {
+		return bytearrayid;
+	}
 
-    public void setBytearrayid(int bytearrayid) {
-        this.bytearrayid = bytearrayid;
-    }
+	public void setBytearrayid(int bytearrayid) {
+		this.bytearrayid = bytearrayid;
+	}
 
-    public String getField1() {
-        return field1;
-    }
+	public String getField1() {
+		return field1;
+	}
 
-    public void setField1(String field1) {
-        this.field1 = field1 == null ? null : field1.trim();
-    }
+	public void setField1(String field1) {
+		this.field1 = field1 == null ? null : field1.trim();
+	}
 
-    public String getField2() {
-        return field2;
-    }
+	public String getField2() {
+		return field2;
+	}
 
-    public void setField2(String field2) {
-        this.field2 = field2 == null ? null : field2.trim();
-    }
+	public void setField2(String field2) {
+		this.field2 = field2 == null ? null : field2.trim();
+	}
 
-    public String getField3() {
-        return field3;
-    }
+	public String getField3() {
+		return field3;
+	}
 
-    public void setField3(String field3) {
-        this.field3 = field3 == null ? null : field3.trim();
-    }
+	public void setField3(String field3) {
+		this.field3 = field3 == null ? null : field3.trim();
+	}
 }

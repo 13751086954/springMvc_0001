@@ -8,108 +8,120 @@ import java.util.Date;
  *
  */
 public class Relevance {
+	
+	public Relevance(){
+		this.id= 0;
+		this.firstid= 0;
+		this.secondid= 0;
+		this.description= "";
+		this.key= "";
+		this.status= 0;
+		this.operatetime= new Date(System.currentTimeMillis());
+		this.operatorid= 0;
+	}
 	/**
 	 * 流水号
 	 */
-    private int id;
+	private int id;
 
-    /**
+	/**
 	 * 第一个表主键ID
 	 */
-    private int firstid;
+	private int firstid;
 
-    /**
+	/**
 	 * 第二个表主键ID
 	 */
-    private int secondid;
+	private int secondid;
 
-    /**
-   	 * 描述
-   	 */
-    private String description;
+	/**
+	 * 描述
+	 */
+	private String description;
 
-    /**
-   	 * 
-   	 */
-    private String key;
+	/**
+	 * 
+	 */
+	private String key;
 
-    /**
-   	 * 状态
-   	 */
-    private int status;
+	/**
+	 * 状态
+	 */
+	private int status;
 
-    /**
-   	 * 授权时间
-   	 */
-    private Date operatetime;
+	/**
+	 * 授权时间
+	 */
+	private Date operatetime;
 
-    /**
-   	 * 授权人
-   	 */
-    private int operatorid;
-    
+	/**
+	 * 授权人
+	 */
+	private int operatorid;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public int getFirstid() {
-        return firstid;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setFirstid(int firstid) {
-        this.firstid = firstid;
-    }
+	public int getFirstid() {
+		return firstid;
+	}
 
-    public int getSecondid() {
-        return secondid;
-    }
+	public void setFirstid(int firstid) {
+		this.firstid = firstid;
+	}
 
-    public void setSecondid(int secondid) {
-        this.secondid = secondid;
-    }
+	public int getSecondid() {
+		return secondid;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setSecondid(int secondid) {
+		this.secondid = secondid;
+	}
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public String getKey() {
-        return key;
-    }
+	public void setDescription(String description) {
+		this.description = description == null ? null : description.trim();
+	}
 
-    public void setKey(String key) {
-        this.key = key == null ? null : key.trim();
-    }
+	public String getKey() {
+		return key;
+	}
 
-    public int getStatus() {
-        return status;
-    }
+	public void setKey(String key) {
+		this.key = key == null ? null : key.trim();
+	}
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
+	public int getStatus() {
+		return status;
+	}
 
-    public Date getOperatetime() {
-        return operatetime;
-    }
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
-    public void setOperatetime(Date operatetime) {
-        this.operatetime = operatetime;
-    }
+	public Date getOperatetime() {
+		return operatetime;
+	}
 
-    public int getOperatorid() {
-        return operatorid;
-    }
+	public void setOperatetime(Date operatetime) {
+		this.operatetime = operatetime;
+	}
 
-    public void setOperatorid(int operatorid) {
-        this.operatorid = operatorid;
-    }
+	public int getOperatorid() {
+		return operatorid;
+	}
+
+	public void setOperatorid(int operatorid) {
+		this.operatorid = operatorid;
+	}
+
 }

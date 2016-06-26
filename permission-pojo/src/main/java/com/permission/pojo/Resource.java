@@ -6,121 +6,134 @@ package com.permission.pojo;
  *
  */
 public class Resource {
+
+	public Resource(){
+		this.id= 0;
+		this.cascadeid= "";
+		this.key= "";
+		this.name= "";
+		this.parentid= 0;
+		this.status= 0;
+		this.sortno= 0;
+		this.categoryid= 0;
+		this.description= "";
+	}
 	/**
 	 * 资源表ID
 	 */
-    private int id;
+	private int id;
 
-    /**
+	/**
 	 * 节点语义ID
 	 */
-    private String cascadeid;
+	private String cascadeid;
 
-    /**
-   	 * 
-   	 */
-    private String key;
-    
-    /**
-   	 *父节点流水号
-   	 */
-    private int parentid;
+	/**
+	 * 
+	 */
+	private String key;
+
+	/**
+	 *父节点流水号
+	 */
+	private int parentid;
 
 
-    /**
-   	 * 名称
-   	 */
-    private String name;
+	/**
+	 * 名称
+	 */
+	private String name;
 
-    /**
-   	 * 排序号
-   	 */
-    private int sortno;
+	/**
+	 * 排序号
+	 */
+	private int sortno;
 
-    /**
-   	 * 状态
-   	 */
-    private int status;
-    
-    /**
-   	 * 资源分类
-   	 */
-    private int categoryid;
+	/**
+	 * 状态
+	 */
+	private int status;
 
-    /**
-   	 * 描述
-   	 */
-    private String description;
+	/**
+	 * 资源分类
+	 */
+	private int categoryid;
 
-    public int getId() {
-        return id;
-    }
+	/**
+	 * 描述
+	 */
+	private String description;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getCascadeid() {
-        return cascadeid;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setCascadeid(String cascadeid) {
-        this.cascadeid = cascadeid == null ? null : cascadeid.trim();
-    }
+	public String getCascadeid() {
+		return cascadeid;
+	}
 
-    public String getKey() {
-        return key;
-    }
+	public void setCascadeid(String cascadeid) {
+		this.cascadeid = cascadeid == null ? null : cascadeid.trim();
+	}
 
-    public void setKey(String key) {
-        this.key = key == null ? null : key.trim();
-    }
+	public String getKey() {
+		return key;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setKey(String key) {
+		this.key = key == null ? null : key.trim();
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public String getName() {
+		return name;
+	}
 
-    public int getParentid() {
-        return parentid;
-    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-    public void setParentid(int parentid) {
-        this.parentid = parentid;
-    }
+	public int getParentid() {
+		return parentid;
+	}
 
-    public int getStatus() {
-        return status;
-    }
+	public void setParentid(int parentid) {
+		this.parentid = parentid;
+	}
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
+	public int getStatus() {
+		return status;
+	}
 
-    public int getSortno() {
-        return sortno;
-    }
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
-    public void setSortno(int sortno) {
-        this.sortno = sortno;
-    }
+	public int getSortno() {
+		return sortno;
+	}
 
-    public int getCategoryid() {
-        return categoryid;
-    }
+	public void setSortno(int sortno) {
+		this.sortno = sortno;
+	}
 
-    public void setCategoryid(int categoryid) {
-        this.categoryid = categoryid;
-    }
+	public int getCategoryid() {
+		return categoryid;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setCategoryid(int categoryid) {
+		this.categoryid = categoryid;
+	}
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
-    }
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description == null ? null : description.trim();
+	}
+
 }

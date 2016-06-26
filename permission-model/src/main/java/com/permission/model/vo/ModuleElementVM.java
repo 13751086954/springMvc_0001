@@ -6,6 +6,15 @@ package com.permission.model.vo;
  *
  */
 public class ModuleElementVM {
+	
+	public ModuleElementVM(){
+        this.id = 0;
+        this.domid = "";
+        this.name = "";
+        this.moduleid = 0;
+        this.modulename = "";
+        this.accessed = false;
+    }
 
 	/**
 	 * 流水号

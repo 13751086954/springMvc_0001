@@ -9,6 +9,17 @@ import java.util.Date;
  *
  */
 public class Stock {
+	
+    public Stock(){
+      this.id= 0;
+      this.name= "";
+      this.number= 0;
+      this.price= new BigDecimal(0.00);
+      this.status= 0;
+      this.user= "";
+      this.time= new Date(System.currentTimeMillis());
+      this.orgid= 0;
+    }
 	/**
 	 * 数据ID
 	 */
