@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 onClick: zTreeOnClick
             }
         };
-        $.getJSON('<%=path%>/orgmanager/loadorg', function (json) {
+        $.getJSON('<%=path%>/orgmanager/loadorg.do', function (json) {
             var zTreeObj = $.fn.zTree.init($('#lookupTree'), setting, json);
             zTreeObj.expandAll(true);
         });

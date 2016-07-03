@@ -21,17 +21,18 @@ public class ModuleElementManagerController {
 
 	@Resource
 	IModuleElementManagerService _moduleElementManagerService;
+	
+	BjuiResponse _bjuiResponse= new BjuiResponse();			
 
 	@RequestMapping(value="/index.do")
 	public String Index(int id,ModelMap model) {
-		model.addAttribute("moduleId", id);
+		model.addAttribute("moduleid", id);
 		model.addAttribute("modules", _moduleElementManagerService.LoadByModuleId(id));
 		return "moduleelementmanager/index";
 	}
 
 	@RequestMapping(value="/addoreditbutton.do")
-	public BjuiResponse AddOrEditButton(ModuleElementWithBLOBs button){		
-		BjuiResponse _bjuiResponse= new BjuiResponse();				
+	public BjuiResponse AddOrEditButton(ModuleElementWithBLOBs button){					
 		try {
 			_moduleElementManagerService.AddOrUpdate(button);
 		} catch (Exception e) {
@@ -43,8 +44,7 @@ public class ModuleElementManagerController {
 	}
 
 	@RequestMapping(value="/delbutton.do")
-	public BjuiResponse DelButton(int id) {
-		BjuiResponse _bjuiResponse= new BjuiResponse();				
+	public BjuiResponse DelButton(int id) {			
 		try{
 			_moduleElementManagerService.Delete(id);
 		}
@@ -56,8 +56,8 @@ public class ModuleElementManagerController {
 	}
 
 	@RequestMapping(value="/assignforrole.do")
-	public String AssignForRole(int roleId,ModelMap model){
-		model.addAttribute("roleId", roleId);
+	public String AssignForRole(int roleid,ModelMap model){
+		model.addAttribute("roleid", roleid);
 		return "moduleelementmanager/assignForRole";
 	}
 
@@ -72,8 +72,7 @@ public class ModuleElementManagerController {
 	 * @return
 	 */
 	@RequestMapping(value="/assignforrole.do",method= RequestMethod.POST)
-	public BjuiResponse AssignForRole(int roleid,int moduleId, String menuIds){
-		BjuiResponse _bjuiResponse= new BjuiResponse();			
+	public BjuiResponse AssignForRole(int roleid,int moduleId, String menuIds){	
 		try{
 			String[] strs=  menuIds.split(",");
 			List<Integer> ids =new ArrayList<Integer>();
@@ -112,7 +111,6 @@ public class ModuleElementManagerController {
 	 */
 	@RequestMapping(value="/assignforuser.do",method= RequestMethod.POST)
 	public BjuiResponse AssignForUser(int userid,int moduleId, String menuIds){
-		BjuiResponse _bjuiResponse= new BjuiResponse();
 		try{
 			String[] strs=  menuIds.split(",");
 			List<Integer> ids =new ArrayList<Integer>();

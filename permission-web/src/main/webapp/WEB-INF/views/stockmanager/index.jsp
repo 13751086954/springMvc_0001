@@ -23,98 +23,96 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <ul id="maintree" class="ztree"></ul>
         </div>
 
-        <div id="detail" style="margin-left: 225px; ">
+        <div id="detail" style="margin-left: 225px;">
         </div>
     </div>
 </div>
 
+
 <script type="text/javascript">
     var selectedId = 0;
-    var grid;
     $(document).ready(function () {
         initZtree();
-        LoadOrg();
+        loadDataGrid();
     });
     //加载数据到datagrid
-    function LoadOrg() {
+    function loadDataGrid() {
         //b-jui的datagrid需要重新处理HTML
         $('#detail').empty()
             .append('<table id="maingrid" class="table table-bordered table-hover table-striped table-top"></table>');
-       grid = $('#maingrid').datagrid({
+
+        $('#maingrid').datagrid({
             showToolbar: false,
             filterThead: false,
             target: $(this),
             columns: [
-            {
-                name: 'id',
-                label: 'id',
-                attrs: { readonly: 'readonly' },
-                hide: true
-            },
-            {
-                name: 'parentid',
-                label: '上级机构ID',
-                attrs: { readonly: 'readonly'},
-                hide: true
-            },
-              {
-                  name: 'cascadeid',
-                  label: '唯一标识',
-                  attrs: { readonly: 'readonly'}
-              },
-              {
-                  name: 'name',
-                  label: '机构名称'
-              },
-              {
-                  name: 'parentname',
-                  label: '上级机构',
-                  edit: false,
-                  attrs: { readonly: 'readonly' }
-              },
-            {
-                name: 'status',
-                label: '状态',
-                type: 'select',
-                align: 'center',
-                items:[{'0':'正常'}, {'1':'禁用'}]
-            },
-              {
-                  name: 'createtime',
-                  label: '登记日期',
-                  type: 'date',
-                  pattern: 'yyyy-MM-dd HH:mm:ss'
-              }
+                {
+                    name: 'id',
+                    label: '数据ID',
+                    width: 100,
+                    hide: true
+                },
+                {
+                    name: 'name',
+                    label: '产品名称',
+                    width: 100
+                },
+                {
+                    name: 'number',
+                    label: '产品数量',
+                    width: 100
+                },
+                {
+                    name: 'price',
+                    label: '产品单价',
+                    width: 100
+                },
+                {
+                    name: 'status',
+                    label: '出库/入库',
+                    width: 100
+                      , type: 'select',
+                    align: 'center',
+                    items: [{ '0': '入库' }, { '1': '出库' }],
+                },
+                {
+                    name: 'user',
+                    label: '操作人',
+                    width: 100
+                },
+                {
+                    name: 'time',
+                    label: '操作时间',
+                    width: 100
+                     , type: 'date',
+                    pattern: 'yyyy-MM-dd HH:mm:ss'
+                },
+                {
+                    name: 'orgid',
+                    label: '所属部门',
+                    width: 100,
+                    hide: true
+                }
             ],
-            dataUrl: '<%=path%>/orgmanager/loadchildren.do?id=' + selectedId,
-            editUrl: '<%=path%>/orgmanager/editorg.do',
-            editMode: 'dialog',
+            dataUrl: '<%=path%>/stockmanager/load.do?parentid=' + selectedId,
             fullGrid: true,
             showLinenumber: true,
             showCheckboxcol: true,
-            paging: false,
+            paging: true,
             filterMult: false,
-            showTfoot: false,
-            height:700,
-            editCallback: function (delResult) {
-                if (delResult.statusCode == "200")
-                    Init(selectedId);
-                else {
-                    $(this).alertmsg('warn', delResult.message);
-                }
-            }
+            showTfoot: false
+            //,height: '100%'
         });
     }
+
     function zTreeOnClick(event, treeId, treeNode) {
         selectedId = treeNode.id;
-        LoadOrg();
+        loadDataGrid();
     }
 
     function initZtree() {
         var setting = {
-            view: {
-                selectedMulti: false
-            },
+            view: { selectedMulti: false },
             data: {
                 key: {
                     name: 'name',
@@ -127,9 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     rootPId: 'null'
                 }
             },
-            callback: {
-                onClick: zTreeOnClick
-            }
+            callback: { onClick: zTreeOnClick }
         };
         $.getJSON('<%=path%>/orgmanager/loadorg.do', function (json) {
             var zTreeObj = $.fn.zTree.init($('#maintree'), setting, json);
@@ -137,24 +133,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         });
     }
 
-    function refreshOrgGrid() {
-        $('#maingrid').datagrid('refresh');
-    }
-
     //删除
-    function delOrg() {
-        var selected = getSelected('#maingrid',2);
+    function delStock() {
+        var selected = getSelected('#maingrid', 2);
         if (selected == null) return;
 
-        $.getJSON('<%=path%>/orgmanager/delorg.do?id=' + selected, function (data) {
+        $.getJSON('<%=path%>/stockmanager/delete.do?id=' + selected, function (data) {
             if (data.statusCode == "200")
-                refreshOrgGrid();
+                loadDataGrid();
             else {
                 $(this).alertmsg('warn', data.message);
             }
         });
     }
-</script>
 
-</body>
-</html>
+    //自定义的编辑按钮
+    function editStock() {
+        var selected = getSelected('#maingrid', 2);
+        if (selected == null) return;
+
+        $(this).dialog({
+            id: 'editDialog',
+            url: '<%=path%>/stockmanager/add.do?id=' + selected,
+            title: '编辑',
+            onClose: function () {
+                refreshStockGrid();
+            }
+        });
+
+    }
+
+    function refreshStockGrid() {
+        $('#maingrid').datagrid('refresh');
+        // loadDataGrid();
+    }
+    //@@ sourceURL=StockManagerIndex.js
+</script>

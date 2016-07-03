@@ -3,7 +3,6 @@ package com.permission.model.vo;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.permission.pojo.ModuleElement;
 import com.permission.pojo.ModuleElementWithBLOBs;
 
 /**

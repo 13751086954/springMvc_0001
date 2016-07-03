@@ -50,7 +50,7 @@
     where
      CategoryId in
     <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
-       #{item}
+        ${item}
    </foreach>
      order by Id
   </select>

@@ -23,13 +23,13 @@ public class CategoryManagerServiceImpl implements ICategoryManagerService {
 	OrgMapper _orgDao;
 
 	@Override
-	public int GetCategoryCntInOrg(int orgId) {
+	public int GetCategoryCntInOrg(int orgid) {
 		// TODO Auto-generated method stub
-		if (orgId == 0){
+		if (orgid == 0){
 			return _categoryDao.GetCategoryCntInOrg(null);
 		}
 		else{
-			return _categoryDao.GetCategoryCntInOrg(GetSubOrgIds(orgId));
+			return _categoryDao.GetCategoryCntInOrg(GetSubOrgIds(orgid));
 		}
 	}
 
@@ -71,18 +71,18 @@ public class CategoryManagerServiceImpl implements ICategoryManagerService {
 	}
 
 	@Override
-	public CategoryBO Load(int orgId, int pageindex, int pagesize) {
+	public CategoryBO Load(int orgid, int pageindex, int pagesize) {
 		// TODO Auto-generated method stub
 		List<Category> categories = null;
 		int total = 0;
-		if (orgId == 0){
+		if (orgid == 0){
 			PageInfo page=new PageInfo(pageindex,pagesize);
 			categories = _categoryDao.LoadInOrgListPage(page,null);
 			total = page.getTotalPage();
 		}
 		else{
 			PageInfo page=new PageInfo(pageindex,pagesize);
-			categories = _categoryDao.LoadInOrgListPage(page, GetSubOrgIds(orgId));
+			categories = _categoryDao.LoadInOrgListPage(page, GetSubOrgIds(orgid));
 			total = page.getTotalPage();
 		}
 		CategoryBO categoryBO=new CategoryBO();
@@ -93,9 +93,9 @@ public class CategoryManagerServiceImpl implements ICategoryManagerService {
 	}
 
 	@Override
-	public List<Integer> GetSubOrgIds(int orgId) {
+	public List<Integer> GetSubOrgIds(int orgid) {
 		// TODO Auto-generated method stub
-		Org org = _orgDao.selectByPrimaryKey(orgId);
+		Org org = _orgDao.selectByPrimaryKey(orgid);
 		return _orgDao.GetSubOrgIds(org.getCascadeid(), 0);
 	}
 

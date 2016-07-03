@@ -19,14 +19,16 @@ public interface StockMapper {
     List<Stock>  LoadStocksListPage(@Param("page")PageInfo page);
     
     List<Stock>  LoadInOrgListPage(@Param("page")PageInfo page,@Param("ids")List<Integer> orgIds) ;
-    
-    List<Stock>  LoadUserListPage(@Param("page")PageInfo page,@Param("user")String user);
-
+      
     int updateByPrimaryKeySelective(Stock record);
 
     int updateByPrimaryKeyWithBLOBs(Stock record);
 
     int updateByPrimaryKey(Stock record);
+
+	List<Stock> LoadUserListPage(@Param("page")PageInfo page, @Param("account")String account);
+
+	
 
 
 }

@@ -25,21 +25,21 @@ $('#tableButtons').on('afterdelete.bjui.tabledit', function(e) {
 <div class="bjui-pageContent tableContent" style="position:relative">
     <form id="j_custom_form" class="pageForm" data-toggle="validate" method="post">
         <table id="tableButtons" class="table table-bordered table-hover table-striped table-top"
-               data-toggle="tabledit" data-initnum="0" data-action="<%=path %>/moduleelementmanager/addoreditbutton" 
+               data-toggle="tabledit" data-initnum="0" data-action="<%=path %>/moduleelementmanager/addoreditbutton.do" 
                data-single-noindex="true">
             <thead>
-            <tr data-idname="Id">
+            <tr data-idname="id">
                 <th width="8%" title="元素类型"><input type="text" name="type" data-rule="required" value="button" size="5"></th>
                 <th width="10%" title="按钮标识"><input type="text" name="domid" data-rule="required" value="" size="5"></th>
                 <th width="10%" title="按钮显示"><input type="text" name="name" data-rule="required" value="" size="5"></th>
                 <th width="10%" title="按钮样式"><input type="text" name="classify" data-rule="required" value="btn-green" size="5"></th>
                 <th width="8%" title="按钮图标"><input type="text" name="icon" data-rule="required" value="pencil" size="5"></th>
                 <th width="10%" title="按钮脚本">
-                    <input type="text" name="Script" data-rule="required" value="javascript:;" size="5">
+                    <input type="text" name="script" data-rule="required" value="javascript:;" size="5">
                 </th>
                 <th width="24%" title="附加属性"><textarea name="attr" data-toggle="autoheight"></textarea></th>
                 <th width="10%" title="所属模块ID">
-                    <input readonly="readonly" type="text" value="${moduleId}" name="moduleid"/>
+                    <input readonly="readonly" type="text" value="${moduleid}" name="moduleid"/>
                 </th>
                 <th title="操作" width="10%">
                     <a href="javascript:;" class="btn btn-green" data-toggle="dosave">增加</a>
@@ -57,11 +57,11 @@ $('#tableButtons').on('afterdelete.bjui.tabledit', function(e) {
                     <td>${element.icon}</td>
                     <td>${element.script}</td>
                     <td>${element.attr}</td>
-                    <td>${moduleId}</td>
+                    <td>${moduleid}</td>
                     <td data-noedit="true">
                         <input type="text" style="display: none" value="${element.id}" id="element_${element.id}"/>
                         <button type="button" class="btn-green" data-toggle="doedit">编辑</button>
-                        <a href="<%=path %>/moduleelementmanager/delbutton?id={#element_${element.id}}" class="btn btn-red row-del"
+                        <a href="<%=path %>/moduleelementmanager/delbutton.do?id={#element_${element.id}}" class="btn btn-red row-del"
                            data-confirm-msg="确定要删除该行信息吗？">删</a>
                     </td>
                 </tr>

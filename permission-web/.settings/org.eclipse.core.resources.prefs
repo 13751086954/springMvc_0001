@@ -11,6 +11,7 @@ encoding//src/main/webapp/WEB-INF/views/modulemanager/add.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/orgmanager/addOrg.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/orgmanager/lookupMultiForRole.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/orgmanager/lookupParent.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/resourcemanager/lookUpMultiForUser.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/shared/_bjuilayout.jsp=UTF-8
 encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8

@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 onCheck: zTreeCheck
             }
         };
-        $.getJSON('<%=path%>/orgmanager/loadfortree', function (json) {
+        $.getJSON('<%=path%>/orgmanager/loadfortree.do', function (json) {
             var zTreeObj = $.fn.zTree.init($('#lookupTree'), setting, json);
             zTreeObj.expandAll(true);
         });
@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 onCheck: zTreeCheck
             }
         };
-        $.post('<%=path%>/orgmanager/loadforuser', { userid: $('#userid').val() },
+        $.post('<%=path%>/orgmanager/loadforuser.do', { userid: $('#userid').val() },
             function (json) {
                 var zTreeObj = $.fn.zTree.init($('#selected'), setting, eval(json));
                 zTreeObj.expandAll(true);
@@ -88,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }
 
     function save() {
-        $.post('<%=path%>/orgmanager/assignorgforuser', { userid: $('#userid').val(), moduleIds: moduleIds },
+        $.post('<%=path%>/orgmanager/assignorgforuser.do', { userid: $('#userid').val(), moduleIds: moduleIds },
             function (json) {
                 var rel = $.parseJSON(json);
                 if (rel.statusCode == "200") {

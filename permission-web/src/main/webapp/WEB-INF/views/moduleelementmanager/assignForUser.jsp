@@ -74,7 +74,7 @@ String _treeDetail = _prefix + "Detail";
                    width: 80
                }
             ],
-            dataUrl: '<%=path%>/moduleelementmanager/loadforuser?orgid=' + selectedId + '&userid=' + $('#userid').val(),
+            dataUrl: '<%=path%>/moduleelementmanager/loadforuser.do?orgid=' + selectedId + '&userid=' + $('#userid').val(),
             fullGrid: true,
             showLinenumber: true,
             showCheckboxcol: true,
@@ -106,7 +106,7 @@ String _treeDetail = _prefix + "Detail";
             },
             callback: { onClick: zTreeOnClick }
         };
-        $.getJSON('<%=path%>/modulemanager/loadforuser?userid=' + $('#userid').val(), function (json) {
+        $.getJSON('<%=path%>/modulemanager/loadforuser.do?userid=' + $('#userid').val(), function (json) {
             var zTreeObj = $.fn.zTree.init($('#<%=_treeId%>'), setting, json);
             zTreeObj.expandAll(true);
         });
@@ -117,7 +117,7 @@ String _treeDetail = _prefix + "Detail";
         var selected = getSelectedMany('#<%=_gridId%>', 2);
         if (selected == null) return;
 
-        $.post("<%=path%>/moduleelementmanager/assignforuser",
+        $.post("<%=path%>/moduleelementmanager/assignforuser.do",
         {
             userid: $('#userid').val(),
             moduleId:selectedId,

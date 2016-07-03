@@ -54,7 +54,7 @@
     from role
     CategoryId IN 
     <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
-       #{item}
+       ${item}
     </foreach>
     order by Id
   </select>

@@ -35,6 +35,7 @@ public class OrgManagerController {
 		return "orgmanager/index";
 	}
 
+	@RequestMapping(value="/lookupmultiforuser.do")
 	public String LookUpMultiForUser(int userid,ModelMap model){
 		model.addAttribute("userid", userid);
 		return "orgmanager/lookUpMultiForUser";

@@ -28,6 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 </div>
 
+
 <script type="text/javascript">
     var selectedId = 0;
     $(document).ready(function () {
@@ -41,66 +42,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             .append('<table id="maingrid" class="table table-bordered table-hover table-striped table-top"></table>');
 
         $('#maingrid').datagrid({
-            showToolbar: false,
+            showToolbar:false,
             filterThead: false,
-            target:$(this),
-           columns: [
+            columns: [
                {
                     name: 'id',
-                    label: '资源表ID',
-                     width: 100
+                    label: '流水号'
                     , hide: true
-               },    
-               {
-                    name: 'cascadeid',
-                    label: '节点语义ID',
-                     width: 100
-               },    
+               },
                {
                     name: 'name',
-                    label: '名称',
-                     width: 100
-               },    
-               {
-                    name: 'parentid',
-                    label: '父节点流水号',
-                     width: 100
-               },    
+                    label: '角色名称',
+                   width:100
+               },
                {
                     name: 'status',
                     label: '当前状态',
-                     width: 100
-                     ,type: 'select',
+                    type: 'select',
                     align: 'center',
-                    items: [{ '0': '默认' }, { '1': '状态1' }],
-               },    
+                   items:[{'0':'正常','1':'禁用'}],
+                   width:50
+               },
                {
-                    name: 'sortno',
-                    label: '排序号',
-                     width: 100
-                     ,type: 'select',
+                    name: 'type',
+                    label: '角色类型',
+                    type: 'select',
                     align: 'center',
-                    items: [{ '0': '默认' }, { '1': '状态1' }],
-               },    
+                    items: [{ '0': '管理员','1':'普通角色' }],
+                   width:50
+               },
                {
-                    name: 'rootkey',
-                    label: '根节点',
-                     width: 100
-               },    
+                    name: 'createtime',
+                    label: '创建时间'
+                    , type: 'date',
+                    width: 150,
+                    pattern: 'yyyy-MM-dd HH:mm:ss'
+               },
+
                {
-                    name: 'rootname',
-                    label: '根节点名称',
-                     width: 100
-               },    
+                    name: 'orgcascadeid',
+                    label: '所属部门节点语义ID',
+                   width:100
+               },
+               {
+                    name: 'orgname',
+                    label: '所属部门名称',
+                   width:100
+               }
             ],
-            dataUrl: '<%=path%>/categorymanager/load.do?orgid=' + selectedId,
+            dataUrl: '<%=path%>/rolemanager/load.do?orgid=' + selectedId,
+            target:$(this),
             fullGrid: true,
             showLinenumber: true,
             showCheckboxcol: true,
             paging: true,
             filterMult: false,
             showTfoot: false
-            //,height: '100%'
+            //, height: '100%'
         });
     }
 
@@ -126,20 +124,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             },
             callback: {onClick: zTreeOnClick}
         };
-        $.getJSON('<%=path%>/categorymanager/loadfortree.do', function (json) {
+        $.getJSON('<%=path%>/orgmanager/loadorg.do', function (json) {
             var zTreeObj = $.fn.zTree.init($('#maintree'), setting, json);
             zTreeObj.expandAll(true);
         });
     }
 
     //删除
-    function delCategory() {
-        var selected = getSelected('#maingrid',2);
+    function delRole() {
+        var selected = getSelected('#maingrid', 2);
         if (selected == null) return;
-        
-        $.getJSON('<%=path%>/categorymanager/delete.do?id=' + selected, function (data) {
+
+        $.getJSON('<%=path%>/rolemanager/delete.do?id=' + selected, function (data) {
             if (data.statusCode == "200")
-                loadDataGrid();
+                refreshRoleGrid();
             else {
                 $(this).alertmsg('warn', data.message);
             }
@@ -147,24 +145,86 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }
 
     //自定义的编辑按钮
-    function editCategory() {
+    function editRole() {
         var selected = getSelected('#maingrid',2);
         if (selected == null) return;
 
         $(this).dialog({
             id: 'editDialog',
-            url: '<%=path%>/categorymanager/add.do?id=' + selected,
+            url: '<%=path%>/rolemanager/add.do?id=' + selected,
             title: '编辑',
             onClose:function() {
-                refreshModuleGrid();
+                refreshRoleGrid();
             }
         });
-
     }
 
-    function refreshCategoryGrid() {
+    function refreshRoleGrid() {
         $('#maingrid').datagrid('refresh');
        // loadDataGrid();
     }
+
+    //为角色分配模块
+    function assignRoleModule(obj) {
+
+        var selected = getSelected('#maingrid',2);
+        if (selected == null) return;
+
+        $(obj).dialog({
+            id: 'accessRoleModule',
+            url: '<%=path%>/modulemanager/lookupmultiforrole.do',
+            title: '为角色分配模块',
+            data: {
+                roleid: selected
+            }
+        });
+    }
+
+    //为角色分配可见机构
+    function assignRoleOrg(obj) {
+        var selected = getSelected('#maingrid', 2);
+        if (selected == null) return;
+
+        $(obj).dialog({
+            id: 'accessRoleOrg',
+            url: '<%=path%>/orgmanager/lookupmultiforrole.do',
+            title: '为角色分配可见机构',
+            data: {
+                roleid: selected
+            }
+        });
+    }
+
+    //为角色分配资源
+    function openRoleReourceAccess(obj) {
+        var selected = getSelected('#maingrid', 2);
+        if (selected == null) return;
+
+        $(obj).dialog({
+            id: 'accessUserRole',
+            url: '<%=path%>/resourcemanager/lookupmultiforrole.do',
+            title: '为角色分配资源',
+            width: 600,
+            height: 380,
+            data: {
+                roleid: selected
+            }
+        });
+    }
+
+    //为角色分配菜单
+    function assignRoleElement(obj) {
+        var selected = getSelected('#maingrid', 2);
+        if (selected == null) return;
+
+        $(obj).dialog({
+            id: 'assignElement',
+            url: '<%=path%>/moduleelementmanager/assignforrole.do?roleid=' + selected,
+            title: '为角色分配菜单',
+            width: 700,
+            height:380
+        });
+    }
+
+    //@@ sourceURL=RoleManagerIndex.js
 </script>
-</html>

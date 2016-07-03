@@ -3,14 +3,15 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String _prefix = "assignForRole";
+String _prefix = "assignRoleForUser";
 String _treeId = _prefix + "Tree";
 String _gridId = _prefix + "Grid";
 String _treeDetail = _prefix + "Detail";
 %>
+
 <div class="bjui-pageHeader">
     <div class="bjui-searchBar">
-        <input style="display: none" id="roleid" value="${roleid}" />
+        <input style="display: none" id="userid" value="${model.userid}" />
         <div class="pull-right">
             <div class="alert alert-info search-inline">
                 <i class="fa fa-info-circle"></i> 点击行为单选，点击复选框可多选统一授权
@@ -25,16 +26,15 @@ String _treeDetail = _prefix + "Detail";
 <div class="bjui-pageContent tableContent">
     <div class="clearfix">
         <div style="float: left; width: 220px; overflow: auto;" class="table table-bordered">
-            <ul id="<%=_treeId%>" class="ztree"></ul>
+            <ul id="<%=_treeId" %> class="ztree"></ul>
         </div>
 
-        <div id="<%=_treeDetail%>" style="margin-left: 225px;">
+        <div id="<%=_treeDetail" %>" style="margin-left: 225px;">
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
-    var gridid = '#<%=_gridId%>';
     var selectedId = 0;
     $(document).ready(function () {
         initZtree();
@@ -43,38 +43,34 @@ String _treeDetail = _prefix + "Detail";
     //加载数据到datagrid
     function loadDataGrid() {
         //b-jui的datagrid需要重新处理HTML
-        $('#<%=_treeDetail%>').empty()
-            .append('<table id="<%=_gridId%>" class="table table-bordered table-hover table-striped table-top"></table>');
+        $('#<%=_treeDetail" %>').empty()
+            .append('<table id="<%=_gridId" %>" class="table table-bordered table-hover table-striped table-top"></table>');
 
-        $(gridid).datagrid({
+        $('#<%=_gridId" %>').datagrid({
             showToolbar: false,
             filterThead: false,
             columns: [
                   {
                       name: 'id',
-                      label: '元素名称',
+                      label: '角色ID',
                       hide: true
                   },
                {
                    name: 'name',
-                   label: '元素名称',
-                   width: 80
+                   label: '角色名称',
+                   width: 100
                },
+               
                {
-                   name: 'modulename',
-                   label: '所属模块',
-                   width: 80
-               },
-               {
-                   name: 'accessed',
+                   name: 'isbelonguser',
                    label: '是否已经授权',
                    type: 'select',
                    align: 'center',
                    items: [{ 'false': '未授权', 'true': '已授权' }],
-                   width: 80
+                   width: 100
                }
             ],
-            dataUrl: '<%=path%>/moduleelementmanager/loadforrole.do?orgid=' + selectedId +'&roleid='+$('#roleid').val(),
+            dataUrl: '<%=path%>/rolemanager/loadfororganduser.do?orgid=' + selectedId + '&userid=' + $('#userid').val(),
             fullGrid: true,
             showLinenumber: true,
             showCheckboxcol: true,
@@ -106,33 +102,30 @@ String _treeDetail = _prefix + "Detail";
             },
             callback: { onClick: zTreeOnClick }
         };
-        $.getJSON('<%=path%>/modulemanager/loadforrole.do',
-            { roleid: $('#roleid').val() },
-            function (json) {
-            var zTreeObj = $.fn.zTree.init($('#<%=_treeId%>'), setting, json);
+         $.getJSON('<%=path%>/orgmanager/loadorg.do', function (json) {
+            var zTreeObj = $.fn.zTree.init($('#<%=_treeId" %>'), setting, json);
             zTreeObj.expandAll(true);
         });
     }
 
     //授权选中的
     function assign() {
-        var selected = getSelectedMany(gridid, 2);
+        var selected = getSelectedMany('#<%=_gridId" %>', 2);
         if (selected == null) return;
-      
-        $.post("<%=path%>/moduleelementmanager/assignforrole.do",
-        {
-            roleid: $('#roleid').val(),
-            moduleId: selectedId,
-            menuIds: selected
-        },
-       function (data) {
-           refreshGrid();
-       });
+
+        $.post('<%=path%>/rolemanager/accessroles.do', {
+            userid: $('#userid').val(),
+            ids: selected
+            },
+            function (json) {
+             //   var rel = $.parseJSON(json);
+                refreshGrid();
+            });
     }
 
     function refreshGrid() {
-        $('#<%=_gridId%>').datagrid('refresh');
+        $('#<%=_gridId" %>').datagrid('refresh');
         // loadDataGrid();
     }
-    //@@ sourceURL=ModuleManagerIndex.js
+    //@@ sourceURL=RoleLookup.js
 </script>

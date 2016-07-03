@@ -34,7 +34,7 @@ public class ModuleManagerController {
 	@Resource
 	SessionService _sessionHelper;
 
-	BjuiResponse bjuiResponse=new BjuiResponse();
+	BjuiResponse _bjuiResponse=new BjuiResponse();
 
 	@RequestMapping(value="/index.do")
 	public String Index(){
@@ -166,10 +166,10 @@ public class ModuleManagerController {
 			_moduleManagerService.AssignModuleForRole(roleid, (Integer[])ids.toArray());
 		}
 		catch (Exception e) {
-			bjuiResponse.setMessage(e.getMessage());
-			bjuiResponse.setStatusCode("300");
+			_bjuiResponse.setMessage(e.getMessage());
+			_bjuiResponse.setStatusCode("300");
 		}
-		return bjuiResponse;
+		return _bjuiResponse;
 	}
 
 	@ResponseBody
@@ -184,10 +184,10 @@ public class ModuleManagerController {
 			_moduleManagerService.AssignModuleForUser(userid, (Integer[])ids.toArray());
 		}
 		catch (Exception e) {
-			bjuiResponse.setMessage(e.getMessage());
-			bjuiResponse.setStatusCode("300");
+			_bjuiResponse.setMessage(e.getMessage());
+			_bjuiResponse.setStatusCode("300");
 		}
-		return bjuiResponse;
+		return _bjuiResponse;
 	}
 
 	@RequestMapping(value="/add.do")
@@ -207,10 +207,10 @@ public class ModuleManagerController {
 			_moduleManagerService.AddOrUpdate(model);
 		}
 		catch (Exception e) {
-			bjuiResponse.setMessage(e.getMessage());
-			bjuiResponse.setStatusCode("300");
+			_bjuiResponse.setMessage(e.getMessage());
+			_bjuiResponse.setStatusCode("300");
 		}
-		return bjuiResponse;
+		return _bjuiResponse;
 	}
 
 	@ResponseBody
@@ -223,9 +223,11 @@ public class ModuleManagerController {
 			}        
 		}
 		catch (Exception e) {
-			bjuiResponse.setMessage(e.getMessage());
-			bjuiResponse.setStatusCode("300");
+			_bjuiResponse.setMessage(e.getMessage());
+			_bjuiResponse.setStatusCode("300");
 		}
-		return bjuiResponse;
+		return _bjuiResponse;
 	}
+	
+	
 }

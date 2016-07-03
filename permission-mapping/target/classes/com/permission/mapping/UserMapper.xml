@@ -50,7 +50,7 @@
 	        WHERE `Key`='UserOrg' 
 	        and SecondId IN 
 	        <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
-             #{item}
+             ${item}
             </foreach>
 	        ) AS t2
 	    WHERE t2.FirstId = Id

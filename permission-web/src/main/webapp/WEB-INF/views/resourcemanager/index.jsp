@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $('#maingrid').datagrid({
             showToolbar: false,
             filterThead: false,
-            target:$(this),
+            target: $(this),
            columns: [
                {
                     name: 'id',
@@ -57,6 +57,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      width: 100
                },    
                {
+                    name: 'Key',
+                    label: '',
+                     width: 100
+               },    
+               {
                     name: 'name',
                     label: '名称',
                      width: 100
@@ -65,6 +70,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     name: 'parentid',
                     label: '父节点流水号',
                      width: 100
+                     ,type: 'select',
+                    align: 'center',
+                    items: [{ '0': '默认' }, { '1': '状态1' }],
                },    
                {
                     name: 'status',
@@ -83,17 +91,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     items: [{ '0': '默认' }, { '1': '状态1' }],
                },    
                {
-                    name: 'rootkey',
-                    label: '根节点',
+                    name: 'categoryid',
+                    label: '资源分类标识',
                      width: 100
+                     ,type: 'select',
+                    align: 'center',
+                    items: [{ '0': '默认' }, { '1': '状态1' }],
                },    
                {
-                    name: 'rootname',
-                    label: '根节点名称',
+                    name: 'description',
+                    label: '描述',
                      width: 100
                },    
             ],
-            dataUrl: '<%=path%>/categorymanager/load.do?orgid=' + selectedId,
+            dataUrl: '<%=path%>/resourcemanager/load.do?categoryid=' + selectedId,
             fullGrid: true,
             showLinenumber: true,
             showCheckboxcol: true,
@@ -133,11 +144,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }
 
     //删除
-    function delCategory() {
+    function delResource() {
         var selected = getSelected('#maingrid',2);
         if (selected == null) return;
         
-        $.getJSON('<%=path%>/categorymanager/delete.do?id=' + selected, function (data) {
+        $.getJSON('<%=path%>/resourcemanager/delete.do?id=' + selected, function (data) {
             if (data.statusCode == "200")
                 loadDataGrid();
             else {
@@ -147,24 +158,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }
 
     //自定义的编辑按钮
-    function editCategory() {
+    function editResource() {
         var selected = getSelected('#maingrid',2);
         if (selected == null) return;
 
         $(this).dialog({
             id: 'editDialog',
-            url: '<%=path%>/categorymanager/add.do?id=' + selected,
+            url: '<%=path%>/resourcemanager/add.do?id=' + selected,
             title: '编辑',
             onClose:function() {
-                refreshModuleGrid();
+                refreshResourceGrid();
             }
         });
 
     }
 
-    function refreshCategoryGrid() {
+    function refreshResourceGrid() {
         $('#maingrid').datagrid('refresh');
        // loadDataGrid();
     }
+    //@@ sourceURL=ResourceManagerIndex.js
 </script>
-</html>
+
