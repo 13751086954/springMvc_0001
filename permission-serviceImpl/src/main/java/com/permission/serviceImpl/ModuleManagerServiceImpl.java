@@ -28,7 +28,7 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
 	@Override
 	public ModuleBO Load(int parentId, int pageindex, int pagesize) {
 		// TODO Auto-generated method stub
-		List<Module> Modules = null;
+		List<Module> Modules = new ArrayList<Module>();
 		int total = 0;
 		if (parentId == 0){
 			PageInfo page=new PageInfo(pageindex,pagesize);
@@ -37,7 +37,10 @@ public class ModuleManagerServiceImpl implements IModuleManagerService {
 		}
 		else{
 			PageInfo page=new PageInfo(pageindex,pagesize);
-			Modules = _moduleDao.LoadInOrgListPage(page, GetSubOrgIds(parentId));
+			List<Integer> ids =GetSubOrgIds(parentId);
+			if (ids!=null && ids.size()>0) {
+			     Modules = _moduleDao.LoadInOrgListPage(page, ids);
+			}
 			total = page.getTotalResult();
 		}
 		ModuleBO moduleBO=new ModuleBO();

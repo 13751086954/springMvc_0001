@@ -26,7 +26,7 @@ public class CategoryManagerController {
 
 	@RequestMapping(value="/index.do")
 	public String Index(){
-		return "category/index";
+		return "categorymanager/index";
 	}
 
 	/**

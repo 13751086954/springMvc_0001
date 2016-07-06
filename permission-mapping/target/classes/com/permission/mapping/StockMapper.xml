@@ -54,6 +54,7 @@
     ,
     <include refid="Blob_Column_List" />
     from stock
+    where
     OrgId in
     <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
        ${item}

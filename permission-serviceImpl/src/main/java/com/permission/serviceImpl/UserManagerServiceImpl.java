@@ -39,16 +39,19 @@ public class UserManagerServiceImpl implements IUserManagerService {
 			int pagesize) {
 		// TODO Auto-generated method stub
 		if (pageindex < 1) pageindex = 1;
-		List<User> users = null;
+		List<User> users = new ArrayList<User>();;
 		int total = 0;
 		if (orgId == 0){
 			PageInfo page=new PageInfo(pageindex,pagesize);
-			users = _UserDao.LoadInOrgListPage(page,null);
+			users = _UserDao.LoadUserListPage(page);
 			total = page.getTotalPage();
 		}
 		else{
 			PageInfo page=new PageInfo(pageindex,pagesize);
-			users = _UserDao.LoadInOrgListPage(page, GetSubOrgIds(orgId));
+			List<Integer> ids =GetSubOrgIds(orgId);
+			if (ids!=null && ids.size()>0) {
+				users = _UserDao.LoadInOrgListPage(page, ids);
+			}	
 			total = page.getTotalPage();
 		}
 		List<UserView> userViews =new ArrayList<UserView>();
@@ -75,7 +78,12 @@ public class UserManagerServiceImpl implements IUserManagerService {
 	public List<Integer> GetSubOrgIds(int orgId) {
 		// TODO Auto-generated method stub
 		Org org = _orgDao.selectByPrimaryKey(orgId);
-		return _orgDao.GetSubOrgIds(org.getCascadeid(), 0);
+		if (org!=null) {
+			return _orgDao.GetSubOrgIds(org.getCascadeid(), 0);
+		}
+		else {
+			return null;
+		}
 	}
 
 	@Override

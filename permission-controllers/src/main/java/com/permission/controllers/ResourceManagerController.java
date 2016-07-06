@@ -45,6 +45,7 @@ public class ResourceManagerController {
 	 * @param model
 	 * @return
 	 */
+	@ResponseBody
 	@RequestMapping(value="/add.do",method = RequestMethod.POST)
 	public BjuiResponse Add(com.permission.pojo.Resource model){
 		try{
@@ -63,6 +64,7 @@ public class ResourceManagerController {
 	 * @param categoryId
 	 * @return
 	 */
+	@ResponseBody
 	@RequestMapping(value="/load.do")
 	public ResourceBO Load(Integer categoryid,  Integer pageCurrent , Integer pageSize ) {
 		if (pageCurrent == null) {
@@ -74,6 +76,7 @@ public class ResourceManagerController {
 		return _resourceManagerService.Load(categoryid, pageCurrent, pageSize);
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/loadfortree.do")
 	public List<com.permission.pojo.Resource> LoadForTree(){
 		List<com.permission.pojo.Resource>  resources = _resourceManagerService.LoadAll();
@@ -87,6 +90,7 @@ public class ResourceManagerController {
 		return resources;
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/delete.do")
 	public BjuiResponse Delete(int id) {
 		try {
@@ -111,6 +115,7 @@ public class ResourceManagerController {
 		return "resourcemanager/lookUpMultiForUser";
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/loadwithuseraccess.do")
 	public List<ResourceVM> LoadWithUserAccess(int cId, int userid){
 		return _resourceManagerService.LoadWithAccess("UserResource",userid, cId);
@@ -146,6 +151,7 @@ public class ResourceManagerController {
 		return "resourcemanager/lookUpMultiForRole";
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/loadwithroleaccess.do")
 	public List<ResourceVM> LoadWithRoleAccess(int cId, int roleid){
 		return _resourceManagerService.LoadWithAccess("RoleResource",roleid, cId);

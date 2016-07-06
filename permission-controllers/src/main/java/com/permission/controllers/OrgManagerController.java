@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.permission.common.utils.JsonUtils;
 import com.permission.common.utils.SessionService;
@@ -69,6 +70,7 @@ public class OrgManagerController {
 	}
 
 	@Anonymous
+	@ResponseBody
 	@RequestMapping(value="/loadorg.do")
 	public List<Org> LoadOrg() throws Exception {
 		List<Org> orgs = new ArrayList<Org>();
@@ -85,6 +87,7 @@ public class OrgManagerController {
 		return orgs;
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/loadforuser.do")
 	public List<Org> LoadForUser(int userid) {
 		List<Org> orgs = _orgManagerService.LoadForUser(userid);
@@ -97,6 +100,7 @@ public class OrgManagerController {
 		return orgs;
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/loadforrole.do")
 	public List<Org> LoadForRole(int roleid){
 		List<Org> orgs = _orgManagerService.LoadForRole(roleid);
@@ -109,6 +113,7 @@ public class OrgManagerController {
 		return orgs;
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/assignorgforrole.do")
 	public BjuiResponse AssignOrgForRole(int roleid, String moduleIds){
 		try{
@@ -127,6 +132,7 @@ public class OrgManagerController {
 		return _bjuiResponse;
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/assignorgforuser.do")
 	public BjuiResponse AssignOrgForUser(int userid, String moduleIds) {
 		try{
@@ -145,6 +151,7 @@ public class OrgManagerController {
 		return _bjuiResponse;
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/addorg.do",method=RequestMethod.POST)
 	public BjuiResponse AddOrg(Org org) {
 		try {
@@ -158,6 +165,7 @@ public class OrgManagerController {
 		return _bjuiResponse;
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/editorg.do")
 	public BjuiResponse EditOrg(String json) {
 		try {
@@ -172,11 +180,13 @@ public class OrgManagerController {
 		return _bjuiResponse;
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/loadchildren.do")
 	public List<Org> LoadChildren(int id) throws Exception {
 		return _orgManagerService.LoadAllChildren(id);
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/delorg.do")
 	public BjuiResponse DelOrg(int id) {
 		try{

@@ -78,7 +78,7 @@
     FROM org 
     WHERE  (CascadeId  LIKE CONCAT('%',#{cascadeId,jdbcType=VARCHAR},'%')  ) 
     <choose>
-         <when test="Id>0">
+         <when test="orgId>0">
             AND (Id != #{orgId,jdbcType=INTEGER})
          </when>
      </choose>  
@@ -90,7 +90,7 @@
     FROM org 
     WHERE  (CascadeId  LIKE CONCAT('%',#{cascadeId,jdbcType=VARCHAR},'%')  ) 
     <choose>
-         <when test="Id>0">
+         <when test="orgId>0">
             AND (Id != #{orgId,jdbcType=INTEGER})
          </when>
      </choose>  

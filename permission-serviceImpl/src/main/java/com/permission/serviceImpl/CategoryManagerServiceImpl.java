@@ -1,5 +1,6 @@
 package com.permission.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -73,16 +74,19 @@ public class CategoryManagerServiceImpl implements ICategoryManagerService {
 	@Override
 	public CategoryBO Load(int orgid, int pageindex, int pagesize) {
 		// TODO Auto-generated method stub
-		List<Category> categories = null;
+		List<Category> categories = new ArrayList<Category>();
 		int total = 0;
 		if (orgid == 0){
 			PageInfo page=new PageInfo(pageindex,pagesize);
-			categories = _categoryDao.LoadInOrgListPage(page,null);
+			categories = _categoryDao.LoadCategoryListPage(page);
 			total = page.getTotalPage();
 		}
 		else{
 			PageInfo page=new PageInfo(pageindex,pagesize);
-			categories = _categoryDao.LoadInOrgListPage(page, GetSubOrgIds(orgid));
+			List<Integer> ids =GetSubOrgIds(orgid);
+			if (ids!=null && ids.size()>0) {
+				categories = _categoryDao.LoadInOrgListPage(page, ids);
+			}			
 			total = page.getTotalPage();
 		}
 		CategoryBO categoryBO=new CategoryBO();
@@ -96,7 +100,12 @@ public class CategoryManagerServiceImpl implements ICategoryManagerService {
 	public List<Integer> GetSubOrgIds(int orgid) {
 		// TODO Auto-generated method stub
 		Org org = _orgDao.selectByPrimaryKey(orgid);
-		return _orgDao.GetSubOrgIds(org.getCascadeid(), 0);
+		if (org!=null) {
+			return _orgDao.GetSubOrgIds(org.getCascadeid(), 0);
+		}
+		else {
+			return null;
+		}
 	}
 
 	@Override

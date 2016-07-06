@@ -31,7 +31,7 @@ public class StockManagerServiceImpl implements IStockManagerService {
 	@Override
 	public StockBO Load(int orgId, int pageindex, int pagesize) throws Exception {
 		// TODO Auto-generated method stub
-		List<Stock> Stocks;
+		List<Stock> Stocks = new ArrayList<Stock>();
 		LoginUserVM user = (LoginUserVM)_sessionHelper.GetSessionUser();
 		List<Org> orgs =user.getAccessedOrgs();
 		List<Integer> loginOrgs = new ArrayList<Integer>();		

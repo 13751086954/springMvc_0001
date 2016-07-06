@@ -52,7 +52,8 @@
     select 
     <include refid="Base_Column_List" />
     from role
-    CategoryId IN 
+    where
+    OrgId IN 
     <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
        ${item}
     </foreach>

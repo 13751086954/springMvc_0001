@@ -51,16 +51,19 @@ public class RoleManagerServiceImpl implements IRoleManagerService {
 	public RoleBO Load(int orgId, int pageindex, int pagesize) {
 		// TODO Auto-generated method stub
 		if (pageindex < 1) pageindex = 1;
-		List<Role> roles = null;
+		List<Role> roles = new ArrayList<Role>();
 		int total = 0;
 		if (orgId == 0){
 			PageInfo page=new PageInfo(pageindex,pagesize);
-			roles = _roleDao.LoadInOrgListPage(page,null);
+			roles = _roleDao.LoadRoleListPage(page);
 			total = page.getTotalPage();
 		}
 		else{
 			PageInfo page=new PageInfo(pageindex,pagesize);
-			roles = _roleDao.LoadInOrgListPage(page, GetSubOrgIds(orgId));
+			List<Integer> ids =GetSubOrgIds(orgId);
+			if (ids!=null && ids.size()>0) {
+			   roles = _roleDao.LoadInOrgListPage(page, ids);
+			}
 			total = page.getTotalPage();
 		}
 		RoleBO roleBO = new RoleBO();
@@ -74,7 +77,12 @@ public class RoleManagerServiceImpl implements IRoleManagerService {
 	public List<Integer> GetSubOrgIds(int orgId) {
 		// TODO Auto-generated method stub
 		Org org = _orgDao.selectByPrimaryKey(orgId);
-		return _orgDao.GetSubOrgIds(org.getCascadeid(),null);
+		if (org!=null) {
+			return _orgDao.GetSubOrgIds(org.getCascadeid(), 0);
+		}
+		else {
+			return null;
+		}
 	}
 
 	@Override

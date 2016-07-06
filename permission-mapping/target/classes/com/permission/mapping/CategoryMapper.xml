@@ -46,15 +46,11 @@
     select 
     <include refid="Base_Column_List" />
     from category
-     <choose>
-         <when test="ids !=null and ids.size()>0">
-            WHERE
-		    Id in
-		    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
-		        ${item}
-		   </foreach>
-         </when>
-     </choose>
+	 where
+	      Id IN 
+	   <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+	      ${item}
+	   </foreach>
     order by Id
   </select>
   

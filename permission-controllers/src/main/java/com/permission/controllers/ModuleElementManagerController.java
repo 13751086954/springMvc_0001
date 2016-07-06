@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.permission.model.BjuiResponse;
 import com.permission.model.vo.ModuleElementVM;
@@ -31,6 +32,7 @@ public class ModuleElementManagerController {
 		return "moduleelementmanager/index";
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/addoreditbutton.do")
 	public BjuiResponse AddOrEditButton(ModuleElementWithBLOBs button){					
 		try {
@@ -43,6 +45,7 @@ public class ModuleElementManagerController {
 		return _bjuiResponse;
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/delbutton.do")
 	public BjuiResponse DelButton(int id) {			
 		try{
@@ -71,6 +74,7 @@ public class ModuleElementManagerController {
 	 * 菜单ID列表
 	 * @return
 	 */
+	@ResponseBody
 	@RequestMapping(value="/assignforrole.do",method= RequestMethod.POST)
 	public BjuiResponse AssignForRole(int roleid,int moduleId, String menuIds){	
 		try{
@@ -88,6 +92,7 @@ public class ModuleElementManagerController {
 		return _bjuiResponse;
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/loadforrole.do")
 	public List<ModuleElementVM> LoadForRole(int roleid, int orgid){
 		return	_moduleElementManagerService.LoadWithAccess("RoleElement", roleid, orgid);
@@ -109,6 +114,7 @@ public class ModuleElementManagerController {
 	 * 菜单ID列表
 	 * @return
 	 */
+	@ResponseBody
 	@RequestMapping(value="/assignforuser.do",method= RequestMethod.POST)
 	public BjuiResponse AssignForUser(int userid,int moduleId, String menuIds){
 		try{
@@ -126,6 +132,7 @@ public class ModuleElementManagerController {
 		return _bjuiResponse;
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/loadforuser.do")
 	public List<ModuleElementVM> LoadForUser(int roleid, int orgid){
 		return	_moduleElementManagerService.LoadWithAccess("UserElement", roleid, orgid);

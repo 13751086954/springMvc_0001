@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.permission.model.BjuiResponse;
 import com.permission.model.bo.RoleBO;
@@ -45,6 +46,7 @@ public class RoleManagerController {
 	 * @param model
 	 * @return
 	 */
+	@ResponseBody
 	@RequestMapping(value="/add.do",method = RequestMethod.POST)
 	public BjuiResponse Add(Role model){
 		try{
@@ -62,17 +64,19 @@ public class RoleManagerController {
 	 * @param categoryId
 	 * @return
 	 */
+	@ResponseBody
 	@RequestMapping(value="/load.do")
-	public RoleBO Load(Integer categoryid,  Integer pageCurrent , Integer pageSize ) {
+	public RoleBO Load(Integer orgid,  Integer pageCurrent , Integer pageSize ) {
 		if (pageCurrent == null) {
 			pageCurrent = 1;
 		}
 		if (pageSize == null) {
 			pageSize = 30;
 		}
-		return _roleManagerService.Load(categoryid, pageCurrent, pageSize);
+		return _roleManagerService.Load(orgid, pageCurrent, pageSize);
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/delete.do")
 	public BjuiResponse Delete(int id) {
 		try {
@@ -91,11 +95,13 @@ public class RoleManagerController {
 		return "rolemanager/lookupMulti";
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/loadfororganduser.do")
 	public List<RoleVM> LoadForOrgAndUser(int orgid, int userid){
 		return _roleManagerService.LoadForOrgAndUser(orgid, userid);
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/accessroles.do")
 	public BjuiResponse AccessRoles(int userid, String ids) {
 		try{

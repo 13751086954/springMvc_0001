@@ -42,16 +42,19 @@ public class ResourceManagerServiceImpl implements IResourceManagerService {
 	public ResourceBO Load(int categoryId, int pageindex,
 			int pagesize) {
 		// TODO Auto-generated method stub
-		List<Resource> Resources = null;
+		List<Resource> Resources = new ArrayList<Resource>();
 		int total = 0;
 		if (categoryId == 0){
 			PageInfo page=new PageInfo(pageindex,pagesize);
-			Resources = _resourceDao.LoadInOrgListPage(page,null);
+			Resources = _resourceDao.LoadResourceListPage(page);
 			total = page.getTotalPage();
 		}
 		else{
 			PageInfo page=new PageInfo(pageindex,pagesize);
-			Resources = _resourceDao.LoadInOrgListPage(page, GetSubOrgIds(categoryId));
+			List<Integer> ids =GetSubOrgIds(categoryId);
+			if (ids!=null && ids.size()>0) {
+			  Resources = _resourceDao.LoadInOrgListPage(page, ids);
+			}
 			total = page.getTotalPage();
 		}
 		ResourceBO resourceBO=new ResourceBO();
@@ -71,8 +74,13 @@ public class ResourceManagerServiceImpl implements IResourceManagerService {
 	public List<Integer> GetSubOrgIds(int orgId) {
 		// TODO Auto-generated method stub
 		Category org= _categoryDao.selectByPrimaryKey(orgId);
-		List<Integer> orgs =_categoryDao.GetSubOrgIds(org.getCascadeid());
-		return orgs;
+		if (org!=null) {
+			List<Integer> orgs =_categoryDao.GetSubOrgIds(org.getCascadeid());
+			return orgs;
+		}
+		else {
+			return null;
+		}
 	}
 
 	@Override
