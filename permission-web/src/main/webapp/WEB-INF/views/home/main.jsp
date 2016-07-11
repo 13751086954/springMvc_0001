@@ -15,6 +15,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             <span style="padding-left: 30px;">GitHub：</span>
             <a href="https://github.com/milanyangbo/permission" target="_blank">https://github.com/milanyangbo/permission</a>
+            
+            <span style="padding-left: 30px;">permission</span>
+			权限管理系统，使用技术：B-JUI(bootstrap)、jquery、spring 、springmvc、shiro、mybatis、maven、dubbo、zookeeper、redis、fastdfs、kafka
+			
+		    <span style="padding-left: 30px;">开发环境</span>
+			myeclipse-2015-stable-2.0、jdk1.7、tomcat 8.0、maven-3.3.9、mysql5+
+			
+			MyEclipse+Tomcat+MAVEN+SVN项目完整环境搭建
+			http://blog.csdn.net/zhshulin/article/details/30779873
+			
+			SSM框架——详细整合教程（Spring+SpringMVC+MyBatis）
+			http://blog.csdn.net/zhshulin/article/details/37956105
+			
+			fastdfs-client-java操作fastdfs5.0.4
+			http://my.oschina.net/chaun/blog/467450 
+			
+			分布式服务框架 Zookeeper -- 管理分布式环境中的数据
+			http://www.ibm.com/developerworks/cn/opensource/os-cn-zookeeper/
+			
+			Dubbo与Zookeeper、SpringMVC整合和使用（负载均衡、容错）
+			http://blog.csdn.net/congcong68/article/details/41113239
+			
+			permission.sql为mysql数据库初始化脚本文件
+			
+			启动permission-serviceImpl项目下的MainLoader注册服务提供者；
+			
+			<span style="padding-left: 30px;">开发框架</span>
+			B-JUI (Best jQuery UI) 前端管理框架
+			http://b-jui.com/
+			
+			Dubbo
+			http://dubbo.io/
         </div>
         <div class="row" style=" margin-top:10px;">
             <div class="col-md-6" style="padding:5px;">

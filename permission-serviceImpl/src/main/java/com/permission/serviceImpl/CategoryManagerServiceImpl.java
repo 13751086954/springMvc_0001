@@ -15,7 +15,7 @@ import com.permission.pojo.Category;
 import com.permission.pojo.Org;
 import com.permission.service.ICategoryManagerService;
 
-@Service
+@Service("categoryManagerService")  
 public class CategoryManagerServiceImpl implements ICategoryManagerService {
 
 	@Resource

@@ -23,7 +23,7 @@ import com.permission.pojo.Role;
 import com.permission.pojo.User;
 import com.permission.service.ILoginService;
 
-@Service
+@Service("loginService") 
 public class LoginServiceImpl implements ILoginService  {
 
 	@Resource

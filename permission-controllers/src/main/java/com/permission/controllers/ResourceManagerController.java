@@ -3,8 +3,7 @@ package com.permission.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +19,7 @@ import com.permission.service.IResourceManagerService;
 @RequestMapping("/resourcemanager")
 public class ResourceManagerController {
 
-	@Resource
+	@Autowired 
 	IResourceManagerService _resourceManagerService;
 
 	BjuiResponse _bjuiResponse= new BjuiResponse();	

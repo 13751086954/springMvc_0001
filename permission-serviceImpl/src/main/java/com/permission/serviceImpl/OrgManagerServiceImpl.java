@@ -15,7 +15,7 @@ import com.permission.pojo.Org;
 import com.permission.pojo.Relevance;
 import com.permission.service.IOrgManagerService;
 
-@Service
+@Service("orgManagerService") 
 public class OrgManagerServiceImpl implements IOrgManagerService {
 
 	@Resource

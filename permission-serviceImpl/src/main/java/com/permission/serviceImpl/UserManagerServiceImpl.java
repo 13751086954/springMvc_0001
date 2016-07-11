@@ -19,7 +19,7 @@ import com.permission.pojo.User;
 import com.permission.pojo.Org;
 import com.permission.service.IUserManagerService;
 
-@Service
+@Service("userManagerService") 
 public class UserManagerServiceImpl implements IUserManagerService {
 
 	@Resource

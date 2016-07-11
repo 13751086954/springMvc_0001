@@ -372,7 +372,6 @@
 		<module>permission-serviceImpl</module>
 		<module>permission-common</module>
 		<module>permission-controllers</module>
-		<module>permission-api</module>
 		<module>permission-redis</module>
 		<module>permission-model</module>
 		<module>permission-mapping</module>

@@ -1,7 +1,6 @@
 package com.permission.controllers;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +16,7 @@ import com.permission.service.IStockManagerService;
 @RequestMapping("/stockmanager")
 public class StockManagerController {
 
-	@Resource
+	@Autowired 
 	IStockManagerService _stockManagerService;
 
 	BjuiResponse _bjuiResponse= new BjuiResponse();

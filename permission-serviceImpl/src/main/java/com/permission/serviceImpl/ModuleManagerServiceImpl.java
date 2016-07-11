@@ -17,7 +17,7 @@ import com.permission.pojo.Module;
 import com.permission.pojo.Relevance;
 import com.permission.service.IModuleManagerService;
 
-@Service
+@Service("moduleManagerService") 
 public class ModuleManagerServiceImpl implements IModuleManagerService {
 
 	@Resource

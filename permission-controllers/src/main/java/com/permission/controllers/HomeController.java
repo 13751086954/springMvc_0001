@@ -2,10 +2,7 @@ package com.permission.controllers;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
-
-
+import org.springframework.beans.factory.annotation.Autowired;
 /* 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
@@ -26,10 +23,10 @@ import com.permission.service.IModuleManagerService;
 @RequestMapping("/home")
 public class HomeController {
 
-	@Resource
+	@Autowired 
 	IModuleManagerService _moduleManagerService;
 
-	@Resource
+	@Autowired 
 	SessionService _sessionHelper;
 
 	/* 

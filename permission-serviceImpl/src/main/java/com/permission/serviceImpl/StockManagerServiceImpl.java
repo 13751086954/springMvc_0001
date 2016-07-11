@@ -17,7 +17,7 @@ import com.permission.pojo.Org;
 import com.permission.pojo.Stock;
 import com.permission.service.IStockManagerService;
 
-@Service
+@Service("stockManagerService") 
 public class StockManagerServiceImpl implements IStockManagerService {
 
 	@javax.annotation.Resource

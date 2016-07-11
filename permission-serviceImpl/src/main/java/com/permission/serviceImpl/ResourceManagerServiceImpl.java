@@ -17,7 +17,7 @@ import com.permission.pojo.Relevance;
 import com.permission.pojo.Resource;
 import com.permission.service.IResourceManagerService;
 
-@Service
+@Service("resourceManagerService") 
 public class ResourceManagerServiceImpl implements IResourceManagerService {
    
 	@javax.annotation.Resource

@@ -19,7 +19,7 @@ import com.permission.pojo.Relevance;
 import com.permission.pojo.Role;
 import com.permission.service.IRoleManagerService;
 
-@Service
+@Service("roleManagerService") 
 public class RoleManagerServiceImpl implements IRoleManagerService {
 
 	@javax.annotation.Resource

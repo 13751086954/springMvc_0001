@@ -16,7 +16,7 @@ import com.permission.pojo.ModuleElementWithBLOBs;
 import com.permission.pojo.Relevance;
 import com.permission.service.IModuleElementManagerService;
 
-@Service
+@Service("moduleElementManagerService") 
 public class ModuleElementManagerServiceImpl implements IModuleElementManagerService {
 
 	@Resource
