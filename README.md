@@ -13,12 +13,6 @@ http://blog.csdn.net/zhshulin/article/details/37956105
 fastdfs-client-java操作fastdfs5.0.4
 http://my.oschina.net/chaun/blog/467450 
 
-分布式服务框架 Zookeeper -- 管理分布式环境中的数据
-http://www.ibm.com/developerworks/cn/opensource/os-cn-zookeeper/
-
-Dubbo与Zookeeper、SpringMVC整合和使用（负载均衡、容错）
-http://blog.csdn.net/congcong68/article/details/41113239
-
 permission.sql为mysql数据库初始化脚本文件
 
 启动permission-serviceImpl项目下的MainLoader注册服务提供者；
@@ -27,5 +21,3 @@ permission.sql为mysql数据库初始化脚本文件
 B-JUI (Best jQuery UI) 前端管理框架
 http://b-jui.com/
 
-Dubbo
-http://dubbo.io/

@@ -1,6 +1,8 @@
 package com.permission.queue;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -9,15 +11,13 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.stereotype.Repository;
-
-
-
 
 @Repository
 public class KafKaImpl implements QueueService {
@@ -39,6 +39,8 @@ public class KafKaImpl implements QueueService {
 		ctx.close();
 	}
 
+	private static Logger logger = Logger.getLogger(ErrorConsumer.class);  
+	
 	@Override
 	@SuppressWarnings({ "unchecked", "unchecked", "rawtypes" })
 	public void consume() {
@@ -55,8 +57,16 @@ public class KafKaImpl implements QueueService {
 				System.out.println("Topic:" + topic);
 				ConcurrentHashMap<Integer,List<byte[]>> messages = (ConcurrentHashMap<Integer,List<byte[]>>)entry.getValue();
 				if (topic.equals("error")) {			    	
-					ExecutorService executor = Executors.newFixedThreadPool(1);			    	
-					executor.submit(new ErrorConsumer(messages));
+					//ExecutorService executor = Executors.newFixedThreadPool(1);			    	
+					//executor.submit(new ErrorConsumer(messages));
+					Collection<List<byte[]>> values = messages.values();
+					for (Iterator<List<byte[]>> iterator = values.iterator(); iterator.hasNext();) {
+						List<byte[]> list = iterator.next();
+						for (byte[] object : list) {
+							String message = new String(object);
+							logger.error(message);
+						}			
+					}
 				}			
 			}
 

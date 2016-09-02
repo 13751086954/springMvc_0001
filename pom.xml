@@ -43,7 +43,6 @@
 		<freemarker.version>2.3.20</freemarker.version>
 		<rapid-framework.version>4.0.5</rapid-framework.version>
 		<patchca.version>0.0.1</patchca.version>
-		<dubbo.version>2.5.3</dubbo.version>
 		<zookeeper.version>3.4.8</zookeeper.version>
 		<zkclient.version>0.1</zkclient.version>
 		<mail.version>1.4.7</mail.version>
@@ -77,21 +76,6 @@
 			<groupId>com.github.sgroschupf</groupId>
 			<artifactId>zkclient</artifactId>
 			<version>${zkclient.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>dubbo</artifactId>
-			<version>${dubbo.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 
 
